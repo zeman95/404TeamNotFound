@@ -7,7 +7,9 @@ def home(request):
     	#this is the old way
 	#return HttpResponse("<h2>This is the NSR page.</h2>")
 
-	# this is how to do templates
+	# this is how to do templates try 1
 	#return render(request, 'NSR/home.html', {'title': 'Home'})#context)
+	
+	# templates try 2
 	context = {}
-	return render(request, 'NSR/home.html', context)
+	return render(request, 'home.html', context)
