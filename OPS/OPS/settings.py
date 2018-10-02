@@ -56,7 +56,7 @@ ROOT_URLCONF = 'OPS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['NSR/templates/NSR/'], # this is the app folder, the templates, the app templates name, then the rest is retrieved from views.py inside the app
+        'DIRS': ['NSR/templates/NSR/'], #os.path.join(BASE_DIR, 'templates')], # this is the app folder, the templates, the app templates name, then the rest is retrieved from views.py inside the app
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,3 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)

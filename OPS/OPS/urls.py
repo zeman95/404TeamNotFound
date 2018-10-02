@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from NSR.views import home # part of hard coded way, no templates, 1
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,3 +24,6 @@ urlpatterns = [
     # this is the hard coded way to do this, attempt 1
     path('NSR/', home, name = 'home'),
 ]
+
+# allows images and java files to be added
+urlpatterns += staticfiles_urlpatterns()
