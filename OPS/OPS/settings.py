@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'vxklv4@&!enjg77nv+_!fvthqr5zzevyot12&($c5u77n!06g$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False#True
 
 ALLOWED_HOSTS = ['*']
 
@@ -56,7 +56,9 @@ ROOT_URLCONF = 'OPS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['NSR/templates/NSR/'], #os.path.join(BASE_DIR, 'templates')], # this is the app folder, the templates, the app templates name, then the rest is retrieved from views.py inside the app
+        'DIRS': ['NSR/templates/NSR/', 
+                'ManageUserAccounts/templates/ManageUserAccounts/',
+                'SubHistory/templates/SubHistory/'], #os.path.join(BASE_DIR, 'templates')], # this is the app folder, the templates, the app templates name, then the rest is retrieved from views.py inside the app
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +70,9 @@ TEMPLATES = [
         },
     },
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 WSGI_APPLICATION = 'OPS.wsgi.application'
 
@@ -124,3 +129,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')

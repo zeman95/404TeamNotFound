@@ -1,0 +1,94 @@
+{% extends 'base1.html'%}
+{% load static from staticfiles %}
+{% load staticfiles %}
+
+
+{% block head %} <!--  This is for the head of the page, list here  -->  
+    <title>NSR</title>
+            
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+    
+{% endblock %}
+
+{% block content %} <!-- Put body code here, whatever you want -->
+    <div class="top">
+            <div class="topnav">
+              <a class="nonactive" href="/">
+                <div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <!--<img src="{% static 'images/nebraksa.jpg' %}" alt="Nebraska">--></div>
+                <div class="topnav-right"></a>
+                    <a class="active" href="/">HOME</a>
+                    <a href="/NSR/">RUBRIC</a>
+                    <a href="/SubmitLesson/">SUBMIT LESSON</a>
+                    <a href="/Submissions/">SUBMISSIONS</a>
+                    <a href="/Settings/">SETTINGS</a>
+                    </div>
+            </div>
+          
+         
+          
+            <!-- The Main Section -->
+            <div class="container content center padding-64" style="max-width:800px" id="band">
+              <h2 class="wide">Manage User Accounts</h2>
+              <p class="justify">
+
+                        <!-- This is the page 7 -->
+                        <br>
+                        <div style="overflow-x:auto;">
+                            <table>
+                              <tr>
+                                <th>User</th>
+                                <th>Submissions</th>
+                                <th>Permissions</th>
+                                <th>Active</th>
+                                <th>Activation</th>
+                             
+                              </tr>
+                              <tr>
+                                <td>deBestProf</td>
+                                <td><a href="#">2</a></td>
+                                <td>Instructor</td>
+                                <td>Y</td>
+                                <td><button type="button" onclick="alert('Account Activated')" disabled>Activate</button></td>
+                              
+                              </tr>
+                              <tr>
+                                   <td>LazySusan</td>
+                                <td><a href="#">3</a></td>
+                                <td>Instructor</td>
+                                <td>Y</td>
+                                <td><button type="button" onclick="alert('Account Activated')" disabled>Activate</button></td>
+                              </tr>
+                              <tr>
+                                <td>BossMan</td>
+                                <td>N/A</td>
+                                <td>Admin</td>
+                                <td>N</td>
+                                <td><button type="button" onclick="alert('Account Activated')">Activate</button></td>
+                          
+                              </tr>
+                            </table>
+                            
+
+            </div>
+
+            
+          <!-- End Page Content -->
+          </div>
+ 
+          <!-- Footer -->
+          <div class="footer">
+            <p class="medium">Powered by 404TeamNotFound</p>
+          </div>
+          
+          
+
+{% endblock %}
+
+

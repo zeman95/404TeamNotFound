@@ -1,0 +1,111 @@
+{% extends 'base2.html'%}
+{% load static from staticfiles %}
+{% load staticfiles %}
+
+
+{% block head %} <!--  This is for the head of the page, list here  -->  
+    <title>NSR</title>
+            
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+    
+{% endblock %}
+
+{% block content %} <!-- Put body code here, whatever you want -->
+    <div class="top">
+            <div class="topnav">
+                    <a class="nonactive" href="/">
+                    <div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> </div>
+                    <div class="topnav-right"></a>
+                        <a class="active" href="/">HOME</a>
+                        <a href="/NSR/">RUBRIC</a>
+                        <a href="/SubmitLesson/">SUBMIT LESSON</a>
+                        <a href="/Submissions/">SUBMISSIONS</a>
+                        <a href="/Settings/">SETTINGS</a>
+                        
+                    </div>
+            </div>
+          
+         
+          
+            <!-- The Main Section -->
+            <div class="container content center padding-64" style="max-width:800px" id="band">
+              <h2 class="wide">Lesson Submissions</h2>
+              <p class="justify">
+                    
+                        
+                            <!-- This is the page 8 -->
+                                <br>
+                            <div>Submission(s)</div>
+                            <div class="tab">
+                                <button class="tablinks" onclick="openTab(event, '1')">1</button>
+                                <button class="tablinks" onclick="openTab(event, '2')">2</button>
+                            </div>
+                            
+                            <!-- Tab content -->
+                            <div id="1" class="tabcontent">
+                                <h3>Submission: #1</h3>
+                                <br><h4>Comments</h4><br>
+                                <textarea rows="5" cols="75" disabled>
+                                    Hæc est pars illud. Quid me temptatis transferendum est? Exspectat ut hic quod es? Secreta vitae? 
+                                </textarea>
+
+
+                                <hr><br><h4>Submission Results</h4><br>
+                                <textarea rows="5" cols="75" disabled>
+                                    Hæc est pars illud. Quid me temptatis transferendum est? Exspectat ut hic quod es? Secreta vitae? 
+                                </textarea>
+                                
+                                <hr><br><h4>Submission Copy</h4><br>
+                                <div>
+                                    Image of upload goes here
+                                </div>
+                               
+
+                            </div>
+                            
+                            <div id="2" class="tabcontent">
+                                <h3>Submission: #2</h3>
+                                <hr><h4>Comments</h4><br>
+                                <textarea rows="5" cols="75" disabled>
+                                    Hæc est pars illud. Quid me temptatis transferendum est? Exspectat ut hic quod es? Secreta vitae? 
+                                </textarea>
+
+                                <hr><br><h4>Submission Results</h4><br>
+                                <textarea rows="5" cols="75" disabled>
+                                    Hæc est pars illud. Quid me temptatis transferendum est? Exspectat ut hic quod es? Secreta vitae? 
+                                </textarea>
+                                
+                                <br><br><h4>Submission Copy</h4><br>
+                                <div>
+                                    Image of upload goes here
+                                </div>
+                            </div>
+                          
+
+
+
+
+
+            </div>
+
+            
+          <!-- End Page Content -->
+          </div>
+ 
+          <!-- Footer -->
+          <div class="footer">
+            <p class="medium">Powered by 404TeamNotFound</p>
+          </div>
+          
+          
+
+{% endblock %}
+
+

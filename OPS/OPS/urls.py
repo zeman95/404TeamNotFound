@@ -17,12 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from NSR.views import home # part of hard coded way, no templates, 1
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from ManageUserAccounts.views import home1
+from SubHistory.views import home2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     
     # this is the hard coded way to do this, attempt 1
     path('NSR/', home, name = 'home'),
+    path('ManageAccounts/', home1, name = 'home1'),
+    path('Submissions/', home2, name = 'home2'),
 ]
 
 # allows images and java files to be added
