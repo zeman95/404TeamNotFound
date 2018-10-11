@@ -14,11 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import path
 from NSR.views import home # part of hard coded way, no templates, 1
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from ManageUserAccounts.views import home1
 from SubHistory.views import home2
+from NASSHomeTeacher.views import home4
+from UserAccounts.views import login, register, profile
+from TLS.views import home10, home11
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +32,12 @@ urlpatterns = [
     path('NSR/', home, name = 'home'),
     path('ManageAccounts/', home1, name = 'home1'),
     path('Submissions/', home2, name = 'home2'),
+    path('HomeTeacher/', home4, name='home4'),
+    path('', login, name='login'),
+    path('Register/', register, name='register'),
+    path('Profile/', profile, name='profile'),
+    path('UploadLessonPlans/', home10, name='home10'),
+    path('UploadResults/', home11, name='home11'),
 ]
 
 # allows images and java files to be added

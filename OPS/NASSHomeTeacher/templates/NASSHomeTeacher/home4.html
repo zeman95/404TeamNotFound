@@ -1,0 +1,84 @@
+{% extends 'base4.html'%}
+{% load static from staticfiles %}
+{% load staticfiles %}
+
+{% block head %}
+<!--  This is for the head of the page, list here  -->
+<title>NSR</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% endblock %}
+{% block content %}
+<div class="top">
+    <div class="topnav">
+        <a class="nonactive" href="/">
+            <div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small>
+                <!--<img src="{% static 'images/nebraksa.jpg' %}" alt="Nebraska">-->
+            </div>
+            <div class="topnav-right">
+        </a>
+        <a class="active" href="/">HOME</a>
+        <a href="/NSR/">RUBRIC</a>
+        <a href="/SubmitLesson/">SUBMIT LESSON</a>
+        <a href="/Submissions/">SUBMISSIONS</a>
+        <a href="/Settings/">SETTINGS</a>
+    </div>
+</div>
+
+<!-- The Main Section -->
+<br />
+<br />
+<div id="mycontainer">
+    <div class="container-fluid" style="border:2px solid black;padding:20px">
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                <p><img class="card-img-top" src="person.png" style="width:15%" alt="Photo of sunset" /></p>
+                <p>Joshua Shmoe<br /><span>OPS</span></p>
+            </div>
+            <div class="col-sm-4" align="center">
+                <h1><b>Welcome JOSHUA!</b></h1><br /><span>What would you like to do?</span>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3"><button type="button" class="button button1 pull-center">Manage Accounts</button></div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3"><button type="button" class="button button1 pull-center">Standard Rubric</button></div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3"><button type="button" class="button button1 pull-center">Settings</button></div>
+
+            <div class="col-sm-1"></div>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" align="center"><button type="button" class="button button1 pull-center">Check Lesson
+                    Plans</button></div>
+            <div class="col-sm-4"></div>
+        </div>
+        <br />
+        <div class="row">
+            <p align="left"><b style="margin-left: 10px;">Teacher</b><span align="right" style="margin-left: 1200px;"><img
+                        src="question-mark.png" style="width:2%" alt="Photo of sunset" /><span></p>
+        </div>
+    </div>
+</div>
+<!-- End Page Content -->
+
+<!-- Footer -->
+<div class="footer">
+    <p class="medium">Powered by 404TeamNotFound</p>
+</div>
+
+{% endblock %}

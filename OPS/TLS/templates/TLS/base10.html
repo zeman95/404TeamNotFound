@@ -1,0 +1,203 @@
+{% load static from staticfiles %}
+<html>
+    <head>
+        
+        {% block head %}{% endblock %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'images.css'%}">
+        
+        <script>
+            function openTab(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+        var numberOfTabs = 6;
+    
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < numberOfTabs; i++) {//tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+    
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < numberOfTabs; i++) {//tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+    
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+            
+        
+
+
+      function myUploadFunction() {
+            var x = document.getElementById("myFile");
+            x.disabled = true;
+        }
+        
+        </script>
+        <style>
+            body {font-family: "Lato", sans-serif}
+            .mySlides {display: none}
+    
+            /* Add a black background color to the top navigation */
+                .topnav {
+                    background-color: #00368e;
+                    overflow: hidden;
+                    position: fixed;
+                    width: 100%;
+                    
+                    
+                }
+    
+                
+    
+                /* Style the links inside the navigation bar */
+                .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                }
+    
+                /* Change the color of links on hover */
+                .topnav a:hover {
+                background-color: #ddd;
+                color: black;
+                }
+    
+                /* Add a color to the active/current link */
+                .topnav a.active {
+                
+                color: white;
+                }
+    
+                /* Right-aligned section inside the top navigation */
+                .topnav-right {
+                float: right;
+            }
+    
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: #00368e;
+                color: white;
+                text-align: center;
+                height: 3%;
+                
+            }
+    
+    
+            /* Style the tab */
+            .tab {
+                overflow: hidden;
+                border: 1px solid #ccc;
+                background-color: #f1f1f1;
+            }
+    
+            /* Style the buttons that are used to open the tab content */
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                transition: 0.3s;
+            }
+    
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+                background-color: #ddd;
+            }
+    
+            /* Create an active/current tablink class */
+            .tab button.active {
+                background-color: #ccc;
+            }
+    
+            /* Style the tab content */
+            .tabcontent {
+                display: none;
+                padding: 6px 12px;
+                border: 1px solid #ccc;
+                border-top: none;
+            }
+            /* for table */
+            /*table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                width: 100%;
+                border: 1px solid #000;
+            }
+    
+            th, td {
+                text-align: left;
+                padding: 8px;
+            }
+            tr:nth-child(even){background-color: #f2f2f2}*/
+            
+
+            .ResponsiveCheckBox { 
+                
+                border:2px solid #ccc; 
+                width:300px; 
+                height: 100px; 
+                overflow-y: scroll;
+                float: left;
+                
+                }
+
+            div.inline { float:left; 
+                        padding-right: 20%;
+                        padding-left: 20%}
+            
+            .master{
+                background-color: rgb(250, 250, 250);
+                height: 90%;
+                /*padding-top: 10%;
+                padding-bottom: 20%;*/
+                z-index: 1;
+                margin-bottom: 5%;
+                margin-top: 5%;
+                
+                 
+                
+                
+
+               
+                
+            }
+            .wide{
+                padding-left: 40%;            }
+            .daSubmitButton{
+                margin-left: 45%;
+                
+                
+            }
+            .movefront{
+                z-index: 1;
+            }
+            .container{
+                height: 100%;
+            }
+
+                    
+    
+        </style>
+       
+    </head>
+    <body>
+        <div class="backgroundImage">
+            <!--<img src="/static/science.jpg">-->
+        {% block content %}{% endblock %}
+    </div>
+    </body>
+</html>

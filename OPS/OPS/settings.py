@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'vxklv4@&!enjg77nv+_!fvthqr5zzevyot12&($c5u77n!06g$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False#True
+DEBUG = True#False#True
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	#'UserAccounts',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,11 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['NSR/templates/NSR/', 
                 'ManageUserAccounts/templates/ManageUserAccounts/',
-                'SubHistory/templates/SubHistory/'], #os.path.join(BASE_DIR, 'templates')], # this is the app folder, the templates, the app templates name, then the rest is retrieved from views.py inside the app
+                'SubHistory/templates/SubHistory/', 
+		        'NASSHomeTeacher/templates/NASSHomeTeacher/',
+		        'UserAccounts/templates/UserAccounts/',
+                'TLS/templates/TLS/'], 
+                #os.path.join(BASE_DIR, 'templates')], # this is the app folder, the templates, the app templates name, then the rest is retrieved from views.py inside the app
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,3 +136,5 @@ STATICFILES_DIRS = (
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+#AUTH_USER_MODEL = 'UserAccounts.CustomUser'
