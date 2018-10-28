@@ -4,7 +4,7 @@
 
 {% block head %}
 <!--  This is for the head of the page, list here  -->
-<title>NSR</title>
+<title>Home</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,63 +14,63 @@
 
 {% endblock %}
 {% block content %}
+{% if user.is_authenticated %}
 <div class="top">
     <div class="topnav">
-        <a class="nonactive" href="/">
-            <div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small>
-                <!--<img src="{% static 'images/nebraksa.jpg' %}" alt="Nebraska">-->
-            </div>
-            <div class="topnav-right">
-        </a>
-        <a class="active" href="/">HOME</a>
-        <a href="/NSR/">RUBRIC</a>
-        <a href="/SubmitLesson/">SUBMIT LESSON</a>
-        <a href="/Submissions/">SUBMISSIONS</a>
-        <a href="/Settings/">SETTINGS</a>
-    </div>
+       
+          <div class="logo"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <img src= "/static/nbedit1.png" alt="Nebraska" width="50" height="25"></div>
+						<div class="topnav-right">
+              <!--<a class="active" href="/HomeTeacher/">HOME</a>
+              <a href="/NSR/">RUBRIC</a>
+              <a href="/UploadLessonPlans/">SUBMIT LESSON</a>
+              <a href="/Submissions/">SUBMISSIONS</a>
+              <a href="/Profile/">SETTINGS</a>-->
+              <a href="/admin/logout">LOGOUT</a>
+              </div>
+</div>
 </div>
 
 <!-- The Main Section -->
 <br />
 <br />
-<div id="mycontainer">
-    <div class="container-fluid" style="border:2px solid black;padding:20px">
+<div id="mycontainer" style="padding-top: 10%;">
+    <div class="container-fluid" style="border:2px; solid; border-radius: 25px; box-shadow: 5px 3px 3px black; black;padding:20px; width: 75%; margin-top: 1%; background-color: aliceblue;">
 
 
         <div class="row">
             <div class="col-sm-4">
-                <p><img class="card-img-top" src="person.png" style="width:15%" alt="Photo of sunset" /></p>
-                <p>Joshua Shmoe<br /><span>OPS</span></p>
+                <!--<p><img class="card-img-top" src="person.png" style="width:15%" alt="Photo of sunset" /></p>-->
+                <p>{{user.username}}<br /><span>OPS</span></p>
             </div>
             <div class="col-sm-4" align="center">
-                <h1><b>Welcome JOSHUA!</b></h1><br /><span>What would you like to do?</span>
+                <h1><b>Welcome {{user.username}}!</b></h1><br/>
+                <p style="text-align: center;">What would you like to do?</p>
             </div>
             <div class="col-sm-4"></div>
         </div>
 
         <br />
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-3"><button type="button" class="button button1 pull-center">Manage Accounts</button></div>
-            <div class="col-sm-1"></div>
-            <div class="col-sm-3"><button type="button" class="button button1 pull-center">Standard Rubric</button></div>
-            <div class="col-sm-1"></div>
-            <div class="col-sm-3"><button type="button" class="button button1 pull-center">Settings</button></div>
+        <div class="row" style="align-content: center; margin-left: 25%;">
+            
+            <div class="col-sm-3"><a href="/Submissions/"><button type="button" class="button button1 pull-center"  style="margin-left: 5%;  box-shadow: 2px 2px 2px black;"  onmouseover="this.style.color='#00368e'; this.style.background='#C1D1E2'" onMouseOut="this.style.color='#000'; this.style.background='transparent'">Submissions</button></a></div>
+            
+            <div class="col-sm-3"  ><a href="/NSR/"><button type="button" class="button button1 pull-center"  style="margin-left: 5%; box-shadow: 2px 2px 2px black;"  onmouseover="this.style.color='#00368e'; this.style.background='#C1D1E2'" onMouseOut="this.style.color='#000'; this.style.background='transparent'">Rubric</button></a></div>
+            
+            <div class="col-sm-3"  ><a href="/Profile/"><button type="button" class="button button1 pull-center"  style="margin-left: -3%; box-shadow: 2px 2px 2px black;"  onmouseover="this.style.color='#00368e'; this.style.background='#C1D1E2'" onMouseOut="this.style.color='#000'; this.style.background='transparent'">Settings</button></a></div>
 
-            <div class="col-sm-1"></div>
         </div>
         <br />
         <br />
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4" align="center"><button type="button" class="button button1 pull-center">Check Lesson
-                    Plans</button></div>
+        <div class="row" style="align-content: center; margin-left: 42%;">
+            
+            <div class="" ><a href="/UploadLessonPlans/"><button type="button" style="box-shadow: 2px 2px 2px black;" class="button button1 pull-center" onmouseover="this.style.color='#00368e'; this.style.background='#C1D1E2'" onMouseOut="this.style.color='#000'; this.style.background='transparent'">Check Lesson
+                    Plans</button></a></div>
             <div class="col-sm-4"></div>
         </div>
         <br />
         <div class="row">
-            <p align="left"><b style="margin-left: 10px;">Teacher</b><span align="right" style="margin-left: 1200px;"><img
-                        src="question-mark.png" style="width:2%" alt="Photo of sunset" /><span></p>
+            <!--<p align="left"><b style="margin-left: 10px;">Teacher</b><span align="right" style="margin-left: 1200px;"><img
+                        src="question-mark.png" style="width:2%" alt="Photo of sunset" /><span></p>-->
         </div>
     </div>
 </div>
@@ -80,5 +80,7 @@
 <div class="footer">
     <p class="medium">Powered by 404TeamNotFound</p>
 </div>
-
+{%else%}
+    <p>You seem to not be logged in. Please login <a href="{% url 'login' %}">here</a> </p>
+{% endif%}
 {% endblock %}

@@ -18,18 +18,19 @@
 {% endblock %}
 
 {% block content %} <!-- Put body code here, whatever you want -->
-    <div class="top">
-            <div class="topnav">
-                    <a class="nonactive" href="/">
-                    <div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> </div>
-                    <div class="topnav-right"></a>
-                        <a class="active" href="/">HOME</a>
-                        <a href="/NSR/">RUBRIC</a>
-                        <a href="/SubmitLesson/">SUBMIT LESSON</a>
-                        <a href="/Submissions/">SUBMISSIONS</a>
-                        <a href="/Settings/">SETTINGS</a>
-                        
-                    </div>
+{% if user.is_authenticated %}    
+<div class="top">
+    <div class="topnav">
+        <a class="nonactive" href="/HomeTeacher/">
+          <div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <!--<img src="{% static 'images/nebraksa.jpg' %}" alt="Nebraska">--></div>
+          <div class="topnav-right">
+              <a class="active" href="/HomeTeacher/">HOME</a>
+              <a href="/NSR/">RUBRIC</a>
+              <a href="/UploadLessonPlans/">SUBMIT LESSON</a>
+              <a href="/Submissions/">SUBMISSIONS</a>
+              <a href="/Profile/">SETTINGS</a>
+              <a href="/admin/logout">LOGOUT</a>
+              </div>
             </div>
           
          
@@ -105,7 +106,10 @@
           </div>
           
           
-
+          {% else %}
+          <p>You are not logged in</p>
+          <a href="{% url 'login' %}">login</a>
+        {% endif %}
 {% endblock %}
 
 

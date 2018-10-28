@@ -62,7 +62,8 @@ TEMPLATES = [
                 'SubHistory/templates/SubHistory/', 
 		        'NASSHomeTeacher/templates/NASSHomeTeacher/',
 		        'UserAccounts/templates/UserAccounts/',
-                'TLS/templates/TLS/'], 
+                'TLS/templates/TLS/', 
+                os.path.join(BASE_DIR, 'templates'),], 
                 #os.path.join(BASE_DIR, 'templates')], # this is the app folder, the templates, the app templates name, then the rest is retrieved from views.py inside the app
         'APP_DIRS': True,
         'OPTIONS': {
@@ -138,3 +139,10 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 #AUTH_USER_MODEL = 'UserAccounts.CustomUser'
+
+
+
+
+# redirect for login tut
+LOGIN_REDIRECT_URL = '../../HomeTeacher/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'

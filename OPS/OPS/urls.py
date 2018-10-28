@@ -15,29 +15,37 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.urls import path
-from NSR.views import home # part of hard coded way, no templates, 1
+from django.urls import path, include
+from NSR.views import home22 # part of hard coded way, no templates, 1
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from ManageUserAccounts.views import home1
 from SubHistory.views import home2
 from NASSHomeTeacher.views import home4
 from UserAccounts.views import login, register, profile
 from TLS.views import home10, home11
+from django.views.generic.base import TemplateView #for auth tut
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     
     # this is the hard coded way to do this, attempt 1
-    path('NSR/', home, name = 'home'),
+    path('NSR/', home22, name = 'home22'),
     path('ManageAccounts/', home1, name = 'home1'),
     path('Submissions/', home2, name = 'home2'),
     path('HomeTeacher/', home4, name='home4'),
-    path('', login, name='login'),
+    path('oldLogin', login, name='login'), # changed for auth tut, was '' (the home screen the css is here)
     path('Register/', register, name='register'),
     path('Profile/', profile, name='profile'),
     path('UploadLessonPlans/', home10, name='home10'),
     path('UploadResults/', home11, name='home11'),
+
+    # auth tut
+    path('accounts/', include('django.contrib.auth.urls')),
+    #path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    
+    
 ]
 
 # allows images and java files to be added

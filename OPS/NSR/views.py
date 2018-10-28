@@ -3,7 +3,7 @@ from django.shortcuts import render, HttpResponse
 #from django.http import HttpResponse
 
 
-def home(request):
+def home22(request):
     	#this is the old way
 	#return HttpResponse("<h2>This is the NSR page.</h2>")
 

@@ -33,7 +33,8 @@
         
         </script>
         <style>
-            body {font-family: "Lato", sans-serif}
+            @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+            body {font-family: "Roboto"}
             .mySlides {display: none}
     
             /* Add a black background color to the top navigation */
@@ -130,7 +131,24 @@
                 padding: 8px;
             }
             tr:nth-child(even){background-color: #f2f2f2}
-    
+            body {
+  background: blue; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, blue, #0059ea);
+  background: -moz-linear-gradient(right, blue, #0059ea);
+  background: -o-linear-gradient(right, blue, #0059ea);
+  background: linear-gradient(to left, blue, #0059ea);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+.logo {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                }
                     
     
         </style>

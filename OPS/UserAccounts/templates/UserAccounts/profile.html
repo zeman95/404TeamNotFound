@@ -4,7 +4,9 @@
 
 
 {% block head %} <!--  This is for the head of the page, list here  -->  
-    <title>Update</title>
+
+  
+<title>Update</title>
             
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -122,15 +124,21 @@ body {
 {% endblock %}
 
 {% block content %} <!-- Put body code here, whatever you want -->
+{% if user.is_authenticated %}
 <div class="frontofimage">
 <div class="top">
         <div class="top">
-				<div class="topnav">
-					<a class="nonactive" href="/">
-						<div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <!--<img src="{% static 'images/nebraksa.jpg' %}" alt="Nebraska">--></div>
-						<div class="topnav-right"></a>
-							
-				</div>
+          <div class="topnav">
+            <a class="nonactive" href="/HomeTeacher/">
+              <div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <!--<img src="{% static 'images/nebraksa.jpg' %}" alt="Nebraska">--></div>
+              <div class="topnav-right">
+                  <a class="active" href="/HomeTeacher/">HOME</a>
+                  <a href="/NSR/">RUBRIC</a>
+                  <a href="/UploadLessonPlans/">SUBMIT LESSON</a>
+                  <a href="/Submissions/">SUBMISSIONS</a>
+                  <a href="/Profile/">SETTINGS</a>
+                  <a href="/admin/logout">LOGOUT</a>
+                  </div>
 			</div>
       
      
@@ -187,6 +195,10 @@ body {
       
 
     </div>
+    {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">login</a>
+  {% endif %}    
 {% endblock %}
 
 
