@@ -25,6 +25,10 @@ SECRET_KEY = 'vxklv4@&!enjg77nv+_!fvthqr5zzevyot12&($c5u77n!06g$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True#False#True
 
+# The simplest case: just add the domain name(s) and IP addresses of your Django server
+# ALLOWED_HOSTS = [ 'example.com', '203.0.113.5']
+# To respond to 'example.com' and any subdomains, start the domain with a dot
+# ALLOWED_HOSTS = ['.example.com', '203.0.113.5']
 ALLOWED_HOSTS = ['*']
 
 
@@ -90,6 +94,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'postgres': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'lessonPlans',
+        'USER': 'ubuntu', # master is another superuser
+        'PASSWORD': 'ubuntu', # master is the password for master also
+        'HOST': 'localhost',
+        'PORT': '9000',
     }
 }
 
