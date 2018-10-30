@@ -26,6 +26,12 @@ from TLS.views import home10, home11
 from django.views.generic.base import TemplateView #for auth tut
 
 
+# file upload tut https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-with-django.html
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,7 +41,7 @@ urlpatterns = [
     path('ManageAccounts/', home1, name = 'home1'),
     path('Submissions/', home2, name = 'home2'),
     path('HomeTeacher/', home4, name='home4'),
-    path('oldLogin', login, name='login'), # changed for auth tut, was '' (the home screen the css is here)
+    path('', login, name='login'), # changed for auth tut, was '' (the home screen the css is here)
     path('Register/', register, name='register'),
     path('Profile/', profile, name='profile'),
     path('UploadLessonPlans/', home10, name='home10'),
@@ -50,3 +56,7 @@ urlpatterns = [
 
 # allows images and java files to be added
 urlpatterns += staticfiles_urlpatterns()
+
+# file upload tut
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

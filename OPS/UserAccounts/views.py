@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
+from django.shortcuts import redirect
 
 #from .forms import CustomUserCreationForm
 
@@ -11,9 +12,11 @@ class Register(generic.CreateView):
 	template_name = 'register.html'
 """
 
+#context = {}
+	#return render(request, 'login.html', context)
 def login(request):
-	context = {}
-	return render(request, 'login.html', context)
+    return redirect("/accounts/login")
+	
 
 def register(request):
 	context = {}
