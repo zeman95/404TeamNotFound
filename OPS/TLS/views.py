@@ -34,8 +34,10 @@ def home10(request):
         }"""
         
         if request.method == 'POST':
-                form = DocumentForm(request.POST, request.FILES)
+                form = DocumentForm(request.POST, request.FILES) # form = DocumentForm(request.POST, request.FILES) 
                 if form.is_valid():
+                        instance = form.save(commit=False)
+                        instance.user = request.user # this was not here orginally
                         form.save()
                         return HttpResponseRedirect('/UploadResults/')
         else:
