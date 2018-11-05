@@ -42,7 +42,8 @@ urlpatterns = [
     path('Submissions/', home2, name = 'home2'),
     path('HomeTeacher/', home4, name='home4'),
     path('', login, name='login'), # changed for auth tut, was '' (the home screen the css is here)
-    path('Register/', register, name='register'),
+    #path('Register/', register, name='register'),
+    path('Register/', register.as_view()),
     path('Profile/', profile, name='profile'),
     path('UploadLessonPlans/', home10, name='home10'),
     path('UploadResults/', home11, name='home11'),

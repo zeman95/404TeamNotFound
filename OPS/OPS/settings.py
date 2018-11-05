@@ -44,8 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 'TLS', # added as a last resort for db files
+'users.apps.UsersConfig', # new custom Auth
+#'users.apps.cust_users', # part of the custom auth tut
 	#'UserAccounts',
+
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser' # new custom auth
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -161,3 +167,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # redirect for login tut
 LOGIN_REDIRECT_URL = '../../HomeTeacher/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
+
