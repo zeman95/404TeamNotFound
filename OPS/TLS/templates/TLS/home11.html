@@ -3,41 +3,46 @@
 
 
 
-{% block head %} <!--  This is for the head of the page, list here  -->  
-    <title>Results</title>
-            
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block head %}
+<!--  This is for the head of the page, list here  -->
+<title>Results</title>
 
-    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-    <style>
-    #teachers {
+<style>
+  #teachers {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    }
+  }
 
-    #teachers td, #teachers th {
-        border: 2px solid black;
-        padding: 8px;
-    }
+  #teachers td,
+  #teachers th {
+    border: 2px solid black;
+    padding: 8px;
+  }
 
-    /*#teachers tr:nth-child(even){background-color: #f2f2f2;}*/
+  /*#teachers tr:nth-child(even){background-color: #f2f2f2;}*/
 
-    #teachers tr:hover {background-color: #ddd;}
+  #teachers tr:hover {
+    background-color: #ddd;
+  }
 
-    #teachers th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        /*background-color: #4CAF50;*/
-        /*color: white;*/
-    }
-    /*input {
+  #teachers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    /*background-color: #4CAF50;*/
+    /*color: white;*/
+  }
+
+  /*input {
   display: none;
 }
 
@@ -60,123 +65,93 @@ input:checked~ul.submenu {
 }*/
 </style>
 
-    
-    
+
+
 {% endblock %}
 
-{% block content %} <!-- Put body code here, whatever you want -->
+{% block content %}
+<!-- body -->
 {% if user.is_authenticated %}
 <div class="frontofimage">
-<div class="top">
+  <div class="top">
     <div class="topnav">
-        <a class="nonactive" href="/HomeTeacher/">
-          <div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <!--<img src="{% static 'images/nebraksa.jpg' %}" alt="Nebraska">--></div>
-          <div class="topnav-right">
-              <a class="active" href="/HomeTeacher/">HOME</a>
-              <a href="/NSR/">RUBRIC</a>
-              <a href="/UploadLessonPlans/">SUBMIT LESSON</a>
-              <a href="/Submissions/">SUBMISSIONS</a>
-              <a href="/Profile/">SETTINGS</a>
-              <a href="/accounts/logout">LOGOUT</a>
-              </div>
+      <a class="nonactive" href="/HomeTeacher/">
+        <div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small>
+          <!--<img src="{% static 'images/nebraksa.jpg' %}" alt="Nebraska">-->
         </div>
-      
-     
-      
- 
-                         <!-- The Main Section -->
-        <div class="container content center padding-64 movefront" style="max-width:75%" id="band">
-                <div class="master">
-                    <br>    
-            <h2 class="wide" style="margin-top: 5%;"><u>Lesson Plan Results</u></h2>
-            
-
-            <!-- This is the colored table that will populat stuff -->
-            <table style="width:90%; margin-top: 50px; margin-left: 5%; margin-right: 5%;" id="teachers">
-                <tr>
-                  <th style="background-color: aqua;">Science and Engineering Practices</th>
-                  <th style="background-color: lightcoral;">Disciplinary Core Ideas</th> 
-                  <th style="background-color: lightgreen;">Crosscutting Concepts</th>
-                </tr>
-                <tr>
-                    <td style="background-color: aqua; padding-bottom: 50px; padding-top: 15px;">
-                        <ul>
-                            <li>Upload1.docx-PG1-4: This is a lesson plan point</li>
-                        </ul> 
-                
-                    </td>
-                    <td style="background-color: lightcoral; padding-bottom: 50px;  padding-top: 15px;">
-                            <ul>
-                                    <li>Upload1.docx-PG1-4: This is a lesson plan point</li>
-                             </ul> 
-                    </td> 
-                    <td style="background-color: lightgreen; padding-bottom: 50px; padding-top: 15px;">
-                            <ul>
-                                    <li>Upload1.docx-PG1-4: This is a lesson plan point</li>
-                                </ul> 
-                    </td>
-                </tr>
-              </table>
-
-
-            <div  style="width:90%; margin-top: 50px; margin-left: 5%; margin-right: 5%;">
-              <h3>NSR Results</h3>
-              
-                <!--<input id="check01" type="checkbox" name="menu" />
-                <label for="check01">Menu</label>
-                <ul class="submenu">
-                <li>Item 1</li>
-                <li>Item 1</li>
-                
-
-
-                </ul>-->
-                <br>
-                <div style="height:30%;width:75%x;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
-                    <p>You selected NSR standard "SC.X.X.X"</p>
-                <h3>Clear Results</h3>
-                <ul>
-                        <li>Item 1</li>
-                        <li>Item 1</li>
-                </ul>
-
-                <br>
-                <h3>Unclear Results</h3>
-                <ul>
-                        <li>Item 1</li>
-                        <li>Item 1</li>
-                </ul>
-                </div>
-                
-            </div>
-
-          
-
-             
-                  
-                       
-                        
-
-
-
+        <div class="topnav-right">
+          <a class="active" href="/HomeTeacher/">HOME</a>
+          <a href="/NSR/">RUBRIC</a>
+          <a href="/UploadLessonPlans/">SUBMIT LESSON</a>
+          <a href="/Submissions/">SUBMISSIONS</a>
+          <a href="/Profile/">SETTINGS</a>
+          <a href="/accounts/logout">LOGOUT</a>
         </div>
-
-        
-      <!-- End Page Content -->
-      </div>
-
-      <!-- Footer -->
-      <div class="footer">
-        <p class="medium">Powered by 404TeamNotFound</p>
-      </div>
-      
-      
-
     </div>
-    {% else %}
+
+    <!-- The Main Section -->
+    <div class="container content center padding-64 movefront" style="max-width:75%" id="band">
+      <div class="master">
+        <br>
+        <h2 class="wide" style="margin-top: 5%;"><u>Lesson Plan Results</u></h2>
+
+        <!-- This is the colored table that will populate stuff -->
+        <!-- <table style="width:90%; margin-top: 50px; margin-left: 5%; margin-right: 5%;" id="teachers">
+          <tr>
+            <th style="background-color: aqua;">Science and Engineering Practices</th>
+            <th style="background-color: lightcoral;">Disciplinary Core Ideas</th>
+            <th style="background-color: lightgreen;">Crosscutting Concepts</th>
+          </tr>
+          <tr>
+            <td style="background-color: aqua; padding-bottom: 50px; padding-top: 15px;">
+              <ul>
+                <li>Upload1.docx-PG1-4: This is a lesson plan point</li>
+              </ul>
+
+            </td>
+            <td style="background-color: lightcoral; padding-bottom: 50px;  padding-top: 15px;">
+              <ul>
+                <li>Upload1.docx-PG1-4: This is a lesson plan point</li>
+              </ul>
+            </td>
+            <td style="background-color: lightgreen; padding-bottom: 50px; padding-top: 15px;">
+              <ul>
+                <li>Upload1.docx-PG1-4: This is a lesson plan point</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+        <div style="width:90%; margin-top: 50px; margin-left: 5%; margin-right: 5%;">
+          <h3>NSR Results</h3>
+          <br>
+          <div style="height:30%;width:75%x;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+            <p>You selected NSR standard "SC.X.X.X"</p>
+            <h3>Clear Results</h3>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 1</li>
+            </ul>
+
+            <br>
+            <h3>Unclear Results</h3>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 1</li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+      <!-- End Page Content -->
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p class="medium">Powered by 404TeamNotFound</p>
+    </div>
+  </div>
+  {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">login</a>
-{% endif %}
-{% endblock %}
-
-
+  {% endif %}
+  {% endblock %}

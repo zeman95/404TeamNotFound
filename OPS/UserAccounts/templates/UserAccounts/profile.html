@@ -140,11 +140,28 @@ body {
                   <a href="/accounts/logout">LOGOUT</a>
                   </div>
 			</div>
-      
-     
-      
  
                          <!-- The Main Section -->
+        <div class="login-page">
+            <div class="form">
+                <h2>Update Information</h2>
+                <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="update">
+                        <button type="submit">Update Information</button>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+						 {% comment %}
+
+						 This was the old example stuff, do we need it anymore?
+
 						 <div class="login-page">
 							 	
 								<div class="form" action="/NASShome/" method="post">
@@ -173,7 +190,7 @@ body {
 									<button>Update</button>
 								  </form>
 								</div>
-							  </div>
+							  </div>{% endcomment %}
 
 
 
@@ -194,7 +211,6 @@ body {
       
       
 
-    </div>
     {% else %}
     <p>You are not logged in</p>
     <a href="{% url 'login' %}">login</a>

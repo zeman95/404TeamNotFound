@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.urls import path, include
+from django.urls import path, include, re_path
 from NSR.views import home22 # part of hard coded way, no templates, 1
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from ManageUserAccounts.views import home1
 from SubHistory.views import home2
 from NASSHomeTeacher.views import home4
 from UserAccounts.views import login, register, profile
-from TLS.views import home10, home11
+from TLS.views import home11 #, home10
 from django.views.generic.base import TemplateView #for auth tut
 
 
@@ -31,7 +31,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-
+from TLS.views import UploadView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,8 +44,10 @@ urlpatterns = [
     path('', login, name='login'), # changed for auth tut, was '' (the home screen the css is here)
     #path('Register/', register, name='register'),
     path('Register/', register.as_view()),
-    path('Profile/', profile, name='profile'),
-    path('UploadLessonPlans/', home10, name='home10'),
+    path('Profile/', profile.as_view(), name='profile'),
+    #re_path(r'^Profile/(?P<slug>[-\w]+)/$', profile.as_view()), trying something new
+    #path('UploadLessonPlans/', home10, name='home10'),
+    path('UploadLessonPlans/', UploadView.as_view()),
     path('UploadResults/', home11, name='home11'),
 
     # auth tut
