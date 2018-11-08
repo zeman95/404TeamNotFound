@@ -16,7 +16,8 @@ class UploadForm(forms.Form):
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Message
-        fields = ['description']  # not attachments!
+        fields = ['content',
+                'author_name', 'author_email']  # not attachments!
 
     files = MultiFileField(min_num=1, max_num=5, max_file_size=1024*1024*5)
 

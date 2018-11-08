@@ -5,8 +5,10 @@ from django.urls import reverse_lazy
 from django.urls import reverse
 from django.views import generic
 from django.shortcuts import redirect
+from django import forms
 
 from users.forms import CustomUserCreationForm, CustomUserChangeForm # custom user tut
+from users.models import CustomUser
 #from UserAccounts.views import login
 
 """
@@ -40,4 +42,19 @@ class profile(generic.UpdateView):
     form_class = CustomUserChangeForm
     success_url = reverse_lazy('profile')
     template_name = 'profile.html'
+
+    def get_object(self):
+        # CustomUserChangeForm.clean_email(CustomUser)
+        # CustomUserChangeForm.clean_username(CustomUser)
+        return CustomUser.objects.all().first()
+
+# def profile(request):
+#     if request.method == "POST":
+#         form = CustomUserChangeForm(data=request.POST, instance=request.user)
+#         if form.is_valid():
+#             form.save()
+#         else:
+#             form = CustomUserChangeForm()
+#
+#     return render(request, 'profile.html', {'form': form})
 

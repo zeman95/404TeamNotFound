@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.conf import settings
+#from docx import Document
 #from django import forms
 
 from django.core.exceptions import ValidationError
@@ -12,7 +13,7 @@ def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
     currUser = get_current_user()
     #return "documents/%s/%s" %(instance.user.id, filename)
-    return "documents/%s/%s" %(currUser.id, filename)
+    return "documents/%s/%s/" %(currUser.id, filename)
 
 
 def validate_file_extension(filename):
@@ -34,10 +35,10 @@ class Document(models.Model):
 
 
 class Message(models.Model):
-    #author_name = models.CharField(_('Name'), max_length=255)
-    #author_email = models.EmailField(_('Email'))
-    #content = models.TextField(_('Content'))
-    description = models.CharField(max_length=255, blank=True, null=True)
+    author_name = models.CharField(_('Name'), max_length=255)
+    author_email = models.EmailField(_('Email'))
+    content = models.TextField(_('Content'))
+    #description = models.CharField(max_length=255, blank=True, null=True)
 
 
 class Attachment(models.Model):
@@ -45,9 +46,10 @@ class Attachment(models.Model):
     file = models.FileField(_('Attachment'), upload_to=user_directory_path)
 
 
-
-
-
+# def readFile(filename):
+    # document = Document(filename)
+    # for para in document.paragraphs:
+    #     return(para.text)
 
 
 

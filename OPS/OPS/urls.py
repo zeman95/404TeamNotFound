@@ -45,7 +45,6 @@ urlpatterns = [
     #path('Register/', register, name='register'),
     path('Register/', register.as_view()),
     path('Profile/', profile.as_view(), name='profile'),
-    #re_path(r'^Profile/(?P<slug>[-\w]+)/$', profile.as_view()), trying something new
     #path('UploadLessonPlans/', home10, name='home10'),
     path('UploadLessonPlans/', UploadView.as_view()),
     path('UploadResults/', home11, name='home11'),
