@@ -189,15 +189,24 @@
                 height: 100%;
             }
 
-                    
+              body {
+  background: blue; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, blue, #0059ea);
+  background: -moz-linear-gradient(right, blue, #0059ea);
+  background: -o-linear-gradient(right, blue, #0059ea);
+  background: linear-gradient(to left, blue, #0059ea);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}    
     
         </style>
        
     </head>
     <body>
-        <div class="backgroundImage">
+        <!--<div class="backgroundImage">-->
             <!--<img src="/static/science.jpg">-->
         {% block content %}{% endblock %}
-    </div>
+    <!--</div>-->
     </body>
 </html>
