@@ -50,6 +50,9 @@ class UploadData(models.Model):
     uploadNum = models.CharField(max_length=255, blank=False)
     user = models.OneToOneField(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=False)
     uploadPath = models.CharField(max_length=512, blank=False)
+    numberOfFiles = models.CharField(max_length=512, blank=False)
+    userID = models.CharField(max_length=512, blank=False)
+
 
 
 

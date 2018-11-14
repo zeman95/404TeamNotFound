@@ -63,33 +63,91 @@ from .models import Attachment
 
 import os
 from django.conf import settings
-     
+from .models import UploadData
+from django.utils.datastructures import MultiValueDictKeyError
 
+
+
+     
+# Attachment.objects.create(file=each, message=instance)
 def Form(request):
         if request.method == 'POST':
-                user = get_current_user()
-                userid = user.id
-                user.incUploads()
-                userupload = user.getUploads()
-                user.save()
+                
+                # get the files and check for extension errors
+                files = request.FILES.getlist("files")
+                for file in files:
+                        filename = str(file)
+                        ext = os.path.splitext(filename)[1]
+                        valid_extensions = ['.pdf','.doc','.docx']
+                        if not ext in valid_extensions: #check by file extension
+                                return HttpResponse('ERROR: File "' + str(filename)+ '" could not be uploaded and caused the other files not to be uploaded as well. Select files that end in docx, pdf, or doc. Return to uploads <a href="/UploadLessonPlan/">here</a>')
 
+                # get the grade level from the form       
+                grdLVL = request.POST.get('gradeLevel', '9001') #what it is looking for, default
+                requirement = request.POST.get('req', '9001')
+
+                # check for form error
+                requirementchk = os.path.splitext(requirement)[0] 
+                if grdLVL != requirementchk:
+                        return HttpResponse('ERROR: Grade and requirement discrepancy. "' + str(grdLVL) + '" and "' + str(requirementchk) + '" do not match. This caused the files not to be uploaded. Select matching grade and requirements. Return to uploads <a href="/UploadLessonPlan/">here</a>')
+      
+                if grdLVL == '9001' or requirement == '9001':
+                        return HttpResponse('CRITICAL SYSTEM ERROR: Either grade or requirement\'s power levels are over 9000. This caused the files not to be uploaded. Report this error to a system admin. Return to uploads <a href="/UploadLessonPlan/">here</a>')
+
+                
+                #get info from auth and update count
+                userguy = get_current_user()
+                userid = userguy.id
+                userguy.incUploads()
+                userupload = userguy.getUploads()
+                userguy.save()
+
+                # set partial directory and then make the file path if it does not exist
                 directory = settings.MEDIA_ROOT + '/documents/' + str(userid) + '/' + str(userupload) + '/'
                 if not os.path.exists(directory):
                         os.makedirs(directory)
 
+                # get the count of files, count isnt used - will fix later
+                countem = 0 # get count of files uploaded
                 for count, x in enumerate(request.FILES.getlist("files")):
                         def process_file(f):
-                                with open(directory + str(count) + '.txt', 'wb+') as destination:     
+                                with open(directory + str(countem) + '_' + str(f), 'wb+') as destination:     
                                         for chunk in f.chunks():
                                                 destination.write(chunk)
+                        countem += 1
                         process_file(x) # call the process above
+
                 
-                
-                
-                return HttpResponseRedirect('/UploadResults/')
+                # try to set the UploadData model
+                try:
+                        userData = UploadData.objects.get(userID=str(userid))
+                        userData.grade=grdLVL
+                        userData.req = requirement
+                        userData.uploadNum = userupload 
+                        userData.uploadPath = directory 
+                        userData.numberOfFiles = countem
+                        userData.save() 
+                        #UploadData.objects.filter(
+                           #     user__icontains='zach'
+                        #)#.filter(
+                        #        userID_icontains='27'
+                        #)
+                except: # if it did not get anything later it will make one now
+                        UploadData.objects.create(grade=grdLVL, req = requirement, uploadNum = userupload, user = userguy, userID = userid, uploadPath = directory, numberOfFiles = countem )           
+
+                """if userData.userID != userid:
+                        UploadData.objects.create(grade=grdLVL, req = requirement, uploadNum = userupload, user = userguy, userID = userid, uploadPath = directory, numberOfFiles = countem )           
+                else:
+                        userData.grade=grdLVL
+                        userData.req = requirement
+                        userData.uploadNum = userupload 
+                        userData.uploadPath = directory 
+                        userData.numberOfFiles = countem
+                        userData.save() """ 
+                return HttpResponseRedirect('/UploadResults/') # redirect for success!
         else:
                 context = {}
-                return render(request, 'home17.html', context)
+                return render(request, 'home17.html', context) # base view
 
 
 

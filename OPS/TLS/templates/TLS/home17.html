@@ -1,36 +1,121 @@
-<!-- filler-->
-<form method="POST" action="/UploadLessonPlans/" enctype="multipart/form-data">{% csrf_token %}
-    <div>Select Grade Level 
-    <select name="gradeLevel" required>
-        <option value="6">6th</option>
-        <option value="7">7th</option>
-        <option value="8">8th</option>
-    </select>
-    </div>
+{% extends 'base10.html'%}
+{% load static from staticfiles %}
+{% load staticfiles %}
 
 
-    <div>
-        <input type="radio" name="lesson" value="6.4" required> 6.4<br>
-        <input type="radio" name="lesson" value="6.6"> 6.6<br>
-        <input type="radio" name="lesson" value="6.9"> 6.9<br>
-        <input type="radio" name="lesson" value="6.12"> 6.12<br>
-        <input type="radio" name="lesson" value="6.13"> 6.13<br>
-        <!--<input type="radio" name="lesson" value="7.3"> 7.3<br>
-        <input type="radio" name="lesson" value="7.5"> 7.5<br>
-        <input type="radio" name="lesson" value="7.7"> 7.7<br>
-        <input type="radio" name="lesson" value="7.8"> 7.8<br>
-        <input type="radio" name="lesson" value="7.13"> 7.13<br>
-        <input type="radio" name="lesson" value="7.14"> 7.14<br>
-        <input type="radio" name="lesson" value="8.1"> 8.1<br>
-        <input type="radio" name="lesson" value="8.4"> 8.4<br>
-        <input type="radio" name="lesson" value="8.9"> 8.9<br>
-        <input type="radio" name="lesson" value="8.10"> 8.10<br>
-        <input type="radio" name="lesson" value="8.11"> 8.11<br>
-        <input type="radio" name="lesson" value="8.14"> 8.14<br>-->
-    </div>
+{% block head %} <!--  This is for the head of the page, list here  -->  
+    <title>Upload</title>
+            
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     
     
-    
-    <input type="file" name="files" multiple required/>
-    <input type="submit" value="Upload"/>
-</form>
+{% endblock %}
+
+{% block content %} <!-- Put body code here, whatever you want -->
+{% if user.is_authenticated %}
+<div class="top">
+    <div class="topnav">
+        <a class="nonactive" href="/HomeTeacher/">
+          <div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <!--<img src="{% static 'images/nebraksa.jpg' %}" alt="Nebraska">--></div>
+          <div class="topnav-right">
+              <a class="active" href="/HomeTeacher/">HOME</a>
+              <a href="/NSR/">RUBRIC</a>
+              <a href="/UploadLessonPlans/">SUBMIT LESSON</a>
+              <a href="/Submissions/">SUBMISSIONS</a>
+              <a href="/Profile/">SETTINGS</a>
+              <a href="/accounts/logout">LOGOUT</a>
+              </div>
+            </div>
+          
+         
+          
+     
+                             <!-- The Main Section -->
+            <div class="container content center padding-64 " style="max-width:75%" id="band">
+                    <div class="master">    
+                <h2 class="wide" style="margin-top: 5%;">Check Lesson Plans</h2>
+                <div style="text-align: center; padding-top: 15%">
+                <form method="POST" action="/UploadLessonPlans/" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div>Select Grade Level 
+                    <select name="gradeLevel" required>
+                        <option value="6">6th</option>
+                        <option value="7">7th</option>
+                        <option value="8">8th</option>
+                    </select>
+                    </div>
+                    <br>
+                    <div>Select Standard/Requirement 
+                        <select name="req" required>
+                            <option value="6.4">6.4</option>
+                            <option value="6.6">6.6</option>
+                            <option value="6.9">6.9</option>
+                            <option value="6.12">6.12</option>
+                            <option value="6.13">6.13</option>
+                
+                            <option value="7.3">7.3</option>
+                            <option value="7.5">7.5</option>
+                            <option value="7.7">7.7</option>
+                            <option value="7.8">7.8</option>
+                            <option value="7.13">7.13</option>
+                            <option value="7.14">7.14</option>
+                
+                            
+                            <option value="8.1">8.1</option>
+                            <option value="8.4">8.4</option>
+                            <option value="8.9">8.9</option>
+                            <option value="8.10">8.10</option>
+                            <option value="8.11">8.11</option>
+                            <option value="8.14">8.14</option>
+                
+                        </select>
+                    </div>
+                    <br>
+                    <div style="padding-left: 40%;">     
+                    <input type="file" name="files" multiple required/></div><br>
+                    <input type="submit" value="Upload"/>
+                </form>
+                
+
+                    
+
+                </div>
+                    <br> <br> <br>
+                    <!-- <button onclick="myFunction()">Submit</button> 
+                    <button type="submit" class="daSubmitButton">Submit</button>
+                </form> -->
+            </div>
+
+                    
+                          
+
+
+
+
+
+            </div>
+
+            
+          <!-- End Page Content -->
+          </div>
+ 
+          <!-- Footer -->
+          <div class="footer">
+            <p class="medium">Powered by 404TeamNotFound</p>
+          </div>
+          
+          {% else %}
+          <p>You are not logged in</p>
+          <a href="{% url 'login' %}">login</a>
+        {% endif %}         
+
+{% endblock %}
+
+
+
