@@ -1,0 +1,36 @@
+<!-- filler-->
+<form method="POST" action="/UploadLessonPlans/" enctype="multipart/form-data">{% csrf_token %}
+    <div>Select Grade Level 
+    <select name="gradeLevel" required>
+        <option value="6">6th</option>
+        <option value="7">7th</option>
+        <option value="8">8th</option>
+    </select>
+    </div>
+
+
+    <div>
+        <input type="radio" name="lesson" value="6.4" required> 6.4<br>
+        <input type="radio" name="lesson" value="6.6"> 6.6<br>
+        <input type="radio" name="lesson" value="6.9"> 6.9<br>
+        <input type="radio" name="lesson" value="6.12"> 6.12<br>
+        <input type="radio" name="lesson" value="6.13"> 6.13<br>
+        <!--<input type="radio" name="lesson" value="7.3"> 7.3<br>
+        <input type="radio" name="lesson" value="7.5"> 7.5<br>
+        <input type="radio" name="lesson" value="7.7"> 7.7<br>
+        <input type="radio" name="lesson" value="7.8"> 7.8<br>
+        <input type="radio" name="lesson" value="7.13"> 7.13<br>
+        <input type="radio" name="lesson" value="7.14"> 7.14<br>
+        <input type="radio" name="lesson" value="8.1"> 8.1<br>
+        <input type="radio" name="lesson" value="8.4"> 8.4<br>
+        <input type="radio" name="lesson" value="8.9"> 8.9<br>
+        <input type="radio" name="lesson" value="8.10"> 8.10<br>
+        <input type="radio" name="lesson" value="8.11"> 8.11<br>
+        <input type="radio" name="lesson" value="8.14"> 8.14<br>-->
+    </div>
+    
+    
+    
+    <input type="file" name="files" multiple required/>
+    <input type="submit" value="Upload"/>
+</form>

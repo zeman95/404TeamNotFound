@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from users.models import CustomUser 
 from django.contrib.auth import get_user_model
 from django.conf import settings
 #from docx import Document
@@ -12,10 +13,20 @@ from crum import get_current_user
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
     currUser = get_current_user()
+    
+    
+    #if instance.count >= 1:
+    #    instance.count +=1
+    #    instance.save()
+    #    currUser.incUploads()
+    #    currUser.save()
+    #currUser.incUploads()
+    #currUser.save()
+    currentUpload = currUser.getUploads()#CustomUser.objects.get(currUser.id)
     #return "documents/%s/%s" %(instance.user.id, filename)
-    return "documents/%s/%s/" %(currUser.id, filename)
+    return "documents/%s/%s/%s" %(currUser.id, currentUpload, filename)
 
-
+#from django.core.exceptions import ValidationError
 def validate_file_extension(filename):
   import os
   ext = os.path.splitext(filename.name)[1]
@@ -33,6 +44,19 @@ class Document(models.Model):
     file = models.FileField(upload_to='documents/')"""
 
 
+class UploadData(models.Model):
+    grade = models.CharField(max_length=255, blank=False)
+    req = models.CharField(max_length=255, blank=False)
+    uploadNum = models.CharField(max_length=255, blank=False)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=False)
+    uploadPath = models.CharField(max_length=512, blank=False)
+
+
+
+
+
+
+
 
 class Message(models.Model):
     author_name = models.CharField(_('Name'), max_length=255)
@@ -44,12 +68,8 @@ class Message(models.Model):
 class Attachment(models.Model):
     message = models.ForeignKey(Message, verbose_name=_('Message'), on_delete=models.CASCADE, null=True)
     file = models.FileField(_('Attachment'), upload_to=user_directory_path)
+    count = models.IntegerField(default=0)
 
-
-# def readFile(filename):
-    # document = Document(filename)
-    # for para in document.paragraphs:
-    #     return(para.text)
 
 
 

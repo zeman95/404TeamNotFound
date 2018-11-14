@@ -22,7 +22,8 @@ from ManageUserAccounts.views import home1
 from SubHistory.views import home2
 from NASSHomeTeacher.views import home4
 from UserAccounts.views import login, register, profile
-from TLS.views import home11 #, home10
+from TLS.views import home11, Form 
+#, home10
 from django.views.generic.base import TemplateView #for auth tut
 
 
@@ -32,6 +33,7 @@ from django.conf.urls.static import static
 
 
 from TLS.views import UploadView
+#from TLS.views import ContactView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -46,7 +48,11 @@ urlpatterns = [
     path('Register/', register.as_view()),
     path('Profile/', profile.as_view(), name='profile'),
     #path('UploadLessonPlans/', home10, name='home10'),
-    path('UploadLessonPlans/', UploadView.as_view()),
+    #path('UploadLessonPlans/', UploadView.as_view()),
+    path('UploadLessonPlans/', Form, name = 'Form'),
+
+    #path('UploadLessonPlans/', ContactView.as_view()),
+
     path('UploadResults/', home11, name='home11'),
 
     # auth tut
