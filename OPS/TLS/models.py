@@ -81,7 +81,9 @@ class psqlUpload(models.Model):
     #querystring = models.TextField(blank=False)
     queryArraySize = models.CharField(max_length=512, blank=False)
     queryArray = ArrayField(models.CharField(max_length=255, blank=True)) # this is a dynamically created array that will store all the teachers lesson plan 'body' content
-    search_vector = SearchVectorField(null=True)
+    #search_vector = SearchVectorField(null=True)
+    searchvector = models.CharField(max_length=512, blank=False)
+
     # see here for information on ArrayField: https://docs.djangoproject.com/en/1.11/ref/contrib/postgres/fields/#arrayfield
 
 

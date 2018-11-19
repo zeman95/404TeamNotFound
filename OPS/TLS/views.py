@@ -31,6 +31,7 @@ from pathlib import Path
 import re
 
 from django.contrib.postgres.search import SearchVectorField
+from .models import psqlUpload
 
 
 def Form(request):
@@ -107,18 +108,7 @@ def Form(request):
                 return render(request, 'home17.html', context) # base view
 
 
-
-
-
-def cleansing(changeme):
-        changeme = str(changeme)
-        changeme.replace('b\'\\xef\\xbb\\xbf', '.') 
-        return changeme
-
-
 def home11(request):
-        debug = True
-        
         # get current logged in user
         userguy = get_current_user()
         userid = userguy.id
@@ -226,7 +216,8 @@ def home11(request):
                 #######################################################################################
                 # now there needs to be a model added to the postgres database to be searched
                 #######################################################################################
-
+                #psqlUpload.objects.using('postgres').create(user=userguy, userID = userid, filename = f, reqTestedOn = STANDARD, queryArraySize = ['something'], queryArray = lessonContent, searchvector = 'none')  
+                #tags=['thoughts', 'django'])
 
 
 
