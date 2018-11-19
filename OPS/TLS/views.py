@@ -259,7 +259,7 @@ def home11(request):
                         #out = re.search('Modeled', compareme)
                         addition = str(count) + ': ' + str(out) + '\n'
                         output = output + addition
-                        count += 1
+                        count += 1"""
 
 
 
