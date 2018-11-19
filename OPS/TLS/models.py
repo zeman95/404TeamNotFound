@@ -3,12 +3,17 @@ from django.contrib.auth.models import User
 from users.models import CustomUser 
 from django.contrib.auth import get_user_model
 from django.conf import settings
+from django.contrib.postgres.search import SearchVectorField
 #from docx import Document
 #from django import forms
 
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from crum import get_current_user
+
+# try to import fields from postgres
+from django.contrib.postgres.fields import ArrayField
+
 
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
@@ -52,12 +57,7 @@ class UploadData(models.Model):
     uploadPath = models.CharField(max_length=512, blank=False)
     numberOfFiles = models.CharField(max_length=512, blank=False)
     userID = models.CharField(max_length=512, blank=False)
-
-
-
-
-
-
+    filenames = models.CharField(max_length=3000, blank=False)
 
 
 
@@ -72,6 +72,17 @@ class Attachment(models.Model):
     message = models.ForeignKey(Message, verbose_name=_('Message'), on_delete=models.CASCADE, null=True)
     file = models.FileField(_('Attachment'), upload_to=user_directory_path)
     count = models.IntegerField(default=0)
+
+class psqlUpload(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=False)
+    userID = models.CharField(max_length=512, blank=False)
+    filename = models.CharField(max_length=255, blank=False)
+    reqTestedOn = models.CharField(max_length=512, blank=False)
+    #querystring = models.TextField(blank=False)
+    queryArraySize = models.CharField(max_length=512, blank=False)
+    queryArray = ArrayField(models.CharField(max_length=255, blank=True)) # this is a dynamically created array that will store all the teachers lesson plan 'body' content
+    search_vector = SearchVectorField(null=True)
+    # see here for information on ArrayField: https://docs.djangoproject.com/en/1.11/ref/contrib/postgres/fields/#arrayfield
 
 
 

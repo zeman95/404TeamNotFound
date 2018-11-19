@@ -1,41 +1,3 @@
-"""from django.shortcuts import render, HttpResponse
-from django.http import JsonResponse
-from django.views import View
-from os import path
-import sys
-from django.views.generic.edit import FormView
-from django.conf import settings
-from django.core.files.storage import FileSystemStorage
-
-
-from django.shortcuts import HttpResponseRedirect
-from .forms import DocumentForm
-from django.contrib.auth.models import User
-
-
-
-def home10(request):        
-        if request.method == 'POST':
-                form = DocumentForm(request.POST, request.FILES) # form = DocumentForm(request.POST, request.FILES) 
-                if form.is_valid():
-                        instance = form.save(commit=False)
-                        instance.user = request.user # this was not here orginally
-                        form.save()
-                        return HttpResponseRedirect('/UploadResults/')
-        else:
-                form = DocumentForm()
-        
-        context = {
-                        "form": form,
-                }
-        return render(request, 'home10.html', context)
-        
-
-def home11(request):
-        context = {}
-        return render(request, 'home11.html', context)"""
-
-
 from django.shortcuts import HttpResponse, render
 from django.http import JsonResponse
 from django.views import View
@@ -65,22 +27,26 @@ import os
 from django.conf import settings
 from .models import UploadData
 from django.utils.datastructures import MultiValueDictKeyError
+from pathlib import Path
+import re
+
+from django.contrib.postgres.search import SearchVectorField
 
 
-
-     
-# Attachment.objects.create(file=each, message=instance)
 def Form(request):
         if request.method == 'POST':
-                
+                allfilenames = ''
+                countz = 0
                 # get the files and check for extension errors
                 files = request.FILES.getlist("files")
                 for file in files:
+                        countz += 1
                         filename = str(file)
+                        allfilenames = allfilenames + str(countz) + '_' + str(filename) + '#'
                         ext = os.path.splitext(filename)[1]
-                        valid_extensions = ['.pdf','.doc','.docx']
+                        valid_extensions = ['.txt',]
                         if not ext in valid_extensions: #check by file extension
-                                return HttpResponse('ERROR: File "' + str(filename)+ '" could not be uploaded and caused the other files not to be uploaded as well. Select files that end in docx, pdf, or doc. Return to uploads <a href="/UploadLessonPlan/">here</a>')
+                                return HttpResponse('ERROR: File "' + str(filename)+ '" could not be uploaded and caused the other files not to be uploaded as well. Select files that end in: ' + str(valid_extensions) + '. Return to uploads <a href="/UploadLessonPlans/">here</a>')
 
                 # get the grade level from the form       
                 grdLVL = request.POST.get('gradeLevel', '9001') #what it is looking for, default
@@ -89,10 +55,10 @@ def Form(request):
                 # check for form error
                 requirementchk = os.path.splitext(requirement)[0] 
                 if grdLVL != requirementchk:
-                        return HttpResponse('ERROR: Grade and requirement discrepancy. "' + str(grdLVL) + '" and "' + str(requirementchk) + '" do not match. This caused the files not to be uploaded. Select matching grade and requirements. Return to uploads <a href="/UploadLessonPlan/">here</a>')
+                        return HttpResponse('ERROR: Grade and requirement discrepancy. "' + str(grdLVL) + '" and "' + str(requirementchk) + '" do not match. This caused the files not to be uploaded. Select matching grade and requirements. Return to uploads <a href="/UploadLessonPlans/">here</a>')
       
                 if grdLVL == '9001' or requirement == '9001':
-                        return HttpResponse('CRITICAL SYSTEM ERROR: Either grade or requirement\'s power levels are over 9000. This caused the files not to be uploaded. Report this error to a system admin. Return to uploads <a href="/UploadLessonPlan/">here</a>')
+                        return HttpResponse('CRITICAL SYSTEM ERROR: Either grade or requirement\'s power levels are over 9000. This caused the files not to be uploaded. Report this error to a system admin. Return to uploads <a href="/UploadLessonPlans/">here</a>')
 
                 
                 #get info from auth and update count
@@ -126,6 +92,7 @@ def Form(request):
                         userData.uploadNum = userupload 
                         userData.uploadPath = directory 
                         userData.numberOfFiles = countem
+                        userData.filenames = allfilenames
                         userData.save() 
                         #UploadData.objects.filter(
                            #     user__icontains='zach'
@@ -133,17 +100,7 @@ def Form(request):
                         #        userID_icontains='27'
                         #)
                 except: # if it did not get anything later it will make one now
-                        UploadData.objects.create(grade=grdLVL, req = requirement, uploadNum = userupload, user = userguy, userID = userid, uploadPath = directory, numberOfFiles = countem )           
-
-                """if userData.userID != userid:
-                        UploadData.objects.create(grade=grdLVL, req = requirement, uploadNum = userupload, user = userguy, userID = userid, uploadPath = directory, numberOfFiles = countem )           
-                else:
-                        userData.grade=grdLVL
-                        userData.req = requirement
-                        userData.uploadNum = userupload 
-                        userData.uploadPath = directory 
-                        userData.numberOfFiles = countem
-                        userData.save() """ 
+                        UploadData.objects.create(grade=grdLVL, req = requirement, uploadNum = userupload, user = userguy, userID = userid, uploadPath = directory, numberOfFiles = countem, filenames = allfilenames )           
                 return HttpResponseRedirect('/UploadResults/') # redirect for success!
         else:
                 context = {}
@@ -153,12 +110,248 @@ def Form(request):
 
 
 
-
+def cleansing(changeme):
+        changeme = str(changeme)
+        changeme.replace('b\'\\xef\\xbb\\xbf', '.') 
+        return changeme
 
 
 def home11(request):
+        debug = True
+        
+        # get current logged in user
+        userguy = get_current_user()
+        userid = userguy.id
+                
+        # get the users upload data
+        userData = UploadData.objects.get(userID=str(userid))
+        
+        # get the file names in an array
+        demFiles = userData.filenames
+        demFiles = demFiles.split('#')
+        datPath = userData.uploadPath
+                
+        #if debug: return HttpResponse(str(demFiles[0]))
+        
+        # open the file, must be a txt file currently
+        filecounter = 0
+        contents = ''
+        while filecounter < int(userData.numberOfFiles):
+                # get the file path and name, append then for easy reuse and save contents for processing
+                fileselector = str(datPath) + str(demFiles[filecounter])
+                f = demFiles[filecounter]
+                line = -1
+                
+                # this code only works with txt format
+                with open(fileselector, 'r') as f:
+                        contents = f.read()
+                
+                # This is where files are processed and broken down 
+                data = contents.split('\n') # get a copy
+                """datalength = len(data)
+                if datalength > 2:
+                        pass # do nothing
+                else:
+                        return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. Please fix formatting.' )
+                datalength = len(data[0])"""
+
+                line += 1
+                GRADE = data[line].replace('GRADE: ', '') # get grade  ##########Var
+                """if len(GRADE) < datalength:
+                        pass
+                else:
+                        return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. GRADE line is incorrect. Please fix formatting.' )
+
+                datalength = len(data[1]) + len(data[2])"""
+                line += 1
+                NAME = data[line].replace('FIRSTNAME: ', '') + ' '+ data[line+1].replace('LASTNAME: ', '') # get name  ##########Var
+                """if len(NAME) < datalength:
+                        pass
+                else:
+                        return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. FIRSTNAME or LASTNAME line is incorrect. Please fix formatting.' )
+
+                # get information on the page, the current page, and how many there will be, this may be a check for the number of files uploaded
+                datalength = len(data[3])"""
+                line += 2
+                LESSONNUM = data[line].replace('LESSON: ', '') # get the lesson number 
+                """if len(LESSONNUM) < datalength:
+                        pass
+                else:
+                        return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. LESSONNUM line is incorrect. Please fix formatting.' )       
+                """
+                PAGEINFO = LESSONNUM.split('/')
+                CURRPAGE = PAGEINFO[0] ##########Var
+                MAXPAGE = PAGEINFO[1] ##########Var
+
+                #datalength = len(data[4])
+                line += 1
+                STANDARD = data[line].replace('STANDARD: ', '') 
+                """if len(STANDARD) < datalength:
+                        pass
+                else:
+                        return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. STANDARD line is incorrect. Please fix formatting.' )       
+                
+                
+                datalength = len(data[5])"""
+                line += 1
+                GOAL= data[line].replace('LEARNING_GOAL: ', '') 
+                """if len(GOAL) < datalength:
+                        pass
+                else:
+                        return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. LEARNING_GOAL line is incorrect. Please fix formatting.' )       
+                
+                datalength = len(data[6])"""
+                line += 1
+                PHENOMENA= data[line].replace('PHENOMENA: ', '') 
+                """if len(PHENOMENA) < datalength:
+                        pass
+                else:
+                        return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. PHENOMENA line is incorrect. Please fix formatting.' )       
+                """
+
+                line += 1
+                POINTS = data[line].replace('NUMBER_OF_POINTS: ', '')
+
+                endline = line + int(POINTS)
+                lessonContent = []     ####### all the lesson plans the teachers wrote are stored here
+                while line < endline:
+                        line += 1
+                        lessonContent.append(data[line])
+
+                line += 1
+                SUMMARY = data[line].replace('CLOSING_SUMMARY: ', '')
+        
+
+
+                #######################################################################################
+                # now there needs to be a model added to the postgres database to be searched
+                #######################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                #######################################################################################
+                # at this point the page has been digested now we need to go and sort out the things?
+                #######################################################################################
+
+                # now go and create arrays for each (of the three categories)
+                sciEng = []
+                disCore = []
+                crosscutting = []
+
+                # sort through 'lessonContent' and put each into corresponding list
+                """count = 0
+                output= ''
+                while count < int(POINTS):
+                        compareme=str(lessonContent[count])
+                        #out = ''
+                        #out = re.search('Modeled', compareme)
+                        addition = str(count) + ': ' + str(out) + '\n'
+                        output = output + addition
+                        count += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                #always last
+                filecounter += 1 # go to the next file, or start whichever it is on
+
+
+                
+
+                
+        #if debug: return HttpResponse(str(output))
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+        #f = open(str(demFiles[filecounter])),'r') # open the file
+        #f.write('hello world')
+        #f.close()
+
+
+
+
+
+
         context = {}
         return render(request, 'home11.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class UploadView(FormView):

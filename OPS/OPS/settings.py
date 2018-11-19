@@ -106,12 +106,12 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
     'postgres': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'lessonPlans',
-        'USER': 'ubuntu', # master is another superuser
-        'PASSWORD': 'ubuntu', # master is the password for master also
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',  #/home/ubuntu/django-apps/env/lib/python3.5/site-packages/postgres
+        'NAME': 'lessonplans',
+        'USER': 'postgres', # master is another superuser
+        'PASSWORD': 'p@ssw0rd', # master is the password for master also
         'HOST': 'localhost',
-        'PORT': '9000',
+        'PORT': '5432',   #'9000', 
     }
 }
 
