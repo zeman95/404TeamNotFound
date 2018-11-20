@@ -102,6 +102,17 @@ WSGI_APPLICATION = 'OPS.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',  #/home/ubuntu/django-apps/env/lib/python3.5/site-packages/postgres
+        'NAME': 'masterdb',    #'lessonplans',
+        'USER': 'postgres', #'postgres', # master is another superuser
+        'PASSWORD': 'p@ssw0rd',     #'p@ssw0rd', # master is the password for master also
+        'HOST': 'localhost',
+        'PORT': '5432',   #'9000',
+    }
+}
+
+"""
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
@@ -113,7 +124,10 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',   #'9000', 
     }
-}
+
+"""
+
+
 
 
 # Password validation

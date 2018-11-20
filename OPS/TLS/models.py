@@ -73,16 +73,33 @@ class Attachment(models.Model):
     file = models.FileField(_('Attachment'), upload_to=user_directory_path)
     count = models.IntegerField(default=0)
 
-class psqlUpload(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=False)
+
+class PSQLUpload(models.Model):
+    #user_id = models.OneToOneField(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=False)
     userID = models.CharField(max_length=512, blank=False)
     filename = models.CharField(max_length=255, blank=False)
+    uploadNumber = models.CharField(max_length=255, blank=False)
     reqTestedOn = models.CharField(max_length=512, blank=False)
     #querystring = models.TextField(blank=False)
     queryArraySize = models.CharField(max_length=512, blank=False)
-    queryArray = ArrayField(models.CharField(max_length=255, blank=True)) # this is a dynamically created array that will store all the teachers lesson plan 'body' content
+    queryArray = ArrayField(models.TextField(blank=True)) # this is a dynamically created array that will store all the teachers lesson plan 'body' content
+    #resultantArray = ArrayField(models.ForeignKey(Resultants, on_delete=models.CASCADE), blank=True)
+    querysearch = models.CharField(max_length=3000, blank=False) #models.TextField(blank=True)
     #search_vector = SearchVectorField(null=True)
-    searchvector = models.CharField(max_length=512, blank=False)
+    searchvector = models.TextField(blank=True)
+
+
+class newClass(models.Model):
+    string = models.CharField(max_length=3000, blank=True)
+    resultstring = models.CharField(max_length=3000, blank=True)
+    #userID = models.CharField(max_length=512, blank=False)
+    #filename = models.CharField(max_length=255, blank=False)
+    #reqTestedOn = models.CharField(max_length=512, blank=False)
+    #querystring = models.TextField(blank=False)
+    #queryArraySize = models.CharField(max_length=512, blank=False)
+    #queryArray = ArrayField(models.CharField(max_length=255, blank=True)) # this is a dynamically created array that will store all the teachers lesson plan 'body' content
+    #search_vector = SearchVectorField(null=True)
+    #searchresults = models.CharField(max_length=512, blank=False)
 
     # see here for information on ArrayField: https://docs.djangoproject.com/en/1.11/ref/contrib/postgres/fields/#arrayfield
 

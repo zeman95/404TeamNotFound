@@ -31,7 +31,10 @@ from pathlib import Path
 import re
 
 from django.contrib.postgres.search import SearchVectorField
-from .models import psqlUpload
+from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.fields import ArrayField
+from .models import PSQLUpload
+from .models import newClass
 
 
 def Form(request):
@@ -95,14 +98,10 @@ def Form(request):
                         userData.numberOfFiles = countem
                         userData.filenames = allfilenames
                         userData.save() 
-                        #UploadData.objects.filter(
-                           #     user__icontains='zach'
-                        #)#.filter(
-                        #        userID_icontains='27'
-                        #)
                 except: # if it did not get anything later it will make one now
                         UploadData.objects.create(grade=grdLVL, req = requirement, uploadNum = userupload, user = userguy, userID = userid, uploadPath = directory, numberOfFiles = countem, filenames = allfilenames )           
                 return HttpResponseRedirect('/UploadResults/') # redirect for success!
+                
         else:
                 context = {}
                 return render(request, 'home17.html', context) # base view
@@ -115,6 +114,7 @@ def home11(request):
                 
         # get the users upload data
         userData = UploadData.objects.get(userID=str(userid))
+        userfileuploads = userData.uploadNum
         
         # get the file names in an array
         demFiles = userData.filenames
@@ -147,6 +147,7 @@ def home11(request):
 
                 line += 1
                 GRADE = data[line].replace('GRADE: ', '') # get grade  ##########Var
+                GRADE = GRADE.lower()
                 """if len(GRADE) < datalength:
                         pass
                 else:
@@ -155,6 +156,7 @@ def home11(request):
                 datalength = len(data[1]) + len(data[2])"""
                 line += 1
                 NAME = data[line].replace('FIRSTNAME: ', '') + ' '+ data[line+1].replace('LASTNAME: ', '') # get name  ##########Var
+                NAME = NAME.lower()
                 """if len(NAME) < datalength:
                         pass
                 else:
@@ -163,7 +165,8 @@ def home11(request):
                 # get information on the page, the current page, and how many there will be, this may be a check for the number of files uploaded
                 datalength = len(data[3])"""
                 line += 2
-                LESSONNUM = data[line].replace('LESSON: ', '') # get the lesson number 
+                LESSONNUM = data[line].replace('LESSON: ', '') # get the lesson number
+                LESSONNUM = LESSONNUM.lower() 
                 """if len(LESSONNUM) < datalength:
                         pass
                 else:
@@ -175,7 +178,8 @@ def home11(request):
 
                 #datalength = len(data[4])
                 line += 1
-                STANDARD = data[line].replace('STANDARD: ', '') 
+                STANDARD = data[line].replace('STANDARD: ', '')
+                STANDARD = STANDARD.lower() 
                 """if len(STANDARD) < datalength:
                         pass
                 else:
@@ -184,7 +188,8 @@ def home11(request):
                 
                 datalength = len(data[5])"""
                 line += 1
-                GOAL= data[line].replace('LEARNING_GOAL: ', '') 
+                GOAL= data[line].replace('LEARNING_GOAL: ', '')
+                GOAL = GOAL.lower() 
                 """if len(GOAL) < datalength:
                         pass
                 else:
@@ -193,6 +198,7 @@ def home11(request):
                 datalength = len(data[6])"""
                 line += 1
                 PHENOMENA= data[line].replace('PHENOMENA: ', '') 
+                PHENOMENA = PHENOMENA.lower()
                 """if len(PHENOMENA) < datalength:
                         pass
                 else:
@@ -204,26 +210,48 @@ def home11(request):
 
                 endline = line + int(POINTS)
                 lessonContent = []     ####### all the lesson plans the teachers wrote are stored here
+                currentline = ''
+                unalteredContent = []
                 while line < endline:
                         line += 1
-                        lessonContent.append(data[line])
+                        unalteredContent.append(data[line])
+
+                        currentline = data[line]
+                        currentline = currentline.lower()
+                        currentline = currentline.replace('(', '')
+                        currentline = currentline.replace(')', '')
+                        currentline = currentline.replace('\'', '')
+                        currentline = str(demFiles[filecounter]) + ': ' + currentline
+
+                        lessonContent.append(currentline)    #(data[line])
 
                 line += 1
                 SUMMARY = data[line].replace('CLOSING_SUMMARY: ', '')
+                SUMMARY = SUMMARY.lower()
         
 
 
                 #######################################################################################
                 # now there needs to be a model added to the postgres database to be searched
                 #######################################################################################
-                #psqlUpload.objects.using('postgres').create(user=userguy, userID = userid, filename = f, reqTestedOn = STANDARD, queryArraySize = ['something'], queryArray = lessonContent, searchvector = 'none')  
-                #tags=['thoughts', 'django'])
-
-
-
-
-
-
+                # incase somebody redirects back to the same page and doesnt upload a duplicate psqlupload model
+                try:
+                        psqlModel = PSQLUpload.objects.get(userID=str(userid), uploadNumber = userfileuploads)
+                except: # the [:] means in python to iterate over and all the content from the array, so each can be accessed seperately
+                        PSQLUpload.objects.create(userID = str(userid), 
+                                                filename = str(demFiles[filecounter]), 
+                                                uploadNumber = userfileuploads,
+                                                reqTestedOn = str(STANDARD), 
+                                                queryArraySize = str(POINTS), 
+                                                queryArray = lessonContent[:],
+                                                querysearch = 'none', 
+                                                searchvector = 'none')  
+                        psqlModel = PSQLUpload.objects.get(userID=str(userid), uploadNumber = userfileuploads)
+                
+                
+                
+                #return HttpResponse(str(psqlModel.queryArray[3]))
+               
 
 
 
@@ -241,21 +269,73 @@ def home11(request):
                 disCore = []
                 crosscutting = []
 
+                
                 # sort through 'lessonContent' and put each into corresponding list
                 """count = 0
-                output= ''
+                result = ''
                 while count < int(POINTS):
-                        compareme=str(lessonContent[count])
-                        #out = ''
-                        #out = re.search('Modeled', compareme)
-                        addition = str(count) + ': ' + str(out) + '\n'
-                        output = output + addition
+
+                        psqlModel.querysearch = psqlModel.queryArray[count]
+                        psqlModel.save()
+                        newClass.objects.create(string = psqlModel.querysearch, resultstring = '')
+                        #result = PSQLUpload.objects.filter(querysearch__search='modeled')
+                        #if result != '':
+                        #        return HttpResponse(result)
+                        #return HttpResponse(str(PSQLUpload.objects.filter(querysearch__search='modeled')))
+                        #result = PSQLUpload.objects.annotate(
+                        #        search=SearchVector('querysearch') + SearchVector('queryArray'),
+                        #).filter(search='modeled')
+                        #if len(result) > 5:
+                        #        return HttpResponse('hey i found something: ' + str(result))
+                        result = result + str(count) + ': ' + str(newClass.objects.filter(string__contains=' modeled')) + '\n'
+                        #newClass.objects.filter(string__search='modeled')
                         count += 1"""
+                
+                
+                count = 0
+                #output= ''
+                out = ''
+                tsvect = ''
+                while count < int(POINTS):
+                        compareme=str(psqlModel.queryArray[count])
+                        
+                        #psqlModel.querysearch = psqlModel.queryArray[count]
+                        #psqlModel.searchvector = psqlModel.querysearch
+                        #psqlModel.save()
+                        #q = 'modeled'
+                        #tsvect = PSQLUpload.objects.extra(
+                        #        where=['searchvector @@ plainto_tsquery(%s)'], 
+                        #params=[q])
+                        
+                        
+                        #tsvect = PSQLUpload.objects.extra(where=["searchvector  val"])     #.filter(searchvector__regex=r'modeled')     #icontains='modeled')
+                        #tsvect =  PSQLUpload.objects.filter(querysearch__icontains='modeled') #PSQLUpload.objects.filter(querysearch__regex=r'modeled')    #PSQLUpload.objects.extra(where=["querysearch S val"])  #PSQLUpload.objects.filter(querysearch__contains=' modeled')
+                        #if len(tsvect) < 5:
+                        #        pass
+                        #else:
+                        #        return HttpResponse(str(tsvect))
+                        
+                        
+                        out = ''
+                        out = re.search('.modeled.|.model.|.modeling.|.draw.|.drawing.|.models.|.illustrate.', compareme)
+                        if out == None:
+                               pass
+                               #return HttpResponse('hey i found a None')
+                        else:    # means that it found something
+                                sciEng.append(psqlModel.queryArray[count])
+                        #addition = str(count) + ': ' + str(out) + '_|_'
+                        #output = output + addition
+                        count += 1
+                       
 
 
 
 
-
+                #queryout = PSQLUpload.objects.filter(queryArray__0='Modeled')
+                #return HttpResponse(str(PSQLUpload.objects.filter(queryArray__0__iexact='a')))
+                #return HttpResponse(str(PSQLUpload.objects.filter(queryArray__search='Modeled')))  # [<Post: Computer programming>, <Post: Neural networks and deep learning>]
+                #return HttpResponse(str(PSQLUpload.objects.filter(queryArray__contained_by=['model', 'modeled', 'models', 'modeling', 'drawing', 'make', 'making'])))
+                
 
 
 
@@ -281,7 +361,7 @@ def home11(request):
                 
 
                 
-        #if debug: return HttpResponse(str(output))
+        return HttpResponse(sciEng)
                 
                 
                 

@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from .models import UploadData
 admin.site.register(UploadData)
 
-from .models import psqlUpload
-admin.site.register(psqlUpload)
+from .models import PSQLUpload
+admin.site.register(PSQLUpload)
 
 # Register your models here.
