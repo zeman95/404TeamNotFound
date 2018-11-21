@@ -35,6 +35,9 @@ from django.contrib.postgres.search import SearchVector
 from django.contrib.postgres.fields import ArrayField
 from .models import PSQLUpload
 from .models import newClass
+import nltk, re, pprint
+from nltk import word_tokenize
+from  nltk.text import ConcordanceIndex
 
 
 def Form(request):
@@ -106,15 +109,77 @@ def Form(request):
                 context = {}
                 return render(request, 'home17.html', context) # base view
 
+# this code is supplied from nltk website: https://www.nltk.org/book/ch03.html
+# this is not my own code, but the library supplied by nltk written out from stem commands
+def stem(word):
+     for suffix in ['ing', 'ly', 'ed', 'ious', 'ies', 'ive', 'es', 's', 'ment']:
+         if word.endswith(suffix):
+             return word[:-len(suffix)]
+     return word
+
+# code is supplied/based on code from https://simply-python.com/2014/03/14/saving-output-of-nltk-text-concordance/
+# give credit where credit is due
+# this simply returns the results from an nltk search, the results contain text to either side margin
+"""def getLocalResultsFromSearch(searchforthis, searchinthis):
+        left_margin = 10 
+        right_margin = 10
+
+        ## Create list of tokens using nltk function
+        tokens = nltk.word_tokenize(searchinthis)
+        
+        ## Create the text of tokens
+        text = nltk.Text(tokens)
+        
+        ## Collect all the index or offset position of the target word
+        c = nltk.ConcordanceIndex(text.tokens, key = lambda s: s.lower())
+        
+        ## Collect the range of the words that is within the target word by using text.tokens[start;end].
+        ## The map function is use so that when the offset position - the target range < 0, it will be default to zero
+        concordance_txt = ([text.tokens[map(lambda x: x-5 if (x-left_margin)>0 else 0,[offset])[0]:offset+right_margin]
+                                for offset in c.offsets(searchforthis)])
+                                
+        ## join the sentences for each of the target phrase and return it
+        return [''.join([x+' ' for x in con_sub]) for con_sub in concordance_txt]"""
+
+
+# this is a rewrite of the concordance library to output to a variable rather than standard out
+# code is found from: https://stackoverflow.com/questions/47649987/how-to-save-nltk-concordance-results-in-a-list
+# code is derrived from nltk site : http://www.nltk.org/_modules/nltk/text.html#ConcordanceIndex.print_concordance
+def concordance(ci, word, width=75, lines=25):
+    half_width = (width - len(word) - 2) // 2
+    context = width // 4 # approx number of words of context
+
+    results = []
+    offsets = ci.offsets(word)
+    if offsets:
+        lines = min(lines, len(offsets))
+        for i in offsets:
+            if lines <= 0:
+                break
+            left = (' ' * half_width +
+                    ' '.join(ci._tokens[i-context:i]))
+            right = ' '.join(ci._tokens[i+1:i+context])
+            left = left[-half_width:]
+            right = right[:half_width]
+            results.append('%s %s %s' % (left, ci._tokens[i], right))
+            lines -= 1
+
+    return results
+
+
 
 def home11(request):
         # get current logged in user
         userguy = get_current_user()
         userid = userguy.id
-                
+        
         # get the users upload data
-        userData = UploadData.objects.get(userID=str(userid))
-        userfileuploads = userData.uploadNum
+        try:
+                userData = UploadData.objects.get(userID=str(userid))
+                userfileuploads = userData.uploadNum
+                chosenreq = userData.req
+        except:
+                return HttpResponse('Data from last page did not upload correctly. Please go back and try again.')
         
         # get the file names in an array
         demFiles = userData.filenames
@@ -126,6 +191,9 @@ def home11(request):
         # open the file, must be a txt file currently
         filecounter = 0
         contents = ''
+        sciEng = []
+        disCore = []
+        crosscutting = []
         while filecounter < int(userData.numberOfFiles):
                 # get the file path and name, append then for easy reuse and save contents for processing
                 fileselector = str(datPath) + str(demFiles[filecounter])
@@ -264,96 +332,102 @@ def home11(request):
                 # at this point the page has been digested now we need to go and sort out the things?
                 #######################################################################################
 
-                # now go and create arrays for each (of the three categories)
-                sciEng = []
-                disCore = []
-                crosscutting = []
-
-                
-                # sort through 'lessonContent' and put each into corresponding list
-                """count = 0
-                result = ''
-                while count < int(POINTS):
-
-                        psqlModel.querysearch = psqlModel.queryArray[count]
-                        psqlModel.save()
-                        newClass.objects.create(string = psqlModel.querysearch, resultstring = '')
-                        #result = PSQLUpload.objects.filter(querysearch__search='modeled')
-                        #if result != '':
-                        #        return HttpResponse(result)
-                        #return HttpResponse(str(PSQLUpload.objects.filter(querysearch__search='modeled')))
-                        #result = PSQLUpload.objects.annotate(
-                        #        search=SearchVector('querysearch') + SearchVector('queryArray'),
-                        #).filter(search='modeled')
-                        #if len(result) > 5:
-                        #        return HttpResponse('hey i found something: ' + str(result))
-                        result = result + str(count) + ': ' + str(newClass.objects.filter(string__contains=' modeled')) + '\n'
-                        #newClass.objects.filter(string__search='modeled')
-                        count += 1"""
-                
-                
+                # now go and use arrays for each (of the three categories created outside the loop to they dont get overwritten)
+                # by handling the lesson content loop
                 count = 0
-                #output= ''
-                out = ''
-                tsvect = ''
+
                 while count < int(POINTS):
-                        compareme=str(psqlModel.queryArray[count])
+                        # this is done using nltk which works on local variables so it should go much faster
+                        # what isgoing on is for this loop one of the sentences is being selected and stemmed
+                        # meaning all ending are being removed so when something is being searched we are 
+                        # removing all ending so that it will look the same since everything is already lowercase
+                        # removing endings should ensure a match if there is one
+                        selected = lessonContent[count] # get selected line of code
+                        tokens = word_tokenize(selected) # tokenize it
                         
-                        #psqlModel.querysearch = psqlModel.queryArray[count]
-                        #psqlModel.searchvector = psqlModel.querysearch
-                        #psqlModel.save()
-                        #q = 'modeled'
-                        #tsvect = PSQLUpload.objects.extra(
-                        #        where=['searchvector @@ plainto_tsquery(%s)'], 
-                        #params=[q])
+                        # now we are going to stem all the words
+                        internalcounter = 0 
+                        while internalcounter < len(tokens):
+                                tokens[internalcounter] = stem(tokens[internalcounter]) 
+                                internalcounter += 1
+                        
+                        # now piece back to together the string
+                        text = nltk.Text(tokens)
+
+
+                        # now we are going to choose which path the user selected to check
+                        if chosenreq == '6.4':
+                                pass
+                        elif chosenreq == '6.6':
+                                pass
+                        elif chosenreq == '6.9':
+                                pass
+                        elif chosenreq == '6.12':
+                                pass
+                        elif chosenreq == '6.13':
+                                # put the tokens back into text to do a search
+                                
+                                searchterm = stem('modeled') # stem the searchterm
+                        
+                                ci = ConcordanceIndex(text.tokens)
+                                results = concordance(ci, searchterm)
+                                
+                                if results == None or results == '' or results == []:
+                                        pass
+                                else:
+                                        sciEng.append(lessonContent[count])
+                        elif chosenreq == '7.3':
+                                pass
+                        elif chosenreq == '7.5':
+                                pass
+                        elif chosenreq == '7.7':
+                                pass
+                        elif chosenreq == '7.8':
+                                pass
+                        elif chosenreq == '7.13':
+                                pass
+                        elif chosenreq == '7.14':
+                                pass
+                        elif chosenreq == '8.1':
+                                pass
+                        elif chosenreq == '8.4':
+                                pass
+                        elif chosenreq == '8.9':
+                                pass
+                        elif chosenreq == '8.10':
+                                pass
+                        elif chosenreq == '8.11':
+                                pass
+                        elif chosenreq == '8.14':
+                                pass
+                        else:
+                                return HttpResponse('Somehow you stumbled upon a lesson that is not supported yet.')
                         
                         
-                        #tsvect = PSQLUpload.objects.extra(where=["searchvector  val"])     #.filter(searchvector__regex=r'modeled')     #icontains='modeled')
-                        #tsvect =  PSQLUpload.objects.filter(querysearch__icontains='modeled') #PSQLUpload.objects.filter(querysearch__regex=r'modeled')    #PSQLUpload.objects.extra(where=["querysearch S val"])  #PSQLUpload.objects.filter(querysearch__contains=' modeled')
-                        #if len(tsvect) < 5:
-                        #        pass
-                        #else:
-                        #        return HttpResponse(str(tsvect))
+
+                        
+                                #return HttpResponse(str(results))
+                                
+
+                        
+                                                        
+
                         
                         
-                        out = ''
-                        out = re.search('.modeled.|.model.|.modeling.|.draw.|.drawing.|.models.|.illustrate.', compareme)
-                        if out == None:
-                               pass
-                               #return HttpResponse('hey i found a None')
-                        else:    # means that it found something
-                                sciEng.append(psqlModel.queryArray[count])
-                        #addition = str(count) + ': ' + str(out) + '_|_'
-                        #output = output + addition
+                        
+                        
+                        
+                        
+                        
+                        
+                       # return HttpResponse(text.similar(str(searchterm)))            #str(tokens))
+                        
+
+
+
+
+
                         count += 1
-                       
-
-
-
-
-                #queryout = PSQLUpload.objects.filter(queryArray__0='Modeled')
-                #return HttpResponse(str(PSQLUpload.objects.filter(queryArray__0__iexact='a')))
-                #return HttpResponse(str(PSQLUpload.objects.filter(queryArray__search='Modeled')))  # [<Post: Computer programming>, <Post: Neural networks and deep learning>]
-                #return HttpResponse(str(PSQLUpload.objects.filter(queryArray__contained_by=['model', 'modeled', 'models', 'modeling', 'drawing', 'make', 'making'])))
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 #always last
                 filecounter += 1 # go to the next file, or start whichever it is on
 
