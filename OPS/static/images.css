@@ -1,0 +1,19 @@
+.backgroundImage{
+    /*background-image: url(/static/science.jpg);
+    background-color: azure;
+    background-repeat-y: no-repeat; 
+    z-index:-1;*/
+
+    background: url(/static/science.jpg) repeat-y;/*no-repeat center center fixed;*/ 
+    
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: -1;
+  
+ 
+    
+    
+
+}

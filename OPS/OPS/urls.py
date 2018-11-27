@@ -40,7 +40,7 @@ urlpatterns = [
     
     # this is the hard coded way to do this, attempt 1
     path('NSR/', home22, name = 'home22'),
-    path('ManageAccounts/', home1, name = 'home1'),
+    #path('ManageAccounts/', home1, name = 'home1'),
     path('Submissions/', home2, name = 'home2'),
     path('HomeTeacher/', home4, name='home4'),
     path('', login, name='login'), # changed for auth tut, was '' (the home screen the css is here)
