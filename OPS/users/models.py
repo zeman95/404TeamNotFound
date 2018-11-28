@@ -5,13 +5,13 @@ from django.core.validators import MinValueValidator
 
 class CustomUser(AbstractUser):
     # add additional fields in here
-    uploads = models.IntegerField(validators=[MinValueValidator(1)], default=1)
+    uploads = models.IntegerField(validators=[MinValueValidator(0)], default=0)
     
     def __str__(self):
         return self.email
 
     def __unicode__(self):
-        return self.uploads;  
+        return self.uploads  
 
 
     def incUploads(self):
