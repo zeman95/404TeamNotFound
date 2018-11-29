@@ -254,96 +254,108 @@ def home11(request):
                 
                 # This is where files are processed and broken down 
                 data = contents.split('\n') # get a copy
-                """datalength = len(data)
+                datalength = len(data)
                 if datalength > 2:
                         pass # do nothing
                 else:
                         return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. Please fix formatting.' )
-                datalength = len(data[0])"""
+                datalength = len(data[0])
 
                 line += 1
                 GRADE = data[line].replace('GRADE: ', '') # get grade  ##########Var
                 GRADE = GRADE.lower()
-                """if len(GRADE) < datalength:
+                if len(GRADE) < datalength:
                         pass
                 else:
                         return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. GRADE line is incorrect. Please fix formatting.' )
 
-                datalength = len(data[1]) + len(data[2])"""
+                datalength = len(data[1]) + len(data[2])
                 line += 1
                 NAME = data[line].replace('FIRSTNAME: ', '') + ' '+ data[line+1].replace('LASTNAME: ', '') # get name  ##########Var
                 NAME = NAME.lower()
-                """if len(NAME) < datalength:
+                if len(NAME) < datalength:
                         pass
                 else:
                         return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. FIRSTNAME or LASTNAME line is incorrect. Please fix formatting.' )
 
                 # get information on the page, the current page, and how many there will be, this may be a check for the number of files uploaded
-                datalength = len(data[3])"""
+                datalength = len(data[3])
                 line += 2
                 LESSONNUM = data[line].replace('LESSON: ', '') # get the lesson number
                 LESSONNUM = LESSONNUM.lower() 
-                """if len(LESSONNUM) < datalength:
+                if len(LESSONNUM) < datalength:
                         pass
                 else:
                         return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. LESSONNUM line is incorrect. Please fix formatting.' )       
-                """
+                
                 PAGEINFO = LESSONNUM.split('/')
                 CURRPAGE = PAGEINFO[0] ##########Var
                 MAXPAGE = PAGEINFO[1] ##########Var
 
-                #datalength = len(data[4])
+                datalength = len(data[4])
                 line += 1
                 STANDARD = data[line].replace('STANDARD: ', '')
                 STANDARD = STANDARD.lower() 
-                """if len(STANDARD) < datalength:
+                if len(STANDARD) < datalength:
                         pass
                 else:
                         return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. STANDARD line is incorrect. Please fix formatting.' )       
                 
                 
-                datalength = len(data[5])"""
+                datalength = len(data[5])
                 line += 1
                 GOAL= data[line].replace('LEARNING_GOAL: ', '')
                 GOAL = GOAL.lower() 
-                """if len(GOAL) < datalength:
+                if len(GOAL) < datalength:
                         pass
                 else:
                         return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. LEARNING_GOAL line is incorrect. Please fix formatting.' )       
                 
-                datalength = len(data[6])"""
+                datalength = len(data[6])
                 line += 1
                 PHENOMENA= data[line].replace('PHENOMENA: ', '') 
                 PHENOMENA = PHENOMENA.lower()
-                """if len(PHENOMENA) < datalength:
+                if len(PHENOMENA) < datalength:
                         pass
                 else:
                         return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. PHENOMENA line is incorrect. Please fix formatting.' )       
-                """
+                
 
                 line += 1
                 POINTS = data[line].replace('NUMBER_OF_POINTS: ', '')
+                try:
+                        if int(POINTS) > 0:
+                                pass
+                        else:
+                                return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. POINTS line is incorrect - must be more than 0. Please fix formatting.' )       
+
+                except:
+                                return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. POINTS line is incorrect - must be more than 0. Please fix formatting.' )       
 
                 #######################################################################################
                 # now the input from the text file needs to be processed
                 #######################################################################################
-                x = 0
-                endline = line + int(POINTS)
-                lessonContent = []     ####### all the lesson plans the teachers wrote are stored here
-                currentline = ''
-                unalteredContent = []
-                templine = ''
-                while line < endline:
+                try:
                         x = 0
-                        line += 1
-                        currentline = data[line]
-                        
-                        currentline = removeSpecialCases(currentline) # removes all special cases, punctuations and suchforth from line
-                        currentline = str(demFiles[filecounter]) + ': ' + currentline # append the filename on
-                        lessonContent.append(currentline)    # this is the modified array the program will be using, not suitable for output
-                        
-                        currentline = str(demFiles[filecounter]) + ': ' + data[line]
-                        unalteredContent.append(currentline) # this is the unaltered array for output to screen
+                        endline = line + int(POINTS)
+                        lessonContent = []     ####### all the lesson plans the teachers wrote are stored here
+                        currentline = ''
+                        unalteredContent = []
+                        templine = ''
+                        while line < endline:
+                                x = 0
+                                line += 1
+                                currentline = data[line]
+                                
+                                currentline = removeSpecialCases(currentline) # removes all special cases, punctuations and suchforth from line
+                                currentline = str(demFiles[filecounter]) + ': ' + currentline # append the filename on
+                                lessonContent.append(currentline)    # this is the modified array the program will be using, not suitable for output
+                                
+                                currentline = str(demFiles[filecounter]) + ': ' + data[line]
+                                unalteredContent.append(currentline) # this is the unaltered array for output to screen
+                except:
+                        return HttpResponse('File named: ' + str(demFiles[filecounter]) + ' was formatted incorrectly. Lesson content is incorrect - make sure number of points matches the number of lesson plan bullets. Please fix formatting.' )       
+
 
                         
 
@@ -870,8 +882,8 @@ def home11(request):
 
                 
 
-                
-        return HttpResponse(sciEng + disCore + crosscutting + algorithm)
+        ###### DEBUG      
+        #return HttpResponse(sciEng + disCore + crosscutting + algorithm)
         #return HttpResponse(disCore)
         #return HttpResponse(crosscutting)       
 
@@ -880,7 +892,7 @@ def home11(request):
         # List all variables here that you would like to be able to display
         # they should be the same names no matter what req is chosen
         ############################################################################
-        context = {}
+        context = {"STANDARD": str(userData.req), "algorithm": algorithm, "aLength": len(algorithm), "sciEng" : sciEng, "disCore": disCore, "crosscutting" : crosscutting, "algorithm": algorithm, "seLength": len(sciEng), "dcLength": len(disCore),"ccLength": len(crosscutting)}
         return render(request, 'home11.html', context)
 
 

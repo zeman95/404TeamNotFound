@@ -19,102 +19,113 @@
 
 {% block content %} <!-- Put body code here, whatever you want -->
 {% if user.is_authenticated %}
-<div class="top">
-    <div class="topnav">
-        <a class="nonactive" href="/HomeTeacher/">
-            <div class="logo"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <img src= "/static/nbedit1.png" alt="Nebraska" width="50" height="25"></div>
-            <div class="topnav-right">
-              <a class="active" href="/HomeTeacher/">HOME</a>
-              <a href="/NSR/">RUBRIC</a>
-              <a href="/UploadLessonPlans/">SUBMIT LESSON</a>
-              <a href="/Submissions/">SUBMISSIONS</a>
-              <a href="/Profile/">SETTINGS</a>
-              <a href="/accounts/logout">LOGOUT</a>
+<div class="frontofimage">
+    <div class="top">
+      <div class="topnav">
+        <a class="nonactive" href="/HomeTeacher/"><div class="logo"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <img src= "/static/nbedit1.png" alt="Nebraska" width="50" height="25"></div><a>
+          <div class="topnav-right">
+            <a class="active" href="/HomeTeacher/">HOME</a>
+            <a href="/NSR/">RUBRIC</a>
+            <a href="/UploadLessonPlans/">SUBMIT LESSON</a>
+            <a href="/Submissions/">SUBMISSIONS</a>
+            <a href="/Profile/">SETTINGS</a>
+            <a href="/accounts/logout">LOGOUT</a>
+          </div>
+      </div>
+  
+      <!-- The Main Section -->
+      <br>
+      <div  class="master" style="height: 100%;">
+        <div>
+          <br>
+
+          <h2 class="wide" style="margin-top: 5%;">Check Lesson Plans</h2>
+          <div style="text-align: center; padding-top: 15%">
+            <!--<p>This is a sample file to guide in making a submittable form:<br>
+            <a href="OPS/media/SampleFile.txt">Sample File</a></p>-->
+
+
+          <form method="POST" action="/UploadLessonPlans/" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div>Select Grade Level 
+              <select name="gradeLevel" required>
+                  <option value="6">6th</option>
+                  <!--<option value="7">7th</option>
+                  <option value="8">8th</option>-->
+              </select>
               </div>
-            </div>
+              <br>
+              <div>Select Standard/Requirement 
+                  <select name="req" required>
+                      <option value="6.4">6.4</option>
+                      <option value="6.6">6.6</option>
+                      <option value="6.9">6.9</option>
+                      <option value="6.12">6.12</option>
+                      <option value="6.13">6.13</option>
           
-         
+                      <!--<option value="7.3" disabled>7.3</option>
+                      <option value="7.5" disabled>7.5</option>
+                      <option value="7.7" disabled>7.7</option>
+                      <option value="7.8" disabled>7.8</option>
+                      <option value="7.13" disabled>7.13</option>
+                      <option value="7.14" disabled>7.14</option>
           
-     
-                             <!-- The Main Section -->
-            <div class="container content center padding-64 " style="max-width:75%" id="band">
-                    <div class="master">    
-                <h2 class="wide" style="margin-top: 5%;">Check Lesson Plans</h2>
-                <div style="text-align: center; padding-top: 15%">
-                <form method="POST" action="/UploadLessonPlans/" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div>Select Grade Level 
-                    <select name="gradeLevel" required>
-                        <option value="6">6th</option>
-                        <!--<option value="7">7th</option>
-                        <option value="8">8th</option>-->
-                    </select>
-                    </div>
-                    <br>
-                    <div>Select Standard/Requirement 
-                        <select name="req" required>
-                            <option value="6.4">6.4</option>
-                            <option value="6.6">6.6</option>
-                            <option value="6.9">6.9</option>
-                            <option value="6.12">6.12</option>
-                            <option value="6.13">6.13</option>
-                
-                            <!--<option value="7.3" disabled>7.3</option>
-                            <option value="7.5" disabled>7.5</option>
-                            <option value="7.7" disabled>7.7</option>
-                            <option value="7.8" disabled>7.8</option>
-                            <option value="7.13" disabled>7.13</option>
-                            <option value="7.14" disabled>7.14</option>
-                
-                            
-                            <option value="8.1" disabled>8.1</option>
-                            <option value="8.4" disabled>8.4</option>
-                            <option value="8.9" disabled>8.9</option>
-                            <option value="8.10" disabled>8.10</option>
-                            <option value="8.11" disabled>8.11</option>
-                            <option value="8.14" disabled>8.14</option>-->
-                
-                        </select>
-                    </div>
-                    <br>
-                    <div style="padding-left: 40%;">     
-                    <input type="file" name="files" multiple required/></div><br>
-                    <input type="submit" value="Upload"/>
-                </form>
-                
+                      
+                      <option value="8.1" disabled>8.1</option>
+                      <option value="8.4" disabled>8.4</option>
+                      <option value="8.9" disabled>8.9</option>
+                      <option value="8.10" disabled>8.10</option>
+                      <option value="8.11" disabled>8.11</option>
+                      <option value="8.14" disabled>8.14</option>-->
+          
+                  </select>
+              </div>
+              <br>
+              <div style="padding-left: 40%;">     
+              <input type="file" name="files" multiple required/></div><br>
+              <input type="submit" value="Upload"/>
+          </form>
+          
+          <br><br><br><br><br><br>
+              
 
-                    
-
-                </div>
-                    <br> <br> <br>
-                    <!-- <button onclick="myFunction()">Submit</button> 
-                    <button type="submit" class="daSubmitButton">Submit</button>
-                </form> -->
-            </div>
-
-                    
-                          
-
-
-
-
-
-            </div>
-
-            
-          <!-- End Page Content -->
           </div>
- 
-          <!-- Footer -->
-          <div class="footer">
-            <p class="medium">Powered by 404TeamNotFound</p>
-          </div>
-          
-          {% else %}
-          <p>You are not logged in</p>
-          <a href="{% url 'login' %}">login</a>
-        {% endif %}         
+              <br> <br> <br>
+      </div>
 
+
+
+
+
+
+
+
+
+
+        </div>
+  
+        <!-- End Page Content -->
+      </div> <!-- this is the end of the main content part-->
+  
+      <!-- Footer -->
+      <div class="footer">
+        <p class="medium">Powered by 404TeamNotFound</p>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+{% else %}
+        <p>You are not logged in</p><a href="{% url 'login' %}">login</a>
+{% endif %}         
 {% endblock %}
 
 
