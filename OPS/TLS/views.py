@@ -878,7 +878,66 @@ def home11(request):
 
                 
                 
+        # output things to a file as well as a model 
+        #os.mkdir('directory name') #### this command for creating directory
+        #os.mknod('file name') #### this for creating files
+        #os.system('touch filename') ###this is another method for creating file by using unix commands in os modules
+        path = str(datPath) # + 'output.txt'
 
+        if not os.path.exists(path):
+                os.makedirs(path)
+
+        z = 0
+        outline = ''
+        filename = 'output' + '.txt'
+        with open(os.path.join(path, filename), 'w') as out_file:
+                # make the input to the file
+                bufferz = 'Science and Engineering Practices:\n'
+                z = 0
+                outline = ''
+                if len(sciEng) > 0:
+                        while z < len(sciEng):
+                                outline = str(sciEng[z])
+                                bufferz = bufferz + outline + '\n'
+                                z += 1
+                else:
+                        bufferz = bufferz + 'Nothing found in this category.\n'
+                
+                bufferz = bufferz + '\nDisciplinary Core Ideas:\n'
+                z = 0
+                outline = ''
+                if len(disCore) > 0:
+                        while z < len(disCore):
+                                outline = str(disCore[z])
+                                bufferz = bufferz + outline + '\n'
+                                z += 1
+                else:
+                        bufferz = bufferz + 'Nothing found in this category.\n'
+                
+                bufferz = bufferz + '\nCrosscutting Concepts:\n'
+                z = 0
+                outline = ''
+                if len(crosscutting) > 0:
+                        while z < len(crosscutting):
+                                outline = str(crosscutting[z])
+                                bufferz = bufferz + outline + '\n'
+                                z += 1
+                else:
+                        bufferz = bufferz + 'Nothing found in this category.\n'
+
+                bufferz = bufferz + '\nAlgorithm Results:\n'
+                z = 0
+                outline = ''
+                if len(algorithm) > 0:
+                        while z < len(algorithm):
+                                outline = str(algorithm[z])
+                                bufferz = bufferz + outline + '\n'
+                                z += 1
+                else:
+                        bufferz = bufferz + 'Nothing found in this category.\n'
+
+                out_file.write(bufferz) # write the input
+                out_file.close() # close the buffer and the file
 
                 
 
