@@ -39,6 +39,7 @@ import nltk, re, pprint
 from nltk import word_tokenize
 from  nltk.text import ConcordanceIndex
 from PyDictionary import PyDictionary
+from .models import submissionsModel
 
 
 def Form(request):
@@ -875,8 +876,9 @@ def home11(request):
         ## The final step is to add all of this into a model so it can be displayed
         ## in a different page 
         ############################################################################
-
-                
+        submissionsModel.objects.create(userID = str(userid), user = userguy, uploadNum = userfileuploads, 
+                                        uploadPath = userData.uploadPath, numberOfFiles = userData.numberOfFiles, 
+                                        filenames = userData.filenames)        
                 
         # output things to a file as well as a model 
         #os.mkdir('directory name') #### this command for creating directory

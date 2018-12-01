@@ -1,0 +1,127 @@
+{% extends 'base10.html'%}
+{% load static from staticfiles %}
+{% load staticfiles %}
+
+
+{% block head %} <!--  This is for the head of the page, list here  -->  
+    <title>Upload</title>
+            
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+    
+{% endblock %}
+
+{% block content %} <!-- Put body code here, whatever you want -->
+{% if user.is_authenticated %}
+<div class="frontofimage">
+    <div class="top">
+      <div class="topnav">
+        <a class="nonactive" href="/HomeTeacher/"><div class="logo"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <img src= "/static/nbedit1.png" alt="Nebraska" width="50" height="25"></div><a>
+          <div class="topnav-right">
+            <a class="active" href="/HomeTeacher/">HOME</a>
+            <a href="/NSR/">RUBRIC</a>
+            <a href="/UploadLessonPlans/">SUBMIT LESSON</a>
+            <a href="/Submissions/">SUBMISSIONS</a>
+            <a href="/Profile/">SETTINGS</a>
+            <a href="/accounts/logout">LOGOUT</a>
+          </div>
+      </div>
+  
+      <!-- The Main Section -->
+      <br>
+      <div  class="master" style="height: 100%;">
+        <div>
+          <br>
+
+          <h2 class="wide" style="margin-top: 5%;">Check Lesson Plans</h2>
+          <div style="text-align: center; padding-top: 15%">
+            
+            <p>You must make a submission to view the results of this page.</p>
+
+
+          
+          
+          <br><br><br><br><br><br>
+              
+
+          </div>
+              <br> <br> <br>
+      </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+  
+        <!-- End Page Content -->
+      </div> <!-- this is the end of the main content part-->
+  
+      <!-- Footer -->
+      <div class="footer">
+        <p class="medium">Powered by 404TeamNotFound</p>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+{% else %}
+        <p>You are not logged in</p><a href="{% url 'login' %}">login</a>
+{% endif %}         
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

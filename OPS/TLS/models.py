@@ -89,6 +89,27 @@ class PSQLUpload(models.Model):
     searchvector = models.TextField(blank=True)
 
 
+class submissionsModel(models.Model):
+    userID = models.CharField(max_length=512, blank=False)
+    uploadNum = models.CharField(max_length=255, blank=False)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=False)
+    comment = models.TextField(blank=True) # this needs to be blank when uploaded so that admin can comment
+    uploadPath = models.CharField(max_length=512, blank=False)
+    numberOfFiles = models.CharField(max_length=512, blank=False)
+    filenames = models.CharField(max_length=512, blank=False)
+
+    def get_userID(self):
+        return self.userID
+
+    def get_user(self):
+        return self.user
+
+    def get_uploadNum(self):
+        return self.uploadNum
+
+    def get_comment(self):
+        return self.comment
+
 class newClass(models.Model):
     string = models.CharField(max_length=3000, blank=True)
     resultstring = models.CharField(max_length=3000, blank=True)
