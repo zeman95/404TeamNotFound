@@ -1,4 +1,3 @@
-
 {% extends 'base-UserAccounts.html'%}
 {% load static from staticfiles %}
 
@@ -24,9 +23,10 @@
   width: 360px;
   padding: 8% 0 0;
   margin: auto;
+  z-index: 0;
 }
 .form {
-  position: relative;
+  /*position: relative;*/
   z-index: 1;
   background: #FFFFFF;
   max-width: 360px;
@@ -129,9 +129,8 @@ body {
 <div class="top">
         <div class="top">
 				<div class="topnav">
-					<a class="nonactive" href="/">
-						<div class="ABRVIATED"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <!--<img src="{% static 'images/nebraksa.jpg' %}" alt="Nebraska">--></div>
-						<div class="topnav-right"></a>
+            <a class="nonactive" ><div class="logo"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <img src= "/static/nbedit1.png" alt="Nebraska" width="50" height="25"></div></a>
+            <div class="topnav-right">
 							
 				</div>
 			</div>

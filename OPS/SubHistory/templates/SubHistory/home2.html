@@ -1,6 +1,6 @@
 {% extends 'blendedbase.html'%}
 {% load static from staticfiles %}
-
+{% load custom_tag_defs %}
 
 
 {% block head %}
@@ -14,55 +14,40 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<script>
 
+
+
+
+  function openTab(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+
+
+
+
+
+</script>
 <style>
-  #teachers {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
 
-  #teachers td,
-  #teachers th {
-    border: 2px solid black;
-    padding: 8px;
-  }
-
-  /*#teachers tr:nth-child(even){background-color: #f2f2f2;}*/
-
-  #teachers tr:hover {
-    background-color: #ddd;
-  }
-
-  #teachers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    /*background-color: #4CAF50;*/
-    /*color: white;*/
-  }
-
-  /*input {
-  display: none;
-}
-
-/*hide the submenu
-ul.submenu {
-  max-height: 0;
-  overflow: hidden;
-}
-
-/*position the label
-label {
-  position: relative;
-  display: block;
-  cursor: pointer;
-}
-
-/*show the submenu when checked
-input:checked~ul.submenu {
-  max-height: 300px;
-}*/
 </style>
 
 
@@ -75,7 +60,7 @@ input:checked~ul.submenu {
 <div class="frontofimage">
   <div class="top">
     <div class="topnav">
-      <a class="nonactive" href="/HomeTeacher/"><div class="logo"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <img src= "/static/nbedit1.png" alt="Nebraska" width="50" height="25"></div><a>
+      <a class="nonactive" ><div class="logo"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <img src= "/static/nbedit1.png" alt="Nebraska" width="50" height="25"></div></a>
         <div class="topnav-right">
           <a class="active" href="/HomeTeacher/">HOME</a>
           <a href="/NSR/">RUBRIC</a>
@@ -90,20 +75,72 @@ input:checked~ul.submenu {
     <div  class="master" >
       <div>
         <br>
-        <h2 class="wide" style="margin-top: 5%;"><u>Lesson Plan Results</u></h2>
+        <h2 class="wide" style="margin-top: 5%;"><u>Lesson Plan Submissions</u></h2>
         
         <!-- This is the colored table that will populate stuff -->
         <div style="width: 95%; padding-left: 5%;">
         <br>
             <div>Submission(s)</div>
             <div class="tab">
-                <button class="tablinks" onclick="openTab(event, '1')">1</button>
-                <button class="tablinks" onclick="openTab(event, '2')">2</button>
+                <!-- this will dynamically make all the upload tabs -->
+                {% if rLength >= 1   %}
+                      {% for num in uploadNumArray %}
+                        <button class="tablinks" onclick="openTab(event, '{{num}}')">{{num}}</button>
+                      {% endfor %}
+                {% else %}
+                        <p>There was an error gathering information on Results. Contact system admin for more details.</p>
+                {% endif %}
             </div>
             
             <!-- Tab content -->
             <div style='text-align: left'>
-                <div id="1" class="tabcontent">
+    
+                {% if rLength >= 0   %}
+                        {% for num in uploadNumArray %}
+                            <div id="{{num}}" class="tabcontent">
+                              <h3>Submission: #{{num}}</h3>
+                              <br><h4>Comments</h4><br>
+                              <textarea rows="15" cols="100" disabled>
+                                {{commentsArray|indexLower:num}}                          
+                              </textarea>
+          
+                               
+                              <hr><br><h4>Submission Results</h4><br>
+                              <textarea rows="15" cols="100" disabled>  
+                                {{resultsArray|indexLower:num}} 
+                              </textarea>
+
+                              
+                              
+                              <hr><br><h4>Submission Copy</h4><br>
+                              <textarea rows="15" cols="100" disabled>  
+                                {{filesArray|indexLower:num}} 
+                              </textarea>
+                            </div>                     
+
+                            
+
+
+
+
+
+
+
+
+
+
+
+                        {% endfor %}
+                  {% else %}
+                          <p>There was an error gathering information on Results. Contact system admin for more details.</p>
+                  {% endif %}
+
+              
+              
+              
+              
+              
+                <!--<div id="1" class="tabcontent">
                     <h3>Submission: #1</h3>
                     <br><h4>Comments</h4><br>
                     <textarea rows="5" cols="75" disabled>
@@ -140,11 +177,12 @@ input:checked~ul.submenu {
                     <div>
                         Image of upload goes here
                     </div>
-                </div>
+                </div>-->
             </div>
+            
         </div>
         
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br>
 
       <!-- End Page Content -->
     </div> <!-- this is the end of the main content part-->

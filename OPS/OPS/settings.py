@@ -43,10 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'OPS',
+    'TLS.templatetags.custom_tag_defs',
 'TLS', # added as a last resort for db files
 'users.apps.UsersConfig', # new custom Auth
 #'users.apps.cust_users', # part of the custom auth tut
 	#'UserAccounts',
+    
 
 ]
 
@@ -91,6 +94,9 @@ TEMPLATES = [
 ]
 
 
+
+
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
@@ -102,12 +108,8 @@ WSGI_APPLICATION = 'OPS.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',  #/home/ubuntu/django-apps/env/lib/python3.5/site-packages/postgres
-        'NAME': 'masterdb',    #'lessonplans',
-        'USER': 'postgres', #'postgres', # master is another superuser
-        'PASSWORD': 'p@ssw0rd',     #'p@ssw0rd', # master is the password for master also
-        'HOST': 'localhost',
-        'PORT': '5432',   #'9000',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -118,11 +120,11 @@ DATABASES = {
     },
     'postgres': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',  #/home/ubuntu/django-apps/env/lib/python3.5/site-packages/postgres
-        'NAME': 'lessonplans',
-        'USER': 'postgres', # master is another superuser
-        'PASSWORD': 'p@ssw0rd', # master is the password for master also
+        'NAME': 'masterdb',    #'lessonplans',
+        'USER': 'postgres', #'postgres', # master is another superuser
+        'PASSWORD': 'p@ssw0rd',     #'p@ssw0rd', # master is the password for master also
         'HOST': 'localhost',
-        'PORT': '5432',   #'9000', 
+        'PORT': '5432',   #'9000',
     }
 
 """

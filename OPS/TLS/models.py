@@ -73,7 +73,7 @@ class Attachment(models.Model):
     file = models.FileField(_('Attachment'), upload_to=user_directory_path)
     count = models.IntegerField(default=0)
 
-
+"""
 class PSQLUpload(models.Model):
     #user_id = models.OneToOneField(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=False)
     userID = models.CharField(max_length=512, blank=False)
@@ -86,13 +86,13 @@ class PSQLUpload(models.Model):
     #resultantArray = ArrayField(models.ForeignKey(Resultants, on_delete=models.CASCADE), blank=True)
     querysearch = models.CharField(max_length=3000, blank=False) #models.TextField(blank=True)
     #search_vector = SearchVectorField(null=True)
-    searchvector = models.TextField(blank=True)
+    searchvector = models.TextField(blank=True)"""
 
 
 class submissionsModel(models.Model):
     userID = models.CharField(max_length=512, blank=False)
     uploadNum = models.CharField(max_length=255, blank=False)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=False)
+    user =  models.CharField(max_length=512, blank=False)#models.OneToOneField(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=False)
     comment = models.TextField(blank=True) # this needs to be blank when uploaded so that admin can comment
     uploadPath = models.CharField(max_length=512, blank=False)
     numberOfFiles = models.CharField(max_length=512, blank=False)

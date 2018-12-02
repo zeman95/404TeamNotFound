@@ -22,6 +22,7 @@ def home2(request):
 	allcomments = []
 	alluploadtexts = [] # this is all the files for input
 	allresulttexts = [] # this is all the output files form the alg
+	alluploadnumbers = []
 	try:
 		userguy = get_current_user()
 		userid = userguy.id
@@ -32,13 +33,14 @@ def home2(request):
 		context = {}
 		return render(request, 'failure.html', context)
 	else:		
-		try:
-			subModel = submissionsModel.objects.get(userID=str(userid), user = userguy, uploadNum=str(userguy.uploads))
-		except:
-			return HttpResponse('Could not find that model for that user. Contact system admin for more details')
+		allSubModels = submissionsModel.objects.all() # get all the models
+		
 
-		# at this point we know the user has uploaded something
-		# we also know they have at least one upload, so lets take care of all of them
+		for i in allSubModels: # search through manually, since there was error with finding them though django for some reason
+			if i.user == str(userguy):
+				if i.uploadNum == str(userguy.uploads):
+						subModel = i
+						
 
 		x = userguy.uploads
 		subtractor = 0
@@ -50,9 +52,18 @@ def home2(request):
 		while x > 0: # loop over all the uploads
 			fileselector = ''
 			contexts = ''
-			selectedupload = selectedupload - subtractor # set which upload we are looking at
+			selectedupload = x#selectedupload - subtractor # set which upload we are looking at
 			
-			subModel = submissionsModel.objects.get(userID=str(userid), user = userguy, uploadNum=str(selectedupload))
+			# at this point we know the user has uploaded something
+			# we also know they have at least one upload, so lets take care of all of them
+			try:
+				subModel = submissionsModel.objects.get(userID=str(userid), user = str(userguy), uploadNum=str(selectedupload))
+				#for i in allSubModels:
+				#	if i.user == str(userguy):
+				#		if i.uploadNum == str(selectedupload):
+				#				subModel = i
+			except:
+				return HttpResponse('Could not find that model for that user. Contact system admin for more details')
 			#allcomments.append(str(subModel.comment)) # get the comment from this
 
 			# get the file names from this upload		
@@ -77,38 +88,38 @@ def home2(request):
 			
 			
 			fileselector = str(directory) + 'output.txt'
-			# get the input from the text file
-			with open(fileselector, 'r') as f:
-				contents = f.read()
-			
+			try:
+				# get the input from the text file
+				with open(fileselector, 'r') as f:
+					contents = f.read()
+			except:
+				return HttpResponse('The output file does not exist - you did not successfully submit your lesson plans, thus you cannot view this page.')	
+			# save the output file contents, save the 
 			allresulttexts.append(contents)
-
 			alluploadtexts.append(readInString) # this is all the files for input
 			allcomments.append(str(subModel.comment)) # get the comment from this
+			alluploadnumbers.append(selectedupload)
 
 			subtractor += 1 # make this inc each time since we are going to be getting all of the info for all of the uploads
 			x = x-1 # move to the next upload
 			# END OF THE UPLOADS LOOP
 
+		# pass in all the variables needed
+		temp = 0
+		arrayAccessor = []
+		while temp < len(alluploadnumbers):
+			arrayAccessor.append(temp)
+			temp += 1
 		
-
-		
-
-			"""
-			userID = models.CharField(max_length=512, blank=False)
-			uploadNum = models.CharField(max_length=255, blank=False)
-			user = models.OneToOneField(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=False)
-			comment = models.TextField(blank=True) # this needs to be blank when uploaded so that admin can comment
-			uploadPath = models.CharField(max_length=512, blank=False)
-			numberOfFiles = models.CharField(max_length=512, blank=False)
-			filenames = models.CharField(max_length=512, blank=False)
-			"""
-
-		#return HttpResponse(alluploadtexts)
+		allcomments.reverse()  # reverse these, this is debug code that worked so it stayed
 
 
-	
-		context = {}
+
+		context = {"resultsArray": allresulttexts, "filesArray": alluploadtexts, "commentsArray": allcomments, 
+					"rLength": len(allresulttexts), "fLength": len(alluploadtexts), "cLength": len(allcomments),
+					"uploadNumArray": alluploadnumbers, "aAccessor": arrayAccessor, "uploadNum": userguy.uploads,
+					"t1": 0, "t2": 1,
+				}
 		return render(request, 'home2.html', context)
 
 

@@ -30,10 +30,10 @@ from django.utils.datastructures import MultiValueDictKeyError
 from pathlib import Path
 import re
 
-from django.contrib.postgres.search import SearchVectorField
-from django.contrib.postgres.search import SearchVector
-from django.contrib.postgres.fields import ArrayField
-from .models import PSQLUpload
+#from django.contrib.postgres.search import SearchVectorField
+#from django.contrib.postgres.search import SearchVector
+#from django.contrib.postgres.fields import ArrayField
+#from .models import PSQLUpload
 from .models import newClass
 import nltk, re, pprint
 from nltk import word_tokenize
@@ -366,7 +366,7 @@ def home11(request):
         
 
 
-                #######################################################################################
+                """#######################################################################################
                 # now there needs to be a model added to the postgres database to be searched
                 #######################################################################################
                 # incase somebody redirects back to the same page and doesnt upload a duplicate psqlupload model
@@ -381,7 +381,7 @@ def home11(request):
                                                 queryArray = lessonContent[:],
                                                 querysearch = 'none', 
                                                 searchvector = 'none')  
-                        psqlModel = PSQLUpload.objects.get(userID=str(userid), uploadNumber = userfileuploads)
+                        psqlModel = PSQLUpload.objects.get(userID=str(userid), uploadNumber = userfileuploads)"""
 
                 #######################################################################################
                 # at this point the page has been digested now we need to go and sort out the things?
@@ -876,7 +876,7 @@ def home11(request):
         ## The final step is to add all of this into a model so it can be displayed
         ## in a different page 
         ############################################################################
-        submissionsModel.objects.create(userID = str(userid), user = userguy, uploadNum = userfileuploads, 
+        submissionsModel.objects.create(userID = str(userid), user = str(userguy), uploadNum = userfileuploads, 
                                         uploadPath = userData.uploadPath, numberOfFiles = userData.numberOfFiles, 
                                         filenames = userData.filenames)        
                 
