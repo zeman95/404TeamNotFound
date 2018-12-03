@@ -112,6 +112,9 @@ def home2(request):
 			temp += 1
 		
 		allcomments.reverse()  # reverse these, this is debug code that worked so it stayed
+		allresulttexts.reverse()
+		alluploadtexts.reverse()
+		
 
 
 

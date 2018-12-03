@@ -114,7 +114,7 @@ def Form(request):
 # this code is supplied from nltk website: https://www.nltk.org/book/ch03.html
 # this is not my own code, but the library supplied by nltk written out from stem commands
 def stem(word):
-     for suffix in ['ing', 'ly', 'ed', 'ious', 'ies', 'ive', 'es', 's', 'ment']:
+     for suffix in ['ing', 'ly', 'ed', 'ious', 'ies', 'ive', 'es', 's', 'ment',]:
          if word.endswith(suffix):
              return word[:-len(suffix)]
      return word
@@ -240,8 +240,11 @@ def home11(request):
         filecounter = 0
         contents = ''
         sciEng = []
+        sciEngDisplay = []
         disCore = []
+        disCoreDisplay = []
         crosscutting = []
+        crosscuttingDisplay = []
         algorithm = []
         while filecounter < int(userData.numberOfFiles):
                 # get the file path and name, append then for easy reuse and save contents for processing
@@ -432,7 +435,7 @@ def home11(request):
                                 #######################################################################################
                                 chosenstring = ''
                                 searchthis = []
-                                searchthis = ['modeled', 'drawing', 'diagram', 'create', 'gameboard'] # words here will be searched for relevance, manually - still need to be stemmed also
+                                searchthis = ['modeled', 'drawing', 'diagram', 'create', 'gameboard', 'display', 'replica', 'representation', 'duplicate',] # words here will be searched for relevance, manually - still need to be stemmed also
                                 x = 0
                                 while x < len(searchthis):
                                         searchthis[x] = stem(searchthis[x]) # stem it
@@ -454,24 +457,26 @@ def home11(request):
                                                                 pass # nothing was found
                                                         elif mapped[count] == False: # if it has not been mapped allow it
                                                                 chosenstring = unalteredContent[count]
-                                                                chosenstring = chosenstring[:35] + '...'
-                                                                sciEng.append(chosenstring)
+                                                                #chosenstring = chosenstring[:35] + '...'  # trimming code
+                                                                sciEngDisplay.append(chosenstring) # this is the unaltered content for display
+                                                                sciEng.append(lessonContent[count])
                                                                 mapped[count] = True # now its been mapped, keeps things from being mapped twice
                                         except: # if there isnt a synonym for the word, we must continue on
                                                 results = search(str(word), text) # search the term, and then the text you want to search
                                                 if results == None or results == '' or results == []:
                                                         pass # nothing was found
                                                 elif mapped[count] == False: # if it has not been mapped allow it
-                                                        chosenstring = unalteredContent[count]
-                                                        chosenstring = chosenstring[:35] + '...'
-                                                        sciEng.append(chosenstring)
-                                                        #sciEng.append(unalteredContent[count])
+                                                        chosenstring = unalteredContent[count] # this chooses from the unaltered content array
+                                                        #chosenstring = chosenstring[:35] + '...'  # trimming code
+                                                        sciEngDisplay.append(chosenstring) # this is the unaltered content for display
+                                                        sciEng.append(lessonContent[count])
                                                         mapped[count] = True # now its been mapped, keeps things from being mapped twice
                                 # clear the array, since we allow remapping
                                 x = 0
                                 while x < int(POINTS):
                                         mapped[x] = False
                                         x += 1
+
                                 
 
 
@@ -504,18 +509,19 @@ def home11(request):
                                                                 pass # nothing was found
                                                         elif mapped[count] == False: # if it has not been mapped allow it
                                                                 chosenstring = unalteredContent[count]
-                                                                chosenstring = chosenstring[:35] + '...'
-                                                                disCore.append(chosenstring)
+                                                                #chosenstring = chosenstring[:35] + '...'  # trimming code
+                                                                disCoreDisplay.append(chosenstring) # this is the unaltered content for display
+                                                                disCore.append(lessonContent[count])
                                                                 mapped[count] = True # now its been mapped, keeps things from being mapped twice
                                         except: # if there isnt a synonym for the word, we must continue on
                                                 results = search(str(word), text) # search the term, and then the text you want to search
                                                 if results == None or results == '' or results == []:
                                                         pass # nothing was found
                                                 elif mapped[count] == False: # if it has not been mapped allow it
-                                                        chosenstring = unalteredContent[count]
-                                                        chosenstring = chosenstring[:35] + '...'
-                                                        disCore.append(chosenstring)
-                                                        #sciEng.append(unalteredContent[count])
+                                                        chosenstring = unalteredContent[count] # this chooses from the unaltered content array
+                                                        #chosenstring = chosenstring[:35] + '...'  # trimming code
+                                                        disCoreDisplay.append(chosenstring) # this is the unaltered content for display
+                                                        disCore.append(lessonContent[count])
                                                         mapped[count] = True # now its been mapped, keeps things from being mapped twice
                                 # clear the array, since we allow remapping
                                 x = 0
@@ -552,18 +558,19 @@ def home11(request):
                                                                 pass # nothing was found
                                                         elif mapped[count] == False: # if it has not been mapped allow it
                                                                 chosenstring = unalteredContent[count]
-                                                                chosenstring = chosenstring[:35] + '...'
-                                                                crosscutting.append(chosenstring)
+                                                                #chosenstring = chosenstring[:35] + '...'  # trimming code
+                                                                crosscuttingDisplay.append(chosenstring) # this is the unaltered content for display
+                                                                crosscutting.append(lessonContent[count])
                                                                 mapped[count] = True # now its been mapped, keeps things from being mapped twice
                                         except: # if there isnt a synonym for the word, we must continue on
                                                 results = search(str(word), text) # search the term, and then the text you want to search
                                                 if results == None or results == '' or results == []:
                                                         pass # nothing was found
                                                 elif mapped[count] == False: # if it has not been mapped allow it
-                                                        chosenstring = unalteredContent[count]
-                                                        chosenstring = chosenstring[:35] + '...'
-                                                        crosscutting.append(chosenstring)
-                                                        #sciEng.append(unalteredContent[count])
+                                                        chosenstring = unalteredContent[count] # this chooses from the unaltered content array
+                                                        #chosenstring = chosenstring[:35] + '...'  # trimming code
+                                                        crosscuttingDisplay.append(chosenstring) # this is the unaltered content for display
+                                                        crosscutting.append(lessonContent[count])
                                                         mapped[count] = True # now its been mapped, keeps things from being mapped twice
                                 # clear the array, since we allow remapping
                                 x = 0
@@ -758,50 +765,92 @@ def home11(request):
                                 count += 1
                         
                         # set the found items
-                        # i
-                        if foundSubCompOfModel[0] == 1 and foundSubCompOfModel[1] == 1 and foundSubCompOfModel[2] == 1 and foundSubCompOfModel[3] == 1:
+                        tester = 0 # this will test all the parts of the array
+                        
+                        partials = 0 # count the number, if more than half is found might as well add it since nobody will ever match all of these
+                        maxloop = 4
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
                                 foundCompOfModel[0] = 1
                                 outputToScreen = outputToScreen + '1.a.i.: Found' + '\n'
                         else:
                                 outputToScreen = outputToScreen + '1.a.i.: Not Found' + '\n'
                                         
-                        # ii
-                        if foundSubCompOfModel[4] == 1:
+                        partials = 0
+                        maxloop = 5
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
                                 foundCompOfModel[1] = 1
                                 outputToScreen = outputToScreen + '1.a.ii.: Found' + '\n'
-
+                                
                         else:
                                 outputToScreen = outputToScreen + '1.a.ii.: Not Found' + '\n'
 
-                                        
-                        # iii
-                        if foundSubCompOfModel[5] == 1:
+
+                        partials = 0
+                        maxloop = 6
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
                                 foundCompOfModel[2] = 1
                                 outputToScreen = outputToScreen + '1.a.iii.: Found' + '\n'
                         else:
                                 outputToScreen = outputToScreen + '1.a.iii.: Not Found' + '\n'
-                                        
-                        # iv
-                        if foundSubCompOfModel[6] == 1:
+
+
+                        partials = 0
+                        maxloop = 7
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
                                 foundCompOfModel[3] = 1
                                 outputToScreen = outputToScreen + '1.a.iv.: Found' + '\n'
                         else:
                                 outputToScreen = outputToScreen + '1.a.iv.: Not Found' + '\n'
-                                        
-                        # v
-                        if foundSubCompOfModel[7] == 1 or foundSubCompOfModel[8] == 1:
+
+
+                        partials = 0
+                        maxloop = 9
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
                                 foundCompOfModel[4] = 1
                                 outputToScreen = outputToScreen + '1.a.v.: Found' + '\n'
                         else:
                                 outputToScreen = outputToScreen + '1.a.v.: Not Found' + '\n'
-                                        
-                        # vi 
-                        if foundSubCompOfModel[8] == 1 and foundSubCompOfModel[10] == 1:
-                                foundCompOfModel[4] = 1
+
+
+
+                        if foundSubCompOfModel[9] == 1 and foundSubCompOfModel[10] == 1:
+                                foundCompOfModel[5] = 1
                                 outputToScreen = outputToScreen + '1.a.vi.: Found' + '\n'
                         else:
                                 outputToScreen = outputToScreen + '1.a.vi.: Not Found' + '\n'
-                                        
+
+
+
                         # is it a partial match or non at all?
                         count = 0
                         numfound = 0
@@ -811,32 +860,699 @@ def home11(request):
                                 count += 1
                                         
                         if numfound == len(foundCompOfModel):
-                                outputToScreen = '6.13.5.A \n' +  '1. Components: Complete Match \n' + outputToScreen
+                                outputToScreen = '6.13.5.A \n' +  '\n1. Components: Complete Match \n' + outputToScreen
                         elif numfound > 0 and numfound < len(foundCompOfModel):
-                                outputToScreen = '6.13.5.A \n' +  '1. Components: Partial Match \n' + outputToScreen
+                                outputToScreen = '6.13.5.A \n' +  '\n1. Components: Partial Match \n' + outputToScreen
                         elif numfound == 0:
-                                outputToScreen = '6.13.5.A \n' +  '1. Components: No Matches Discovered \n' # no need to output things it didnt find
+                                outputToScreen = '6.13.5.A \n' +  '\n1. Components: No Matches Discovered \n' + outputToScreen# no need to output things it didnt find
 
 
                         algorithm.append(outputToScreen) # save into array
+                        
+                        
+                        
+                        
+                        
+                        
                         outputToScreen = '' 
-
-
-
-
-
+                        foundCompOfModel = []
+                        foundSubCompOfModel = []
                         ####################################################################################
                         # this is going to be part 2
                         ####################################################################################
+                        searchthis = [] # clear array, then make the search terms
+                        searchthis = [  'energy', 'transfer', 'sun', 'warms', 'evaporate',                                      # i, 5 tot
+                                        'water', 'vapor', 'atmosphere', 'forms', 'clouds', 'condense', 'preciptation', 'falls', # ii, 8 tot 
+                                        'gravity', 'downhill', 'flow', 'oceans',                                                # iii, 4 tot
+                                        'remain', 'land',                                                                       # iv, 2 tot
+                                        'tissues', 'plants', 'organisms', 'decompose',                                          # v, 4 tot
+                        ]                                                       
+                        foundCompOfModel = [0] * 5
+                        foundSubCompOfModel = [0] * len(searchthis)   #(5+8+4+2+4)
+
+
+                        # stem search terms
+                        x = 0
+                        while x < len(searchthis):
+                                searchthis[x] = stem(searchthis[x]) # stem it
+                                x += 1   
+                                
+                        count = 0
+                        sciEngCopy = sciEng
+                        while count < len(sciEngCopy): # same length as the og
+                                # this is done using nltk which works on local variables so it should go much faster
+                                # what isgoing on is for this loop one of the sentences is being selected and stemmed
+                                # meaning all ending are being removed so when something is being searched we are 
+                                # removing all ending so that it will look the same since everything is already lowercase
+                                # removing endings should ensure a match if there is one
+                                selected = sciEngCopy[count] # get selected line of code
+                                tokens = word_tokenize(selected) # tokenize it
+                                        
+                                # now we are going to stem all the words
+                                internalcounter = 0 
+                                while internalcounter < len(tokens):
+                                        tokens[internalcounter] = stem(tokens[internalcounter]) 
+                                        internalcounter += 1
+                                        
+                                # now piece back to together the string from the altered string
+                                text = nltk.Text(tokens)
+                                
+                                for word in searchthis: # iterate through the array of words
+                                        try: #try to get synonyms if there is any
+                                                synonyms = str(dictionary.synonym(str(word))) # uses pydictonary to get synonyms instead of coding them all of them
+                                                        
+                                                # now stem the synonyms
+                                                x = 0
+                                                while x < len(synonyms):
+                                                        synonyms[x] = stem(synonyms[x]) # stem it
+                                                        x += 1
+                                                        
+                                                for syn in synonyms:
+                                                        results = search(str(syn), text) # search the term, and then the text you want to search
+                                                        if results == None or results == '' or results == []:
+                                                                pass # nothing was found
+                                                        else: # means that it has been found
+                                                                # 1
+                                                                if (word == stem('energy')):
+                                                                        foundSubCompOfModel[0] = 1 # found
+                                                                if (word == stem('transfer')):
+                                                                        foundSubCompOfModel[1] = 1 # found)
+                                                                if (word == stem('sun')):
+                                                                        foundSubCompOfModel[2] = 1 # found
+                                                                if (word == stem('warms')):
+                                                                        foundSubCompOfModel[3] = 1 # found)
+                                                                if (word == stem('evaporate')):
+                                                                        foundSubCompOfModel[4] = 1 # found)
+
+
+                                                                # 2
+                                                                if (word == stem('water')):
+                                                                        foundSubCompOfModel[5] = 1 # found
+                                                                if (word == stem('vapor')):
+                                                                        foundSubCompOfModel[6] = 1 # found)
+                                                                if (word == stem('atmosphere')):
+                                                                        foundSubCompOfModel[7] = 1 # found
+                                                                if (word == stem('forms')):
+                                                                        foundSubCompOfModel[8] = 1 # found)
+                                                                if (word == stem('clouds')):
+                                                                        foundSubCompOfModel[9] = 1 # found)
+                                                                if (word == stem('condense')):
+                                                                        foundSubCompOfModel[10] = 1 # found)
+                                                                if (word == stem('precipitation') or word == stem('falls')):
+                                                                        foundSubCompOfModel[11] = 1 # found
+                                                                        foundSubCompOfModel[12] = 1 # found)
+                                                                
+                                                                        
+                                                                # 3
+                                                                if (word == stem('gravity')):
+                                                                        foundSubCompOfModel[13] = 1 # found
+                                                                if (word == stem('downhill')):
+                                                                        foundSubCompOfModel[14] = 1 # found)
+                                                                if (word == stem('flow')):
+                                                                        foundSubCompOfModel[15] = 1 # found
+                                                                if (word == stem('oceans')):
+                                                                        foundSubCompOfModel[16] = 1 # found)
+                                                                
+
+                                                                # 4
+                                                                if (word == stem('remain')):
+                                                                        foundSubCompOfModel[17] = 1 # found
+                                                                if (word == stem('land')):
+                                                                        foundSubCompOfModel[18] = 1 # found)
+                                                                        
+                                                                # 5
+                                                                if (word == stem('tissues')):
+                                                                        foundSubCompOfModel[19] = 1 # found
+                                                                if (word == stem('plants')):
+                                                                        foundSubCompOfModel[20] = 1 # found)
+                                                                if (word == stem('organisms')):
+                                                                        foundSubCompOfModel[21] = 1 # found)
+                                                                if (word == stem('decompose')):
+                                                                        foundSubCompOfModel[22] = 1 # found)
+                                                            
+                                        except: # if there isnt a synonym for the word, we must continue on
+                                                results = search(str(word), text) # search the term, and then the text you want to search
+                                                if results == None or results == '' or results == []:
+                                                        pass # nothing was found
+                                                else: # means that it has been found
+                                                        # 1
+                                                        if (word == stem('energy')):
+                                                                foundSubCompOfModel[0] = 1 # found
+                                                        if (word == stem('transfer')):
+                                                                foundSubCompOfModel[1] = 1 # found)
+                                                        if (word == stem('sun')):
+                                                                foundSubCompOfModel[2] = 1 # found
+                                                        if (word == stem('warms')):
+                                                                foundSubCompOfModel[3] = 1 # found)
+                                                        if (word == stem('evaporate')):
+                                                                foundSubCompOfModel[4] = 1 # found)
+
+
+                                                        # 2
+                                                        if (word == stem('water')):
+                                                                foundSubCompOfModel[5] = 1 # found
+                                                        if (word == stem('vapor')):
+                                                                foundSubCompOfModel[6] = 1 # found)
+                                                        if (word == stem('atmosphere')):
+                                                                foundSubCompOfModel[7] = 1 # found
+                                                        if (word == stem('forms')):
+                                                                foundSubCompOfModel[8] = 1 # found)
+                                                        if (word == stem('clouds')):
+                                                                foundSubCompOfModel[9] = 1 # found)
+                                                        if (word == stem('condense')):
+                                                                foundSubCompOfModel[10] = 1 # found)
+                                                        if (word == stem('precipitation') or word == stem('falls')):
+                                                                foundSubCompOfModel[11] = 1 # found
+                                                                foundSubCompOfModel[12] = 1 # found)
+                                                        
+                                                                
+                                                        # 3
+                                                        if (word == stem('gravity')):
+                                                                foundSubCompOfModel[13] = 1 # found
+                                                        if (word == stem('downhill')):
+                                                                foundSubCompOfModel[14] = 1 # found)
+                                                        if (word == stem('flow')):
+                                                                foundSubCompOfModel[15] = 1 # found
+                                                        if (word == stem('oceans')):
+                                                                foundSubCompOfModel[16] = 1 # found)
+                                                        
+
+                                                        # 4
+                                                        if (word == stem('remain')):
+                                                                foundSubCompOfModel[17] = 1 # found
+                                                        if (word == stem('land')):
+                                                                foundSubCompOfModel[18] = 1 # found)
+                                                                
+                                                        # 5
+                                                        if (word == stem('tissues')):
+                                                                foundSubCompOfModel[19] = 1 # found
+                                                        if (word == stem('plants')):
+                                                                foundSubCompOfModel[20] = 1 # found)
+                                                        if (word == stem('organisms')):
+                                                                foundSubCompOfModel[21] = 1 # found)
+                                                        if (word == stem('decompose')):
+                                                                foundSubCompOfModel[22] = 1 # found)
+                                                       
+                                count += 1
+                        # set the found items
+                        tester = 0 # this will test all the parts of the array
+                        
+                        partials = 0 # count the number, if more than half is found might as well add it since nobody will ever match all of these
+                        maxloop = 5
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
+                                foundCompOfModel[0] = 1
+                                outputToScreen = outputToScreen + '2.a.i.: Found' + '\n'
+                        else:
+                                outputToScreen = outputToScreen + '2.a.i.: Not Found' + '\n'
+                                        
+                        partials = 0
+                        maxloop = 13
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
+                                foundCompOfModel[1] = 1
+                                outputToScreen = outputToScreen + '2.a.ii.: Found' + '\n'
+                                
+                        else:
+                                outputToScreen = outputToScreen + '2.a.ii.: Not Found' + '\n'
+
+
+                        partials = 0
+                        maxloop = 17
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
+                                foundCompOfModel[2] = 1
+                                outputToScreen = outputToScreen + '2.a.iii.: Found' + '\n'
+                        else:
+                                outputToScreen = outputToScreen + '2.a.iii.: Not Found' + '\n'
+
+
+                        partials = 0
+                        maxloop = 19
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
+                                foundCompOfModel[3] = 1
+                                outputToScreen = outputToScreen + '2.a.iv.: Found' + '\n'
+                        else:
+                                outputToScreen = outputToScreen + '2.a.iv.: Not Found' + '\n'
+
+
+                        partials = 0
+                        maxloop = 23
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
+                                foundCompOfModel[4] = 1
+                                outputToScreen = outputToScreen + '2.a.v.: Found' + '\n'
+                        else:
+                                outputToScreen = outputToScreen + '2.a.v.: Not Found' + '\n'
+
+
+
+
+                        # is it a partial match or non at all?
+                        count = 0
+                        numfound = 0
+                        while count < len(foundCompOfModel):
+                                if (foundCompOfModel[count] == 1):
+                                        numfound += 1
+                                count += 1
+                                        
+                        if numfound == len(foundCompOfModel):
+                                outputToScreen = '6.13.5.A \n' +  '2. Relationships: Complete Match \n' + outputToScreen
+                        elif numfound > 0 and numfound < len(foundCompOfModel):
+                                outputToScreen = '6.13.5.A \n' +  '2. Relationships: Partial Match \n' + outputToScreen
+                        elif numfound == 0:
+                                outputToScreen = '6.13.5.A \n' +  '2. Relationships: No Matches Discovered \n' + outputToScreen # no need to output things it didnt find
+
+                        algorithm.append(outputToScreen) # save into array
 
 
 
 
 
 
+                        outputToScreen = '' 
+                        foundCompOfModel = []
+                        foundSubCompOfModel = []
                         ####################################################################################
                         # this is going to be part 3
                         ####################################################################################
+                        searchthis = [] # clear array, then make the search terms
+                        searchthis = [  'energy', 'sun', 'movement', 'transpiration', 'evaporate',                                      # ai,
+                                        'water', 'vapor', 'atmosphere', 'condense', 'form', 'crystallize ', 'snow', 'ice', 'gravity', # aii, 
+                                        'gravity', 'surface', 'water', 'rivers', 'flow', 'ocean',                                                # aiii1, 
+                                        'evaporate', 'atmosphere',  #aiii2
+                                        'plants', 'transpiration', 'decomposition',                                                                       # aiii3, 
+                                        'animals', 'respiration', 'decomposition',                                                                       # aiii4, 
+                                        'freeze', 'crystallize', 'frozen', 'form', 'glaciers', 'ice',                                                                       # aiii5, 
+                                        'water', 'below', 'ground', 'aquifers',                                                                       # aiii6, 
+                                        'evaporation', 'transpiration', 'condensation', 'crystallization', 'precipitation',                                                                       # b,
+                                        'phases', 'locations', 'surface', 'atmosphere',                                          # c, 
+                        ]                                                       
+                        foundCompOfModel = [0] * 5
+                        foundSubCompOfModel = [0] * len(searchthis)   #(5+8+4+2+4)
+
+
+                        # stem search terms
+                        x = 0
+                        while x < len(searchthis):
+                                searchthis[x] = stem(searchthis[x]) # stem it
+                                x += 1   
+                                
+                        count = 0
+                        sciEngCopy = sciEng
+                        while count < len(sciEngCopy): # same length as the og
+                                # this is done using nltk which works on local variables so it should go much faster
+                                # what isgoing on is for this loop one of the sentences is being selected and stemmed
+                                # meaning all ending are being removed so when something is being searched we are 
+                                # removing all ending so that it will look the same since everything is already lowercase
+                                # removing endings should ensure a match if there is one
+                                selected = sciEngCopy[count] # get selected line of code
+                                tokens = word_tokenize(selected) # tokenize it
+                                        
+                                # now we are going to stem all the words
+                                internalcounter = 0 
+                                while internalcounter < len(tokens):
+                                        tokens[internalcounter] = stem(tokens[internalcounter]) 
+                                        internalcounter += 1
+                                        
+                                # now piece back to together the string from the altered string
+                                text = nltk.Text(tokens)
+                                
+                                for word in searchthis: # iterate through the array of words
+                                        try: #try to get synonyms if there is any
+                                                synonyms = str(dictionary.synonym(str(word))) # uses pydictonary to get synonyms instead of coding them all of them
+                                                        
+                                                # now stem the synonyms
+                                                x = 0
+                                                while x < len(synonyms):
+                                                        synonyms[x] = stem(synonyms[x]) # stem it
+                                                        x += 1
+                                                        
+                                                for syn in synonyms:
+                                                        results = search(str(syn), text) # search the term, and then the text you want to search
+                                                        if results == None or results == '' or results == []:
+                                                                pass # nothing was found
+                                                        else: # means that it has been found
+                                                                # 1
+                                                                if (word == stem('energy')):
+                                                                        foundSubCompOfModel[0] = 1 # found
+                                                                if (word == stem('sun')):
+                                                                        foundSubCompOfModel[1] = 1 # found)
+                                                                if (word == stem('movement')):
+                                                                        foundSubCompOfModel[2] = 1 # found
+                                                                if (word == stem('transpiration')):
+                                                                        foundSubCompOfModel[3] = 1 # found)
+                                                                if (word == stem('evaporate')):
+                                                                        foundSubCompOfModel[4] = 1 # found)
+
+
+                                                                if (word == stem('water')):
+                                                                        foundSubCompOfModel[5] = 1 # found
+                                                                if (word == stem('vapor')):
+                                                                        foundSubCompOfModel[6] = 1 # found)
+                                                                if (word == stem('atmosphere')):
+                                                                        foundSubCompOfModel[7] = 1 # found
+                                                                if (word == stem('condense')):
+                                                                        foundSubCompOfModel[8] = 1 # found)
+                                                                if (word == stem('form')):
+                                                                        foundSubCompOfModel[9] = 1 # found)
+                                                                if (word == stem('crystallize')):
+                                                                        foundSubCompOfModel[10] = 1 # found)
+                                                                if (word == stem('snow')):
+                                                                        foundSubCompOfModel[11] = 1 # found 
+                                                                if (word == stem('ice')):
+                                                                        foundSubCompOfModel[12] = 1 # found)
+                                                                if (word == stem('gravity')):
+                                                                        foundSubCompOfModel[13] = 1 # found
+
+
+                                                                if (word == stem('gravity')):
+                                                                        foundSubCompOfModel[14] = 1 # found)
+                                                                if (word == stem('surface')):
+                                                                        foundSubCompOfModel[15] = 1 # found
+                                                                if (word == stem('water')):
+                                                                        foundSubCompOfModel[16] = 1 # found)
+                                                                if (word == stem('rivers')):
+                                                                        foundSubCompOfModel[17] = 1 # found
+                                                                if (word == stem('flow')):
+                                                                        foundSubCompOfModel[18] = 1 # found)
+                                                                if (word == stem('ocean')):
+                                                                        foundSubCompOfModel[19] = 1 # found
+
+
+                                                                if (word == stem('evaporate')):
+                                                                        foundSubCompOfModel[20] = 1 # found)
+                                                                if (word == stem('atmosphere')):
+                                                                        foundSubCompOfModel[21] = 1 # found)
+
+
+                                                                if (word == stem('plants')):
+                                                                        foundSubCompOfModel[22] = 1 # found)
+                                                                if (word == stem('transpiration')):
+                                                                        foundSubCompOfModel[23] = 1 # found)
+                                                                if (word == stem('decomposition')):
+                                                                        foundSubCompOfModel[24] = 1 # found)
+
+
+                                                                if (word == stem('animals')):
+                                                                        foundSubCompOfModel[25] = 1 # found)
+                                                                if (word == stem('respiration')):
+                                                                        foundSubCompOfModel[26] = 1 # found)
+                                                                if (word == stem('decomposition')):
+                                                                        foundSubCompOfModel[27] = 1 # found)
+
+
+                                                                if (word == stem('freeze')):
+                                                                        foundSubCompOfModel[28] = 1 # found)
+                                                                if (word == stem('crystallize')):
+                                                                        foundSubCompOfModel[29] = 1 # found)
+                                                                if (word == stem('frozen')):
+                                                                        foundSubCompOfModel[30] = 1 # found)
+                                                                if (word == stem('form')):
+                                                                        foundSubCompOfModel[31] = 1 # found)
+                                                                if (word == stem('glaciers')):
+                                                                        foundSubCompOfModel[32] = 1 # found)
+                                                                if (word == stem('ice')):
+                                                                        foundSubCompOfModel[33] = 1 # found)
+
+
+                                                                if (word == stem('water')):
+                                                                        foundSubCompOfModel[34] = 1 # found)
+                                                                if (word == stem('below')):
+                                                                        foundSubCompOfModel[35] = 1 # found)
+                                                                if (word == stem('ground')):
+                                                                        foundSubCompOfModel[36] = 1 # found)
+                                                                if (word == stem('aquifers')):
+                                                                        foundSubCompOfModel[37] = 1 # found)
+
+
+                                                                if (word == stem('evaporation')):
+                                                                        foundSubCompOfModel[38] = 1 # found)
+                                                                if (word == stem('transpiration')):
+                                                                        foundSubCompOfModel[39] = 1 # found)
+                                                                if (word == stem('condensation')):
+                                                                        foundSubCompOfModel[40] = 1 # found)
+                                                                if (word == stem('crystallization')):
+                                                                        foundSubCompOfModel[41] = 1 # found)
+                                                                if (word == stem('precipitation')):
+                                                                        foundSubCompOfModel[42] = 1 # found)
+
+
+                                                                if (word == stem('phases')):
+                                                                        foundSubCompOfModel[43] = 1 # found)
+                                                                if (word == stem('locations')):
+                                                                        foundSubCompOfModel[44] = 1 # found)
+                                                                if (word == stem('surface')):
+                                                                        foundSubCompOfModel[45] = 1 # found)
+                                                                if (word == stem('atmosphere')):
+                                                                        foundSubCompOfModel[46] = 1 # found)
+                                        except: # if there isnt a synonym for the word, we must continue on
+                                                results = search(str(word), text) # search the term, and then the text you want to search
+                                                if results == None or results == '' or results == []:
+                                                        pass # nothing was found
+                                                else: # means that it has been found
+                                                        if (word == stem('energy')):
+                                                                foundSubCompOfModel[0] = 1 # found
+                                                        if (word == stem('sun')):
+                                                                foundSubCompOfModel[1] = 1 # found)
+                                                        if (word == stem('movement')):
+                                                                foundSubCompOfModel[2] = 1 # found
+                                                        if (word == stem('transpiration')):
+                                                                foundSubCompOfModel[3] = 1 # found)
+                                                        if (word == stem('evaporate')):
+                                                                foundSubCompOfModel[4] = 1 # found)
+
+
+                                                        if (word == stem('water')):
+                                                                foundSubCompOfModel[5] = 1 # found
+                                                        if (word == stem('vapor')):
+                                                                foundSubCompOfModel[6] = 1 # found)
+                                                        if (word == stem('atmosphere')):
+                                                                foundSubCompOfModel[7] = 1 # found
+                                                        if (word == stem('condense')):
+                                                                foundSubCompOfModel[8] = 1 # found)
+                                                        if (word == stem('form')):
+                                                                foundSubCompOfModel[9] = 1 # found)
+                                                        if (word == stem('crystallize')):
+                                                                foundSubCompOfModel[10] = 1 # found)
+                                                        if (word == stem('snow')):
+                                                                foundSubCompOfModel[11] = 1 # found 
+                                                        if (word == stem('ice')):
+                                                                foundSubCompOfModel[12] = 1 # found)
+                                                        if (word == stem('gravity')):
+                                                                foundSubCompOfModel[13] = 1 # found
+
+
+                                                        if (word == stem('gravity')):
+                                                                foundSubCompOfModel[14] = 1 # found)
+                                                        if (word == stem('surface')):
+                                                                foundSubCompOfModel[15] = 1 # found
+                                                        if (word == stem('water')):
+                                                                foundSubCompOfModel[16] = 1 # found)
+                                                        if (word == stem('rivers')):
+                                                                foundSubCompOfModel[17] = 1 # found
+                                                        if (word == stem('flow')):
+                                                                foundSubCompOfModel[18] = 1 # found)
+                                                        if (word == stem('ocean')):
+                                                                foundSubCompOfModel[19] = 1 # found
+
+
+                                                        if (word == stem('evaporate')):
+                                                                foundSubCompOfModel[20] = 1 # found)
+                                                        if (word == stem('atmosphere')):
+                                                                foundSubCompOfModel[21] = 1 # found)
+
+
+                                                        if (word == stem('plants')):
+                                                                foundSubCompOfModel[22] = 1 # found)
+                                                        if (word == stem('transpiration')):
+                                                                foundSubCompOfModel[23] = 1 # found)
+                                                        if (word == stem('decomposition')):
+                                                                foundSubCompOfModel[24] = 1 # found)
+
+
+                                                        if (word == stem('animals')):
+                                                                foundSubCompOfModel[25] = 1 # found)
+                                                        if (word == stem('respiration')):
+                                                                foundSubCompOfModel[26] = 1 # found)
+                                                        if (word == stem('decomposition')):
+                                                                foundSubCompOfModel[27] = 1 # found)
+
+
+                                                        if (word == stem('freeze')):
+                                                                foundSubCompOfModel[28] = 1 # found)
+                                                        if (word == stem('crystallize')):
+                                                                foundSubCompOfModel[29] = 1 # found)
+                                                        if (word == stem('frozen')):
+                                                                foundSubCompOfModel[30] = 1 # found)
+                                                        if (word == stem('form')):
+                                                                foundSubCompOfModel[31] = 1 # found)
+                                                        if (word == stem('glaciers')):
+                                                                foundSubCompOfModel[32] = 1 # found)
+                                                        if (word == stem('ice')):
+                                                                foundSubCompOfModel[33] = 1 # found)
+
+
+                                                        if (word == stem('water')):
+                                                                foundSubCompOfModel[34] = 1 # found)
+                                                        if (word == stem('below')):
+                                                                foundSubCompOfModel[35] = 1 # found)
+                                                        if (word == stem('ground')):
+                                                                foundSubCompOfModel[36] = 1 # found)
+                                                        if (word == stem('aquifers')):
+                                                                foundSubCompOfModel[37] = 1 # found)
+
+
+                                                        if (word == stem('evaporation')):
+                                                                foundSubCompOfModel[38] = 1 # found)
+                                                        if (word == stem('transpiration')):
+                                                                foundSubCompOfModel[39] = 1 # found)
+                                                        if (word == stem('condensation')):
+                                                                foundSubCompOfModel[40] = 1 # found)
+                                                        if (word == stem('crystallization')):
+                                                                foundSubCompOfModel[41] = 1 # found)
+                                                        if (word == stem('precipitation')):
+                                                                foundSubCompOfModel[42] = 1 # found)
+
+
+                                                        if (word == stem('phases')):
+                                                                foundSubCompOfModel[43] = 1 # found)
+                                                        if (word == stem('locations')):
+                                                                foundSubCompOfModel[44] = 1 # found)
+                                                        if (word == stem('surface')):
+                                                                foundSubCompOfModel[45] = 1 # found)
+                                                        if (word == stem('atmosphere')):
+                                                                foundSubCompOfModel[46] = 1 # found)  
+                                count += 1
+                        
+                        # set the found items
+                        tester = 0 # this will test all the parts of the array
+                        
+                        partials = 0 # count the number, if more than half is found might as well add it since nobody will ever match all of these
+                        maxloop = 5
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
+                                foundCompOfModel[0] = 1
+                                outputToScreen = outputToScreen + '3.a.i.: Found' + '\n'
+                        else:
+                                outputToScreen = outputToScreen + '3.a.i.: Not Found' + '\n'
+                                        
+                        partials = 0
+                        maxloop = 14
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
+                                outputToScreen = outputToScreen + '3.a.ii.: Found' + '\n'
+                                foundCompOfModel[1] = 1
+                        else:
+                                outputToScreen = outputToScreen + '3.a.ii.: Not Found' + '\n'
+
+
+                        partials = 0
+                        maxloop = 38
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
+                                foundCompOfModel[2] = 1
+                                outputToScreen = outputToScreen + '3.a.iii.: Found' + '\n'
+                        else:
+                                outputToScreen = outputToScreen + '3.a.iii.: Not Found' + '\n'
+
+
+                        partials = 0
+                        maxloop = 43
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
+                                foundCompOfModel[3] = 1
+                                outputToScreen = outputToScreen + '3.b.i.: Found' + '\n'
+                        else:
+                                outputToScreen = outputToScreen + '3.b.i.: Not Found' + '\n'
+
+
+                        partials = 0
+                        maxloop = 47
+                        loopsize = 0
+                        while tester < maxloop:
+                                if foundSubCompOfModel[tester] == 1:
+                                        partials += 1
+                                tester += 1
+                                loopsize += 1
+                        if tester > int(loopsize/2):
+                                foundCompOfModel[4] = 1
+                                outputToScreen = outputToScreen + '3.c.i.: Found' + '\n'
+                        else:
+                                outputToScreen = outputToScreen + '3.c.i.: Not Found' + '\n'
+
+
+
+
+
+
+                        # is it a partial match or non at all?
+                        count = 0
+                        numfound = 0
+                        while count < len(foundCompOfModel):
+                                if (foundCompOfModel[count] == 1):
+                                        numfound += 1
+                                count += 1
+                                        
+                        if numfound == len(foundCompOfModel):
+                                outputToScreen = '6.13.5.A \n' +  '3. Connections: Complete Match \n' + outputToScreen
+                        elif numfound > 0 and numfound < len(foundCompOfModel):
+                                outputToScreen = '6.13.5.A \n' +  '3. Connections: Partial Match \n' + outputToScreen
+                        elif numfound == 0:
+                                outputToScreen = '6.13.5.A \n' +  '3. Connections: No Matches Discovered \n' + outputToScreen # no need to output things it didnt find
+
+
+                        algorithm.append(outputToScreen) # save into array
+
+
+
+
 
 
             
@@ -872,6 +1588,20 @@ def home11(request):
                 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         #############################################################################
         ## The final step is to add all of this into a model so it can be displayed
         ## in a different page 
@@ -899,7 +1629,7 @@ def home11(request):
                 outline = ''
                 if len(sciEng) > 0:
                         while z < len(sciEng):
-                                outline = str(sciEng[z])
+                                outline = str(sciEngDisplay[z])
                                 bufferz = bufferz + outline + '\n'
                                 z += 1
                 else:
@@ -910,7 +1640,7 @@ def home11(request):
                 outline = ''
                 if len(disCore) > 0:
                         while z < len(disCore):
-                                outline = str(disCore[z])
+                                outline = str(disCoreDisplay[z])
                                 bufferz = bufferz + outline + '\n'
                                 z += 1
                 else:
@@ -921,7 +1651,7 @@ def home11(request):
                 outline = ''
                 if len(crosscutting) > 0:
                         while z < len(crosscutting):
-                                outline = str(crosscutting[z])
+                                outline = str(crosscuttingDisplay[z])
                                 bufferz = bufferz + outline + '\n'
                                 z += 1
                 else:
@@ -953,7 +1683,7 @@ def home11(request):
         # List all variables here that you would like to be able to display
         # they should be the same names no matter what req is chosen
         ############################################################################
-        context = {"STANDARD": str(userData.req), "algorithm": algorithm, "aLength": len(algorithm), "sciEng" : sciEng, "disCore": disCore, "crosscutting" : crosscutting, "algorithm": algorithm, "seLength": len(sciEng), "dcLength": len(disCore),"ccLength": len(crosscutting)}
+        context = {"STANDARD": str(userData.req), "algorithm": algorithm, "aLength": len(algorithm), "sciEng" : sciEngDisplay, "disCore": disCoreDisplay, "crosscutting" : crosscuttingDisplay, "algorithm": algorithm, "seLength": len(sciEng), "dcLength": len(disCore),"ccLength": len(crosscutting)}
         return render(request, 'home11.html', context)
 
 

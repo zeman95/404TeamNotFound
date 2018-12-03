@@ -1,0 +1,18 @@
+﻿GRADE:  6   
+FIRSTNAME: Zach  
+LASTNAME: Garvis
+LESSON: 2/7
+STANDARD: 6.13.5
+LEARNING_GOAL: I can develop a model to describe the cycling of Earth’s water through Earth’s systems.
+PHENOMENA: Water goes through a continuous cycle.
+NUMBER_OF_POINTS: 9  
+1. Ask students to consider the question: “How does the Missouri River, Platte River, and the Dakota Sandstone Aquifer maintain its water level if major cities like Omaha and Kansas City are constantly removing large amounts daily?” Use the Kagan activity stand up, hand up, pair up and have students share their answers to the guiding question. (2 min) (Modeled)
+2. Students use the Kagan strategy to share their answers with a partner. (2-3 min) (Shared)
+3. Students share out their responses with the class (2-3 min) (Shared)
+4. Teacher will explain that students will be doing a quick walkabout to gain some “knowledge drops” about M.U.D.(Metropolitan Utilities District) and how it supports Omaha. Explain to students that during the walkabout they will learn a lot of information. Their job is to take a post it note and a pencil and record the “knowledge drop” they found to be most interesting and why. (2-3 min) (Modeled)
+5. Students go on the walkabout and complete their post it leaving the post it underneath the “knowledge drop” they found most interesting. Students will do a “Did you Know?” walkabout with the following facts: Metropolitan Utilities District of Omaha serves more than 214,000 customers an average of about 90 million gallons of water per day. We also maintain 27,275 hydrants for fire protection. The average M.U.D. residential customer uses 85,000 gallons of water per year.  The cost for 85,000 gallons in 2017 is $362.42 including service fee, $4 infrastructure replacement charge and 2-percent payment to cities. (10 min.) (Independant)
+6. Introduce that we will be learning about the water cycle. Today we will build a model that will mimic several parts of the water cycle. Over the course of the next few classes we will observe how the model mimics several parts of the water cycle. (2-3 min) (Modeled)
+7. Teacher will divide students into ability groups of 3-4 students. Guide students through creating a model environment. (see eScience3000 Earth’s Waters Unit, Chapter 1-The Water Planet, Lesson 1: The Water Cycle Investigate tab for complete directions)  (30 min.) (Guided)
+8. Students will respond on post-its or padlet what they think they will observe in the models they built. (5 min) 
+9. Once students have put their water cycle models together, they will continue working on their game boards. (Varies)
+CLOSING_SUMMARY:  Students will respond on post-its or padlet what they think they will observe in the models they built. (5 min)
