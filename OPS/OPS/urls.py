@@ -50,6 +50,7 @@ urlpatterns = [
     #path('UploadLessonPlans/', home10, name='home10'),
     #path('UploadLessonPlans/', UploadView.as_view()),
     path('UploadLessonPlans/', Form, name = 'Form'),
+    
 
     #path('UploadLessonPlans/', ContactView.as_view()),
 
