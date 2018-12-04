@@ -1,0 +1,17 @@
+﻿GRADE:  6   
+FIRSTNAME: Zach  
+LASTNAME: Garvis
+LESSON: 4/7
+STANDARD: 6.13.5
+LEARNING_GOAL: I can develop a model to describe the cycling of Earth’s water through Earth’s systems.
+PHENOMENA: Water goes through a continuous cycle.
+NUMBER_OF_POINTS: 7  
+1. The teacher will show the class the water cycle video (link attached below) that shows what the sun is doing. Ask them to focus on how the sun, wind, and gravity affect the water cycle. https://learn.weatherstem.com/modules/learn/lessons/61/05.html (5 min.) (Modeled)
+2. The teacher will ask, “from the video, what did you notice about how the sun, wind and gravity affect the water cycle?” The teacher writes student responses on word web, diagram, smartboard, or chart.  (10 min.) (Shared)
+3. Explain to students that when liquid water evaporates it is turned into water vapor that then rises high into the atmosphere where it cools back down into water droplets. Eventually these water droplets combine to form clouds. Snow is a special kind of precipitation sometimes called crystallization. Crystallization is the process by which a substance becomes a solid, sort of like freezing. But in crystallization, crystals form. As clouds cool and condense they form rain or crystallize to form snow in a process called crystallization. Eventually these types of water are returned to the Earth via precipitation.  (5-7 min.)  (Modeled)
+4. Ask students to take out their journals and open to where they recorded their vocabulary terms from the explain 1 lesson. Ask the class what process is missing from our diagrams that was mentioned in the above video? (students should figure out that crystallization is missing.) (5 min.) (Shared)
+5. Teacher will lead the class in an academic conversation about how the water cycle operates on both a local and global scale. Students should make connections to previous lessons about where Omaha receives water as well as how most of the evaporation that happens on Earth happens over the ocean. (10 min.) (Guided)
+6. Exit Ticket for Formative assessment: How does the sun affect the dynamic nature of the water cycle? (10 min) 
+7. Students will revisit their game board. This will be the final time they will work on their games. Students need to have a completed board design, questions, game pieces, and directions for play. (teacher discretion) (Independant)
+CLOSING_SUMMARY: How does the sun affect the dynamic nature of the water cycle? (10 min) 
+

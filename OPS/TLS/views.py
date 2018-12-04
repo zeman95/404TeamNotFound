@@ -253,8 +253,24 @@ def home11(request):
                 line = -1
                 
                 # this code only works with txt format
-                with open(fileselector, 'r') as f:
-                        contents = f.read()
+                try:
+                        with open(fileselector, 'r') as f:
+                                contents = f.read()
+                except:
+                        # still create the upload
+                        submissionsModel.objects.create(userID = str(userid), user = str(userguy), uploadNum = userfileuploads, 
+                                        uploadPath = userData.uploadPath, numberOfFiles = userData.numberOfFiles, 
+                                        filenames = userData.filenames)
+
+                        afilename = 'output' + '.txt'
+                        with open(os.path.join(userData.uploadPath, afilename), 'w') as out_file:
+                                # make the input to the file
+                                bufferz = 'Error getting results for this upload'
+                                out_file.write(bufferz) # write the input
+                                out_file.close() # close the buffer and the file
+                        context = {}
+                        return render(request, 'resultsError.html', context)
+                         
                 
                 # This is where files are processed and broken down 
                 data = contents.split('\n') # get a copy

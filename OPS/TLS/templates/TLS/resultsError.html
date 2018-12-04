@@ -1,0 +1,173 @@
+{% extends 'base10.html'%}
+{% load static from staticfiles %}
+
+
+
+{% block head %}
+<!--  This is for the head of the page, list here  -->
+<title>Results</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<style>
+  #teachers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  #teachers td,
+  #teachers th {
+    border: 2px solid black;
+    padding: 8px;
+  }
+
+  /*#teachers tr:nth-child(even){background-color: #f2f2f2;}*/
+
+  #teachers tr:hover {
+    background-color: #ddd;
+  }
+
+  #teachers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    /*background-color: #4CAF50;*/
+    /*color: white;*/
+  }
+
+  /*input {
+  display: none;
+}
+
+/*hide the submenu
+ul.submenu {
+  max-height: 0;
+  overflow: hidden;
+}
+
+/*position the label
+label {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+/*show the submenu when checked
+input:checked~ul.submenu {
+  max-height: 300px;
+}*/
+</style>
+
+
+
+{% endblock %}
+
+{% block content %}
+<!-- body -->
+{% if user.is_authenticated %}
+<div class="frontofimage">
+  <div class="top">
+    <div class="topnav">
+      <a class="nonactive" href="/HomeTeacher/"><div class="logo"><b>N.A.S.S</b> <small><small>Nebraska Automated Science Standards</small></small> <img src= "/static/nbedit1.png" alt="Nebraska" width="50" height="25"></div><a>
+        <div class="topnav-right">
+          <a class="active" href="/HomeTeacher/">HOME</a>
+          <a href="/NSR/">RUBRIC</a>
+          <a href="/UploadLessonPlans/">SUBMIT LESSON</a>
+          <a href="/Submissions/">SUBMISSIONS</a>
+          <a href="/Profile/">SETTINGS</a>
+          <a href="/accounts/logout">LOGOUT</a>
+        </div>
+    </div>
+
+    <!-- The Main Section -->
+    <div  class="master" >
+      <div>
+        <br>
+        <h2 class="wide" style="margin-top: 5%;"><u>Lesson Plan Results</u></h2>
+
+        <!-- This is the colored table that will populate stuff -->
+        <table style="width:90%; margin-top: 50px; margin-left: 5%; margin-right: 5%;" id="teachers">
+          <tr>
+            <th style="background-color: aqua;">Science and Engineering Practices</th>
+            <th style="background-color: lightcoral;">Disciplinary Core Ideas</th>
+            <th style="background-color: lightgreen;">Crosscutting Concepts</th>
+          </tr>
+          <tr>
+            <td style="background-color: aqua; padding-bottom: 50px; padding-top: 15px;">
+              <ul>
+                <!--<li>Upload1.docx-PG1-4: This is a lesson plan point</li>-->
+                <div style="height:15%;width:100%;overflow:auto;">
+                  
+                          <li>There was no match found by algorithm for this category.</li>
+                          <li>There was an error gathering information on NSR. Contact system admin for more details.</li>
+                </div>
+              </ul>
+
+            </td>
+            <td style="background-color: lightcoral; padding-bottom: 50px;  padding-top: 15px;">
+              <ul>
+                <!--<li>Upload1.docx-PG1-4: This is a lesson plan point</li>-->
+                <div style="height:15%;width:100%;overflow:auto;">
+                          <li>There was no match found by algorithm for this category.</li>
+                          <li>There was an error gathering information on NSR. Contact system admin for more details.</li>
+                </div>
+              </ul>
+            </td>
+            <td style="background-color: lightgreen; padding-bottom: 50px; padding-top: 15px;">
+              <ul>
+                <!--<li>Upload1.docx-PG1-4: This is a lesson plan point</li>-->
+                <div style="height:15%;width:100%;overflow:auto;">
+                  
+                          <li>There was no match found by algorithm for this category.</li>
+                          <li>There was an error gathering information on NSR. Contact system admin for more details.</li>
+                </div>
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+        <div style="width:90%; margin-top: 50px; margin-left: 5%; margin-right: 5%;">
+          <h3>NSR Results</h3>
+          <br>
+          <div style="height:30%;width:75%x;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+            <p>You selected NSR standard "UNKNOWN"</p>
+            <!--<h3>Clear Results</h3>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 1</li>
+            </ul>
+
+            <br>
+            <h3>Unclear Results</h3>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 1</li>
+            </ul>-->
+            
+                    <li>There was an error gathering information on NSR. Contact system admin for more details.</li>
+          
+          </div>
+        </div> 
+      </div>
+      <br><br><br><br><br><br><br><br><br><br><br><br>
+
+      <!-- End Page Content -->
+    </div> <!-- this is the end of the main content part-->
+
+    <!-- Footer -->
+    <div class="footer">
+      <p class="medium">Powered by 404TeamNotFound</p>
+    </div>
+  </div>
+  {% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+  {% endif %}
+  {% endblock %}

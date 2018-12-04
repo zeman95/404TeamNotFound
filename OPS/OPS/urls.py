@@ -25,6 +25,7 @@ from UserAccounts.views import login, register, profile
 from TLS.views import home11, Form 
 #, home10
 from django.views.generic.base import TemplateView #for auth tut
+import django.views.defaults
 
 
 # file upload tut https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-with-django.html
@@ -50,7 +51,7 @@ urlpatterns = [
     #path('UploadLessonPlans/', home10, name='home10'),
     #path('UploadLessonPlans/', UploadView.as_view()),
     path('UploadLessonPlans/', Form, name = 'Form'),
-    
+    path('404/', django.views.defaults.page_not_found ),
 
     #path('UploadLessonPlans/', ContactView.as_view()),
 

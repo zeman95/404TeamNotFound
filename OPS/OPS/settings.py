@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'vxklv4@&!enjg77nv+_!fvthqr5zzevyot12&($c5u77n!06g$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False#True
+DEBUG = False #True
 
 # The simplest case: just add the domain name(s) and IP addresses of your Django server
 # ALLOWED_HOSTS = [ 'example.com', '203.0.113.5']
