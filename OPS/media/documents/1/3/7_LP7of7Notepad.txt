@@ -1,0 +1,13 @@
+﻿GRADE:  6   
+FIRSTNAME: Zach  
+LASTNAME: Garvis
+LESSON: 7/7
+STANDARD: 6.13.5
+LEARNING_GOAL: I can develop a model to describe the cycling of Earth’s water through Earth’s systems.
+PHENOMENA: Water goes through a continuous cycle.
+NUMBER_OF_POINTS: 4  
+1. Teacher poses guiding question: How could a drop of water from Omaha end up on a mountaintop in Switzerland? Students sketch and diagram a possible route a drop of water can take. One representative from each group will share out to the class. (15 min) (Shared)
+2. Teacher ask the students to present their game boards and instructions on how to play to the class. (15 min) (Guided)
+3. If time allows let groups play each others games. (20 min) (Independent)
+4. Students will take the assessment. (45 min) (Independent)
+CLOSING_SUMMARY: Exit ticket: Choose one of the games you played. Write one positive thing and one way it could be improved.  

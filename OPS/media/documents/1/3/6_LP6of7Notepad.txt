@@ -1,0 +1,20 @@
+﻿GRADE:  6   
+FIRSTNAME: Zach  
+LASTNAME: Garvis
+LESSON: 6/7
+STANDARD: 6.13.5
+LEARNING_GOAL: I can develop a model to describe the cycling of Earth’s water through Earth’s systems.
+PHENOMENA: Water goes through a continuous cycle.
+NUMBER_OF_POINTS: 11  
+1. Students record observations in their journals. (10 min) What do you notice? What do you wonder? (Shared)
+2. Teacher will have groups bring their models to their area.  Teacher will lead the class in an academic conversation. (Modeled)
+3. Students will discuss the following questions within the academic conversation. Which part of the model simulates evaporation? (10 min) Which part simulates condensation? Which part simulate precipitation? What is the energy source and what does it represent? What elements of the water cycle are not represented? How did we demonstrate transpiration in this activity? Would condensation occur in the model without the ice? Why or why not? After observing this activity, explain why water is considered a renewable resource. (Shared)
+4. Teacher presents today’s design challenge “Catching Water with a Net” See Engineering Design Notebook in the Elevate Science book. (1-2 min) (Modeled)
+5. Teacher will introduce the design challenge, “Catching Water with A Net” (Go to the Engineering Design Notebook in the Elevate Science book pg 339. Page numbers may change when book is printed.)  Provide the question: How can you provide safe drinking water for small villages far from any clean water source? Can you extract it from the air? (5 min) (Modeled)
+6. Students use Kagan strategy think pair share to answer the question “How can you provide safe drinking water for small villages far from any clean water source? Can you extract it from the air?  After students have discussed have them use thumbs up, down, or to the side to show their thoughts about whether they can extract water from the air. (5 min)  (Shared)
+7. Teacher states the Phenomenon: You can get a fresh drink of water almost anywhere in the United States simply by turning on a faucet.  However, in many villages and cities around the world, people have to go a long way to find clean water that is safe to drink. Scientists have taken up the challenge of bringing water to these people through ancient method of collecting dew. Explain that dew is the moisture that condenses on surfaces as a result of cooling temperatures and the available humidity in the air. Humidity is the amount of water vapor in the air. In rural villages across the world, people are putting up nets.  Cooler night temperatures cause moisture in the air from higher humidity or fog to condense and cover the nets with water.  The water drains into a container, providing a lifeline to thirsty communities. The water is safe for drinking, cooking, bathing, and tending crops. (5 min) (Modeled)
+8. Have students brainstorm any questions they would have about how this process and how it might affect a community. (2-3 min)  (Shared)
+9. Formative Assessment: Students will add any missing pieces to their diagram. All vocabulary should be included and defined by the end of this lesson. (10 min)
+10. Students will meet with their groups to play their own water cycle games and will troubleshoot any problems they see. These games will be presented in the next lesson. (Teacher discretion) (Independent)
+11. Students will work in groups to complete the design challenge. (45 min) (Guided)
+CLOSING_SUMMARY: Formative Assessment: Students will add any missing pieces to their diagram. All vocabulary should be included and defined by the end of this lesson. (10 min)  
