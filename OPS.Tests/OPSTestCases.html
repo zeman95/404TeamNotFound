@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>OPSTestCases</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">CreateAccountTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/accounts/login/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/accounts/login/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Create an account<datalist><option>link=Create an account</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Login'])[2]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::a[1]</option><option>//a[contains(text(),'Create an account')]</option><option>//a[contains(@href, '/Register/')]</option><option>//a</option><option>css=a</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Nebraska Automated Science Standards'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address:'])[1]/preceding::input[1]</option><option>//input[@id='id_username']</option><option>//p/input</option><option>css=#id_username</option></datalist></td><td>username3</td>
+</tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Your password can', "'", 't be too similar to your other personal information.')])[1]/preceding::input[2]</option><option>//input[@id='id_email']</option><option>//p[2]/input</option><option>css=#id_email</option></datalist></td><td>newuser@new.com</td>
+</tr>
+<tr><td>type</td><td>id=id_password1<datalist><option>id=id_password1</option><option>name=password1</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address:'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Your password can', "'", 't be too similar to your other personal information.')])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Your password must contain at least 8 characters.'])[1]/preceding::input[1]</option><option>//input[@id='id_password1']</option><option>//p[3]/input</option><option>css=#id_password1</option></datalist></td><td>C@pstone</td>
+</tr>
+<tr><td>type</td><td>id=id_password2<datalist><option>id=id_password2</option><option>name=password2</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password confirmation:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Your password can', "'", 't be entirely numeric.')])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Enter the same password as before, for verification.'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[1]/preceding::input[1]</option><option>//input[@id='id_password2']</option><option>//p[5]/input</option><option>css=#id_password2</option></datalist></td><td>C@pstone</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Enter the same password as before, for verification.'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Enter the same password as before, for verification.'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password confirmation:'])[1]/following::button[1]</option><option>//button[@type='submit']</option><option>//button</option><option>css=button[type="submit"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">UserLoginWithInvalidPasswordTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/accounts/login/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/accounts/login/</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Nebraska Automated Science Standards'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Login'])[2]/preceding::input[2]</option><option>//input[@id='id_username']</option><option>//p/input</option><option>css=#id_username</option></datalist></td><td>username3</td>
+</tr>
+<tr><td>type</td><td>id=id_password<datalist><option>id=id_password</option><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Login'])[2]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Create an account'])[1]/preceding::input[1]</option><option>//input[@id='id_password']</option><option>//p[2]/input</option><option>css=#id_password</option></datalist></td><td>C@pstone123</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Create an account'])[1]/preceding::button[1]</option><option>//button[@type='submit']</option><option>//button</option><option>css=button[type="submit"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">UserLoginTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/accounts/login/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/accounts/login/</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Nebraska Automated Science Standards'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Login'])[2]/preceding::input[2]</option><option>//input[@id='id_username']</option><option>//p/input</option><option>css=#id_username</option></datalist></td><td>username3</td>
+</tr>
+<tr><td>type</td><td>id=id_password<datalist><option>id=id_password</option><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Login'])[2]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Create an account'])[1]/preceding::input[1]</option><option>//input[@id='id_password']</option><option>//p[2]/input</option><option>css=#id_password</option></datalist></td><td>C@pstone</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Create an account'])[1]/preceding::button[1]</option><option>//button[@type='submit']</option><option>//button</option><option>css=button[type="submit"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ViewRubrics6To8Test</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/HomeTeacher/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/HomeTeacher/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Submissions'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Submissions'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Welcome username!'])[1]/following::button[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Settings'])[1]/preceding::button[1]</option><option>xpath=(//button[@type='button'])[2]</option><option>//div[@id='mycontainer']/div/div[2]/div[2]/a/button</option><option>//div[2]/a/button</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='K-2'])[1]/following::button[2]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='K-2'])[1]/following::button[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Nebraska State Rubrics K-12'])[1]/following::button[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='HS LS'])[1]/preceding::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='HS ES'])[1]/preceding::button[2]</option><option>//button[@onclick="openTab(event, '3')"]</option><option>//div[@id='mycontainer']/div/div/button[3]</option><option>//button[3]</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=RUBRIC<datalist><option>link=RUBRIC</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='HOME'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Nebraska Automated Science Standards'])[1]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='SUBMIT LESSON'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='SUBMISSIONS'])[1]/preceding::a[2]</option><option>//a[contains(text(),'RUBRIC')]</option><option>//a[contains(@href, '/NSR/')]</option><option>//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='K-2'])[1]/following::button[2]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='K-2'])[1]/following::button[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Nebraska State Rubrics K-12'])[1]/following::button[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='HS LS'])[1]/preceding::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='HS ES'])[1]/preceding::button[2]</option><option>//button[@onclick="openTab(event, '3')"]</option><option>//div[@id='mycontainer']/div/div/button[3]</option><option>//button[3]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">UploadLessonPlanTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/HomeTeacher/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/HomeTeacher/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Settings'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Settings'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Rubric'])[1]/following::button[2]</option><option>xpath=(//button[@type='button'])[4]</option><option>//div[@id='mycontainer']/div/div[3]/div/a/button</option><option>//div[3]/div/a/button</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>name=files<datalist><option>name=files</option><option>//input[@name='files']</option><option>//div[3]/input</option><option>css=input[name="files"]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=files<datalist><option>name=files</option><option>//input[@name='files']</option><option>//div[3]/input</option><option>css=input[name="files"]</option></datalist></td><td>C:\Fake\Path\To\LP1of7Notepad.txt</td>
+</tr>
+<tr><td>click</td><td>//input[@value='Upload']<datalist><option>//input[@value='Upload']</option><option>//input[2]</option><option>css=input[type="submit"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ViewSubmissionsTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/HomeTeacher/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/HomeTeacher/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Welcome username3!'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Welcome username3!'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='OPS'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Rubric'])[1]/preceding::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Settings'])[1]/preceding::button[2]</option><option>//button[@type='button']</option><option>//div[@id='mycontainer']/div/div[2]/div/a/button</option><option>//button</option><option>css=button.button.button1.pull-center</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Submission(s)'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Submission(s)'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Lesson Plan Submissions'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Submission: #1'])[1]/preceding::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Comments'])[1]/preceding::button[1]</option><option>//button[@onclick="openTab(event, '1')"]</option><option>//button</option><option>css=button.tablinks</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ChangePasswordTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/HomeTeacher/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/HomeTeacher/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Rubric'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Rubric'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Submissions'])[1]/following::button[2]</option><option>xpath=(//button[@type='button'])[3]</option><option>//div[@id='mycontainer']/div/div[2]/div[3]/a/button</option><option>//div[3]/a/button</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_old_password<datalist><option>id=id_old_password</option><option>name=old_password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Old password:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Update Information'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password:'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Your password can', "'", 't be too similar to your other personal information.')])[1]/preceding::input[2]</option><option>//input[@id='id_old_password']</option><option>//p/input</option><option>css=#id_old_password</option></datalist></td><td>C@pstone</td>
+</tr>
+<tr><td>type</td><td>id=id_new_password1<datalist><option>id=id_new_password1</option><option>name=new_password1</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Old password:'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Your password can', "'", 't be too similar to your other personal information.')])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Your password must contain at least 8 characters.'])[1]/preceding::input[1]</option><option>//input[@id='id_new_password1']</option><option>//p[2]/input</option><option>css=#id_new_password1</option></datalist></td><td>Project@123</td>
+</tr>
+<tr><td>type</td><td>id=id_new_password2<datalist><option>id=id_new_password2</option><option>name=new_password2</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password confirmation:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Your password can', "'", 't be entirely numeric.')])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Update Information'])[2]/preceding::input[1]</option><option>//input[@id='id_new_password2']</option><option>//p[4]/input</option><option>css=#id_new_password2</option></datalist></td><td>Project@123</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password confirmation:'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password confirmation:'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Your password can', "'", 't be entirely numeric.')])[1]/following::button[1]</option><option>//button[@type='submit']</option><option>//button</option><option>css=button[type="submit"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">UserLoginWithNewPasswordTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/accounts/login/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/accounts/login/</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Nebraska Automated Science Standards'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Login'])[2]/preceding::input[2]</option><option>//input[@id='id_username']</option><option>//p/input</option><option>css=#id_username</option></datalist></td><td>username3</td>
+</tr>
+<tr><td>type</td><td>id=id_password<datalist><option>id=id_password</option><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Login'])[2]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Create an account'])[1]/preceding::input[1]</option><option>//input[@id='id_password']</option><option>//p[2]/input</option><option>css=#id_password</option></datalist></td><td>Project@123</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Create an account'])[1]/preceding::button[1]</option><option>//button[@type='submit']</option><option>//button</option><option>css=button[type="submit"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">UserLogoutTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/HomeTeacher/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/HomeTeacher/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=LOGOUT<datalist><option>link=LOGOUT</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='SETTINGS'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='SUBMISSIONS'])[1]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='OPS'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Welcome username!'])[1]/preceding::a[1]</option><option>//a[contains(text(),'LOGOUT')]</option><option>//a[contains(@href, '/accounts/logout')]</option><option>//a[6]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">AdminLoginWithInvalidPasswordTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/admin/login/?next=/admin/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/admin/login/?next=/admin/</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Django administration'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/preceding::input[1]</option><option>//input[@id='id_username']</option><option>//form[@id='login-form']/div/input</option><option>//div/input</option><option>css=#id_username</option></datalist></td><td>master</td>
+</tr>
+<tr><td>type</td><td>id=id_password<datalist><option>id=id_password</option><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[2]</option><option>//input[@id='id_password']</option><option>//form[@id='login-form']/div[2]/input</option><option>//div[2]/input</option><option>css=#id_password</option></datalist></td><td>master</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[3]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[4]</option><option>//input[@value='Log in']</option><option>//form[@id='login-form']/div[3]/input</option><option>//div[3]/input</option><option>css=input[type="submit"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">AdminLoginTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/admin/login/?next=/admin/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/admin/login/?next=/admin/</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Django administration'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/preceding::input[1]</option><option>//input[@id='id_username']</option><option>//form[@id='login-form']/div/input</option><option>//div/input</option><option>css=#id_username</option></datalist></td><td>master</td>
+</tr>
+<tr><td>type</td><td>id=id_password<datalist><option>id=id_password</option><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[2]</option><option>//input[@id='id_password']</option><option>//form[@id='login-form']/div[2]/input</option><option>//div[2]/input</option><option>css=#id_password</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[3]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username:'])[1]/following::input[4]</option><option>//input[@value='Log in']</option><option>//form[@id='login-form']/div[3]/input</option><option>//div[3]/input</option><option>css=input[type="submit"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">AdminAddCommentTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/admin/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/admin/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Add'])[2]/following::a[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Add'])[2]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Submissions models'])[1]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Users'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Users'])[2]/preceding::a[2]</option><option>xpath=(//a[contains(text(),'Change')])[3]</option><option>//div[@id='content-main']/div[2]/table/tbody/tr/td[2]/a</option><option>xpath=(//a[contains(@href, '/admin/TLS/submissionsmodel/')])[3]</option><option>//div[2]/table/tbody/tr/td[2]/a</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=17<datalist><option>link=17</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Get comment'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Get uploadnum'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='newuser@new.com'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='master@master.com'])[1]/preceding::a[2]</option><option>//a[contains(text(),'17')]</option><option>//table[@id='result_list']/tbody/tr/th/a</option><option>//a[contains(@href, '/admin/TLS/submissionsmodel/27/change/')]</option><option>//th/a</option><option>css=th.field-get_userID &gt; a</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=id_comment<datalist><option>id=id_comment</option><option>name=comment</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Comment:'])[1]/following::textarea[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='User:'])[1]/following::textarea[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UploadPath:'])[1]/preceding::textarea[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='NumberOfFiles:'])[1]/preceding::textarea[1]</option><option>//textarea[@id='id_comment']</option><option>//form[@id='submissionsmodel_form']/div/fieldset/div[4]/div/textarea</option><option>//textarea</option><option>css=#id_comment</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_comment<datalist><option>id=id_comment</option><option>name=comment</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Comment:'])[1]/following::textarea[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='User:'])[1]/following::textarea[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UploadPath:'])[1]/preceding::textarea[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='NumberOfFiles:'])[1]/preceding::textarea[1]</option><option>//textarea[@id='id_comment']</option><option>//form[@id='submissionsmodel_form']/div/fieldset/div[4]/div/textarea</option><option>//textarea</option><option>css=#id_comment</option></datalist></td><td>Testing to make sure it works.</td>
+</tr>
+<tr><td>click</td><td>name=_save<datalist><option>name=_save</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Filenames:'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='NumberOfFiles:'])[1]/following::input[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Delete'])[1]/preceding::input[1]</option><option>//input[@name='_save']</option><option>//form[@id='submissionsmodel_form']/div/div/input</option><option>//div/div/input</option><option>css=input[name="_save"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">AdminDeleteUserTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/admin/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/admin/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Add'])[3]/following::a[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Add'])[3]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Users'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Recent actions'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='My actions'])[1]/preceding::a[1]</option><option>xpath=(//a[contains(text(),'Change')])[4]</option><option>//div[@id='content-main']/div[3]/table/tbody/tr/td[2]/a</option><option>xpath=(//a[contains(@href, '/admin/users/customuser/')])[3]</option><option>//div[3]/table/tbody/tr/td[2]/a</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='tkingkehl'])[1]/following::input[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='tkingkehl'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='tkingkehl@unomaha.edu'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='newuser@new.com'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='username3'])[1]/preceding::input[1]</option><option>xpath=(//input[@name='_selected_action'])[5]</option><option>//table[@id='result_list']/tbody/tr[5]/td/input</option><option>//tr[5]/td/input</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>name=action<datalist><option>name=action</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='No'])[3]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Go'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[1]/preceding::select[1]</option><option>//select[@name='action']</option><option>//form[@id='changelist-form']/div/label/select</option><option>//select</option><option>css=select[name="action"]</option></datalist></td><td></td>
+</tr>
+<tr><td>select</td><td>name=action<datalist><option>name=action</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='No'])[3]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Go'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[1]/preceding::select[1]</option><option>//select[@name='action']</option><option>//form[@id='changelist-form']/div/label/select</option><option>//select</option><option>css=select[name="action"]</option></datalist></td><td>label=Delete selected users</td>
+</tr>
+<tr><td>click</td><td>name=action<datalist><option>name=action</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='No'])[3]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Go'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[1]/preceding::select[1]</option><option>//select[@name='action']</option><option>//form[@id='changelist-form']/div/label/select</option><option>//select</option><option>css=select[name="action"]</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>name=index<datalist><option>name=index</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='No'])[3]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[1]/preceding::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Username'])[1]/preceding::button[1]</option><option>//button[@name='index']</option><option>//form[@id='changelist-form']/div/button</option><option>//button</option><option>css=button[name="index"]</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='newuser@new.com'])[1]/following::input[5]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='newuser@new.com'])[1]/following::input[5]</option><option>//input[@value="Yes, I'm sure"]</option><option>//div[@id='content']/form/div/input[4]</option><option>//input[4]</option><option>css=input[type="submit"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">AdminLogoutTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/admin/users/customuser/<datalist><option>http://ec2-18-222-218-109.us-east-2.compute.amazonaws.com:8080/admin/users/customuser/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Django administration<datalist><option>link=Django administration</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='master'])[1]/preceding::a[1]</option><option>//a[contains(text(),'Django administration')]</option><option>//h1[@id='site-name']/a</option><option>//a[contains(@href, '/admin/')]</option><option>//a</option><option>css=a</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Log out<datalist><option>link=Log out</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Change password'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='View site'])[1]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Site administration'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentication and Authorization'])[1]/preceding::a[1]</option><option>//a[contains(text(),'Log out')]</option><option>//div[@id='user-tools']/a[3]</option><option>//a[contains(@href, '/admin/logout/')]</option><option>//a[3]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
