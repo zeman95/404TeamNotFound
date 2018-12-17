@@ -1,0 +1,6 @@
+use the db_login <dbname, like prodxxx>
+in the sql prompt run this:
+select username, account_status from dba_users where account_status <> 'OPEN';
+will give back users associated 
+
+per Steve Flott

@@ -16,8 +16,8 @@ class CustomUserChangeForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email')
-        exclude = ("password",)
+        fields = ('password',)
+        exclude = ("username", "email",)
 
     # def clean_username(self):
     #     return self.username

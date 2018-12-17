@@ -1,0 +1,44 @@
+Science and Engineering Practices:
+1_tkkLesson1.txt: 2.  Teacher records student responses on the board to the guiding question. (Modeled)
+1_tkkLesson1.txt: 4. Share with students that Omaha area receives their water from 3 sources: Missouri river, Platte river, and Dakota sandstone aquifer. An aquifer is an area underground that holds water in the gaps between rock, sand or gravel. Sort of like an underground lake or stream. Other parts of the state receive water from the Ogallala aquifer and other groundwater sources. (5 min). (Modeled)
+1_tkkLesson1.txt: 5. Prompt students to think about if they’ve ever learned anything about the water cycle. In this unit we will be defining what our Earth’s water cycle does. (1-2 min) (Modeled)
+1_tkkLesson1.txt: 6. Explain to students that over the course of the unit they will be working in small groups to develop a game about what they are learning about the water cycle. Each day groups will develop engaging questions based off of what they’ve learned that day. By the end of the unit each game will have at least 16 questions: 8 about the water on the local level and 8 about the water cycle on a global level. Today they will begin creating their game boards. Share different layouts from games in your classroom or look some up online. For example: Monopoly, Chutes and Ladders, Sorry!, etc. (10 min) (Modeled)
+1_tkkLesson1.txt: 7. Students will receive time to work on their gameboard formats. (30 min) (Independent)
+
+Disciplinary Core Ideas:
+1_tkkLesson1.txt: 1.  To generate interest in the topic, present the guiding question: “where does the water we use daily in Omaha come from?” (2-3 min) (Shared)
+1_tkkLesson1.txt: 3.  Ask students if they would want to drink or use the water from the Missouri river. Ask students to turn and talk to their shoulder partner.  (Shared)
+1_tkkLesson1.txt: 4. Share with students that Omaha area receives their water from 3 sources: Missouri river, Platte river, and Dakota sandstone aquifer. An aquifer is an area underground that holds water in the gaps between rock, sand or gravel. Sort of like an underground lake or stream. Other parts of the state receive water from the Ogallala aquifer and other groundwater sources. (5 min). (Modeled)
+1_tkkLesson1.txt: 5. Prompt students to think about if they’ve ever learned anything about the water cycle. In this unit we will be defining what our Earth’s water cycle does. (1-2 min) (Modeled)
+1_tkkLesson1.txt: 6. Explain to students that over the course of the unit they will be working in small groups to develop a game about what they are learning about the water cycle. Each day groups will develop engaging questions based off of what they’ve learned that day. By the end of the unit each game will have at least 16 questions: 8 about the water on the local level and 8 about the water cycle on a global level. Today they will begin creating their game boards. Share different layouts from games in your classroom or look some up online. For example: Monopoly, Chutes and Ladders, Sorry!, etc. (10 min) (Modeled)
+
+Crosscutting Concepts:
+Nothing found in this category.
+
+Algorithm Results:
+6.13.5.A 
+
+1. Components: Partial Match 
+1.a.i.: Found
+1.a.ii.: Found
+1.a.iii.: Found
+1.a.iv.: Found
+1.a.v.: Found
+1.a.vi.: Not Found
+
+6.13.5.A 
+2. Relationships: Complete Match 
+2.a.i.: Found
+2.a.ii.: Found
+2.a.iii.: Found
+2.a.iv.: Found
+2.a.v.: Found
+
+6.13.5.A 
+3. Connections: Complete Match 
+3.a.i.: Found
+3.a.ii.: Found
+3.a.iii.: Found
+3.b.i.: Found
+3.c.i.: Found
+

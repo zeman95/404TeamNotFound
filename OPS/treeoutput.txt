@@ -1,0 +1,502 @@
+.
+├── assets
+│   ├── images
+│   ├── images.css
+│   ├── java
+│   │   └── readme.txt
+│   ├── nbedit1.png
+│   ├── nbedit.png
+│   ├── nebraska.jpg
+│   └── science.jpg
+├── db.sqlite3
+├── manage.py
+├── ManageUserAccounts
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-35.pyc
+│   │   ├── urls.cpython-35.pyc
+│   │   └── views.cpython-35.pyc
+│   ├── templates
+│   │   └── ManageUserAccounts
+│   │       ├── base1.html
+│   │       └── home1.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── media
+│   ├── documents
+│   │   ├── 1
+│   │   │   ├── 1
+│   │   │   │   ├── 1_LP1of7Notepad.txt
+│   │   │   │   ├── 2_LP2of7Notepad.txt
+│   │   │   │   ├── 3_LP3of7Notepad.txt
+│   │   │   │   ├── 4_LP4of7Notepad.txt
+│   │   │   │   ├── 5_LP5of7Notepad.txt
+│   │   │   │   ├── 6_LP6of7Notepad.txt
+│   │   │   │   ├── 7_LP7of7Notepad.txt
+│   │   │   │   └── output.txt
+│   │   │   ├── 2
+│   │   │   │   ├── 1_LP1of7Notepad.txt
+│   │   │   │   └── output.txt
+│   │   │   ├── 3
+│   │   │   │   ├── 1_LP1of7Notepad.txt
+│   │   │   │   └── output.txt
+│   │   │   ├── 4
+│   │   │   │   ├── 1_LP1of7Notepad.txt
+│   │   │   │   └── output.txt
+│   │   │   ├── 5
+│   │   │   │   ├── 1_LP1of7Notepad.txt
+│   │   │   │   └── output.txt
+│   │   │   ├── 6
+│   │   │   │   ├── 1_LP1of7Notepad.txt
+│   │   │   │   └── output.txt
+│   │   │   ├── 7
+│   │   │   │   ├── 1_LP1of7Notepad.txt
+│   │   │   │   └── output.txt
+│   │   │   ├── 8
+│   │   │   │   ├── 1_LP1of7Notepad.txt
+│   │   │   │   └── output.txt
+│   │   │   └── 9
+│   │   │       ├── 1_LP1of7Notepad.txt
+│   │   │       └── output.txt
+│   │   ├── 2
+│   │   │   ├── 1
+│   │   │   │   ├── 1_tkkLesson1.txt
+│   │   │   │   └── output.txt
+│   │   │   ├── 2
+│   │   │   │   ├── 1_tkkLesson1.txt
+│   │   │   │   └── output.txt
+│   │   │   └── 3
+│   │   │       └── 1_what ID uses DB.txt
+│   │   ├── 3
+│   │   │   └── 1
+│   │   │       ├── 1_1_tkkLesson1.txt
+│   │   │       └── output.txt
+│   │   ├── 5
+│   │   │   ├── 4
+│   │   │   │   ├── 1_LP1of7Notepad.txt
+│   │   │   │   └── output.txt
+│   │   │   ├── 5
+│   │   │   │   ├── 1_LP1of7Notepad.txt
+│   │   │   │   └── output.txt
+│   │   │   └── 6
+│   │   │       ├── 1_1_LP1of7Notepad.txt
+│   │   │       ├── 2_2_LP2of7Notepad.txt
+│   │   │       └── output.txt
+│   │   └── 7
+│   │       └── 1
+│   │           ├── 1_LP1of7Notepad.txt
+│   │           └── output.txt
+│   ├── nebraska.jpg
+│   └── SampleFile.txt
+├── mysite.sock
+├── NASSHomeTeacher
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-35.pyc
+│   │   └── views.cpython-35.pyc
+│   ├── templates
+│   │   └── NASSHomeTeacher
+│   │       ├── base4.html
+│   │       └── home4.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── nginxtest.py
+├── NSR
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── old
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-35.pyc
+│   │   └── views.cpython-35.pyc
+│   ├── templates
+│   │   └── NSR
+│   │       ├── base22.html
+│   │       └── home.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── OLDSQLITEDATABASES
+│   ├── dbCOPYBEFOREAUTH.sqlite3
+│   ├── dbOLDRENAMETOGETBACK.sqlite3
+│   └── db.sqlite3
+├── OPS
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-35.pyc
+│   │   ├── settings.cpython-35.pyc
+│   │   ├── urls.cpython-35.pyc
+│   │   └── wsgi.cpython-35.pyc
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── OPS.sock
+├── OPS_uwsgi.ini
+├── static
+│   ├── admin
+│   │   ├── css
+│   │   │   ├── autocomplete.css
+│   │   │   ├── base.css
+│   │   │   ├── changelists.css
+│   │   │   ├── dashboard.css
+│   │   │   ├── fonts.css
+│   │   │   ├── forms.css
+│   │   │   ├── login.css
+│   │   │   ├── responsive.css
+│   │   │   ├── responsive_rtl.css
+│   │   │   ├── rtl.css
+│   │   │   ├── vendor
+│   │   │   │   └── select2
+│   │   │   │       ├── LICENSE-SELECT2.md
+│   │   │   │       ├── select2.css
+│   │   │   │       └── select2.min.css
+│   │   │   └── widgets.css
+│   │   ├── fonts
+│   │   │   ├── LICENSE.txt
+│   │   │   ├── README.txt
+│   │   │   ├── Roboto-Bold-webfont.woff
+│   │   │   ├── Roboto-Light-webfont.woff
+│   │   │   └── Roboto-Regular-webfont.woff
+│   │   ├── img
+│   │   │   ├── calendar-icons.svg
+│   │   │   ├── gis
+│   │   │   │   ├── move_vertex_off.svg
+│   │   │   │   └── move_vertex_on.svg
+│   │   │   ├── icon-addlink.svg
+│   │   │   ├── icon-alert.svg
+│   │   │   ├── icon-calendar.svg
+│   │   │   ├── icon-changelink.svg
+│   │   │   ├── icon-clock.svg
+│   │   │   ├── icon-deletelink.svg
+│   │   │   ├── icon-no.svg
+│   │   │   ├── icon-unknown-alt.svg
+│   │   │   ├── icon-unknown.svg
+│   │   │   ├── icon-viewlink.svg
+│   │   │   ├── icon-yes.svg
+│   │   │   ├── inline-delete.svg
+│   │   │   ├── LICENSE
+│   │   │   ├── README.txt
+│   │   │   ├── search.svg
+│   │   │   ├── selector-icons.svg
+│   │   │   ├── sorting-icons.svg
+│   │   │   ├── tooltag-add.svg
+│   │   │   └── tooltag-arrowright.svg
+│   │   └── js
+│   │       ├── actions.js
+│   │       ├── actions.min.js
+│   │       ├── admin
+│   │       │   ├── DateTimeShortcuts.js
+│   │       │   └── RelatedObjectLookups.js
+│   │       ├── autocomplete.js
+│   │       ├── calendar.js
+│   │       ├── cancel.js
+│   │       ├── change_form.js
+│   │       ├── collapse.js
+│   │       ├── collapse.min.js
+│   │       ├── core.js
+│   │       ├── inlines.js
+│   │       ├── inlines.min.js
+│   │       ├── jquery.init.js
+│   │       ├── popup_response.js
+│   │       ├── prepopulate_init.js
+│   │       ├── prepopulate.js
+│   │       ├── prepopulate.min.js
+│   │       ├── SelectBox.js
+│   │       ├── SelectFilter2.js
+│   │       ├── timeparse.js
+│   │       ├── urlify.js
+│   │       └── vendor
+│   │           ├── jquery
+│   │           │   ├── jquery.js
+│   │           │   ├── jquery.min.js
+│   │           │   └── LICENSE.txt
+│   │           ├── select2
+│   │           │   ├── i18n
+│   │           │   │   ├── ar.js
+│   │           │   │   ├── az.js
+│   │           │   │   ├── bg.js
+│   │           │   │   ├── ca.js
+│   │           │   │   ├── cs.js
+│   │           │   │   ├── da.js
+│   │           │   │   ├── de.js
+│   │           │   │   ├── el.js
+│   │           │   │   ├── en.js
+│   │           │   │   ├── es.js
+│   │           │   │   ├── et.js
+│   │           │   │   ├── eu.js
+│   │           │   │   ├── fa.js
+│   │           │   │   ├── fi.js
+│   │           │   │   ├── fr.js
+│   │           │   │   ├── gl.js
+│   │           │   │   ├── he.js
+│   │           │   │   ├── hi.js
+│   │           │   │   ├── hr.js
+│   │           │   │   ├── hu.js
+│   │           │   │   ├── id.js
+│   │           │   │   ├── is.js
+│   │           │   │   ├── it.js
+│   │           │   │   ├── ja.js
+│   │           │   │   ├── km.js
+│   │           │   │   ├── ko.js
+│   │           │   │   ├── lt.js
+│   │           │   │   ├── lv.js
+│   │           │   │   ├── mk.js
+│   │           │   │   ├── ms.js
+│   │           │   │   ├── nb.js
+│   │           │   │   ├── nl.js
+│   │           │   │   ├── pl.js
+│   │           │   │   ├── pt-BR.js
+│   │           │   │   ├── pt.js
+│   │           │   │   ├── ro.js
+│   │           │   │   ├── ru.js
+│   │           │   │   ├── sk.js
+│   │           │   │   ├── sr-Cyrl.js
+│   │           │   │   ├── sr.js
+│   │           │   │   ├── sv.js
+│   │           │   │   ├── th.js
+│   │           │   │   ├── tr.js
+│   │           │   │   ├── uk.js
+│   │           │   │   ├── vi.js
+│   │           │   │   ├── zh-CN.js
+│   │           │   │   └── zh-TW.js
+│   │           │   ├── LICENSE.md
+│   │           │   ├── select2.full.js
+│   │           │   └── select2.full.min.js
+│   │           └── xregexp
+│   │               ├── LICENSE.txt
+│   │               ├── xregexp.js
+│   │               └── xregexp.min.js
+│   ├── images.css
+│   ├── java
+│   │   └── readme.txt
+│   ├── nbedit1.png
+│   ├── nbedit.png
+│   ├── nebraska.jpg
+│   ├── OPS
+│   │   └── science.jpg
+│   └── science.jpg
+├── SubHistory
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       └── __init__.cpython-35.pyc
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-35.pyc
+│   │   ├── __init__.cpython-35.pyc
+│   │   ├── models.cpython-35.pyc
+│   │   └── views.cpython-35.pyc
+│   ├── templates
+│   │   └── SubHistory
+│   │       ├── base2.html
+│   │       ├── blendedbase.html
+│   │       ├── failure.html
+│   │       └── home2.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── templates
+│   ├── 404.html
+│   ├── base.html
+│   ├── home.html
+│   └── registration
+│       └── login.html
+├── TLS
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms_location
+│   │   └── _init_.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_auto_20181202_0406.py
+│   │   ├── __init__.py
+│   │   ├── old
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_auto_20181119_1644.py
+│   │   │   ├── 0003_auto_20181119_1648.py
+│   │   │   ├── 0004_psqlupload_uploadnumber.py
+│   │   │   ├── 0005_auto_20181120_0232.py
+│   │   │   ├── 0006_auto_20181120_0248.py
+│   │   │   ├── 0007_auto_20181120_0308.py
+│   │   │   ├── 0008_submissionsmodel.py
+│   │   │   ├── 0009_auto_20181201_0127.py
+│   │   │   ├── 0010_auto_20181201_2304.py
+│   │   │   └── 0011_delete_psqlupload.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-35.pyc
+│   │       ├── 0002_auto_20181030_0227.cpython-35.pyc
+│   │       ├── 0002_auto_20181104_0339.cpython-35.pyc
+│   │       ├── 0002_auto_20181106_0338.cpython-35.pyc
+│   │       ├── 0002_auto_20181106_0344.cpython-35.pyc
+│   │       ├── 0002_auto_20181106_0345.cpython-35.pyc
+│   │       ├── 0002_auto_20181106_0346.cpython-35.pyc
+│   │       ├── 0002_auto_20181108_1739.cpython-35.pyc
+│   │       ├── 0002_auto_20181108_1750.cpython-35.pyc
+│   │       ├── 0002_auto_20181119_0351.cpython-35.pyc
+│   │       ├── 0002_auto_20181119_0401.cpython-35.pyc
+│   │       ├── 0002_auto_20181119_0419.cpython-35.pyc
+│   │       ├── 0002_auto_20181119_1547.cpython-35.pyc
+│   │       ├── 0002_auto_20181119_1600.cpython-35.pyc
+│   │       ├── 0002_auto_20181119_1644.cpython-35.pyc
+│   │       ├── 0002_auto_20181202_0406.cpython-35.pyc
+│   │       ├── 0002_psqlupload_queryarray.cpython-35.pyc
+│   │       ├── 0002_remove_psqlupload_queryarray.cpython-35.pyc
+│   │       ├── 0002_uploaddata.cpython-35.pyc
+│   │       ├── 0003_attachment_count.cpython-35.pyc
+│   │       ├── 0003_auto_20181030_0229.cpython-35.pyc
+│   │       ├── 0003_auto_20181108_1740.cpython-35.pyc
+│   │       ├── 0003_auto_20181119_1648.cpython-35.pyc
+│   │       ├── 0003_remove_document_description.cpython-35.pyc
+│   │       ├── 0003_uploaddata_numberoffiles.cpython-35.pyc
+│   │       ├── 0004_auto_20181030_0307.cpython-35.pyc
+│   │       ├── 0004_auto_20181108_1741.cpython-35.pyc
+│   │       ├── 0004_document_description.cpython-35.pyc
+│   │       ├── 0004_psqlupload_uploadnumber.cpython-35.pyc
+│   │       ├── 0004_remove_attachment_count.cpython-35.pyc
+│   │       ├── 0004_uploaddata_userid.cpython-35.pyc
+│   │       ├── 0005_attachment_count.cpython-35.pyc
+│   │       ├── 0005_auto_20181107_0424.cpython-35.pyc
+│   │       ├── 0005_auto_20181107_1907.cpython-35.pyc
+│   │       ├── 0005_auto_20181108_1744.cpython-35.pyc
+│   │       ├── 0005_auto_20181120_0232.cpython-35.pyc
+│   │       ├── 0005_uploaddata_filenames.cpython-35.pyc
+│   │       ├── 0006_auto_20181108_0250.cpython-35.pyc
+│   │       ├── 0006_auto_20181108_1747.cpython-35.pyc
+│   │       ├── 0006_auto_20181120_0248.cpython-35.pyc
+│   │       ├── 0006_postgresmodel_psqlupload.cpython-35.pyc
+│   │       ├── 0007_auto_20181108_0259.cpython-35.pyc
+│   │       ├── 0007_auto_20181118_2209.cpython-35.pyc
+│   │       ├── 0007_auto_20181120_0308.cpython-35.pyc
+│   │       ├── 0008_auto_20181108_0300.cpython-35.pyc
+│   │       ├── 0008_delete_postgresmodel.cpython-35.pyc
+│   │       ├── 0008_submissionsmodel.cpython-35.pyc
+│   │       ├── 0009_auto_20181108_0325.cpython-35.pyc
+│   │       ├── 0009_auto_20181118_2213.cpython-35.pyc
+│   │       ├── 0009_auto_20181201_0127.cpython-35.pyc
+│   │       ├── 0010_auto_20181108_0425.cpython-35.pyc
+│   │       ├── 0010_auto_20181118_2308.cpython-35.pyc
+│   │       ├── 0010_auto_20181201_2304.cpython-35.pyc
+│   │       ├── 0011_auto_20181108_0428.cpython-35.pyc
+│   │       ├── 0011_delete_psqlupload.cpython-35.pyc
+│   │       ├── 0012_auto_20181108_0431.cpython-35.pyc
+│   │       ├── 0013_auto_20181108_0435.cpython-35.pyc
+│   │       └── __init__.cpython-35.pyc
+│   ├── models_location
+│   │   └── _init_.py
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-35.pyc
+│   │   ├── forms.cpython-35.pyc
+│   │   ├── __init__.cpython-35.pyc
+│   │   ├── models.cpython-35.pyc
+│   │   └── views.cpython-35.pyc
+│   ├── templates
+│   │   └── TLS
+│   │       ├── base10.html
+│   │       ├── home10.html
+│   │       ├── home11.html
+│   │       ├── home17.html
+│   │       ├── home18.html
+│   │       └── resultsError.html
+│   ├── templatetags
+│   │   ├── custom_tag_defs.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── custom_tag_defs.cpython-35.pyc
+│   │       └── __init__.cpython-35.pyc
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── treeoutput.txt
+├── UserAccounts
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── __init__.py
+│   │   ├── old
+│   │   │   ├── 0001_initial.py
+│   │   │   └── 0002_auto_20181011_0114.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-35.pyc
+│   │       ├── 0002_auto_20181011_0114.cpython-35.pyc
+│   │       └── __init__.cpython-35.pyc
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-35.pyc
+│   │   ├── forms.cpython-35.pyc
+│   │   ├── __init__.cpython-35.pyc
+│   │   ├── models.cpython-35.pyc
+│   │   └── views.cpython-35.pyc
+│   ├── templates
+│   │   └── UserAccounts
+│   │       ├── base-UserAccounts.html
+│   │       ├── login.html
+│   │       ├── profile.html
+│   │       └── register.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── users
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── __init__.py
+│   │   ├── oldmigrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── 0002_auto_20181201_0107.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-35.pyc
+│   │       ├── 0002_auto_20181110_0432.cpython-35.pyc
+│   │       ├── 0002_auto_20181201_0107.cpython-35.pyc
+│   │       ├── 0002_customuser_customuser_slug.cpython-35.pyc
+│   │       ├── 0002_customuser_uploads.cpython-35.pyc
+│   │       ├── 0003_auto_20181108_0409.cpython-35.pyc
+│   │       ├── 0003_remove_customuser_customuser_slug.cpython-35.pyc
+│   │       ├── 0004_auto_20181108_0414.cpython-35.pyc
+│   │       ├── 0004_customuser_uploads.cpython-35.pyc
+│   │       ├── 0005_auto_20181109_0320.cpython-35.pyc
+│   │       └── __init__.cpython-35.pyc
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-35.pyc
+│   │   ├── apps.cpython-35.pyc
+│   │   ├── forms.cpython-35.pyc
+│   │   ├── __init__.cpython-35.pyc
+│   │   └── models.cpython-35.pyc
+│   ├── tests.py
+│   └── views.py
+└── uwsgi_params
+
+94 directories, 405 files

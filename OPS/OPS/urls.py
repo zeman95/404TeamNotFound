@@ -47,7 +47,8 @@ urlpatterns = [
     path('', login, name='login'), # changed for auth tut, was '' (the home screen the css is here)
     #path('Register/', register, name='register'),
     path('Register/', register.as_view()),
-    path('Profile/', profile.as_view(), name='profile'),
+    # path('Profile/', profile.as_view(), name='profile'),
+	path('Profile/', auth_views.PasswordChangeView.as_view(template_name='profile.html'), name='profile'),
     #path('UploadLessonPlans/', home10, name='home10'),
     #path('UploadLessonPlans/', UploadView.as_view()),
     path('UploadLessonPlans/', Form, name = 'Form'),
